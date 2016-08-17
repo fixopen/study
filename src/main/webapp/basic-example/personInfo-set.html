@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--     <meta name="viewport" content="width=device-width, initial-scale=1">
+    -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type='navPerson'></div>
+<div class="container">
+    <div class="currentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt; <strong><a href="personInfo.html">个人中心</a></strong>
+        &gt; <strong><a href="">我的设置</a></strong>
+    </div>
+</div>
+<div class="container" style="margin-top:15px;">
+<div class="one" style="background-image:url(images/041.jpg);width:100%;height:262px;">
+    <div id="personInfo" class="two" style="padding-top: 58px;"></div>
+</div>
+
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-2">
+            <ul class="nav nav-sidebar tabs-right" role="tablist">
+                <li>
+                    <a href="personInfo.html">
+                        <strong>我的收藏</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="personInfo-recommend.html">
+                        <strong>我的推荐</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="personInfo-upload.html">
+                        <strong>我的上传</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="/learn/community/trends/trendsAdd.htm">
+                        <strong>发表说说</strong>
+                    </a>
+                </li>
+                <hr/>
+                <li>
+                    <a href="personInfo-notice.html">
+                        <strong>我的通知</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="personInfo-discuss.html">
+                        <strong>我的评价</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="personInfo-feedBack.html">
+                        <strong>我的反馈</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="personInfo-myMessage.html">
+                        <strong>我的消息</strong>
+                    </a>
+                </li>
+                <li class='active'>
+                    <a href="#">
+                        <strong>我的设置</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-10" style="margin-top:10px;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active">
+                    <a href="#home" role="tab" data-toggle="tab">修改头像</a>
+                </li>
+                <li>
+                    <a href="#profile" role="tab" data-toggle="tab">账户绑定</a>
+                </li>
+                <li>
+                    <a href="#editPwd" role="tab" data-toggle="tab">修改密码</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active padding-l-0 personInfoStyle" id="home">
+                    <div class="row">
+                        <input type='file' id='file_upload' name='file_upload'/>
+                        <br>
+                        <img id="photo" src="${avatarUri}" style="width: 120px;height:125px;"/>
+                        <br>
+                        <span>仅支持jpg,gif,png格式的图片文件，文件不能大于2M.</span>
+                    </div>
+                    <div class="row">
+                        <textarea text="${summary}" id="mySummary" row=4 style='width:300px'></textarea>
+                    </div>
+                </div>
+                <div class="tab-pane padding-l-0 personInfoStyle" id="profile">
+                    <div class="row">
+                        <form autocomplete="off" class="form-horizontal" role="form" id='formBlinding'>
+                            <div class="form-group col-xs-12">
+                                <label for="oldPwd" class="col-xs-3 control-label">绑定邮箱:</label>
+
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" id="emailBlinding" name='oldPwd'
+                                           placeholder="邮箱"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h5 class="col-xs-offset-2 col-xs-11">(绑定后的邮箱地址可以用作登陆用户名,或者找回密码)</h5>
+
+                                <div class="space-1"></div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="newPwd" class="col-xs-3 control-label">绑定手机:</label>
+
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" id="phoneBlinding" name='newPwd'
+                                           placeholder="手机号码"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h5 class="col-xs-offset-2 col-xs-11">(绑定后的手机号码可以用作登陆用户名,或者找回密码)</h5>
+
+                                <div class="space-1"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane padding-l-0 personInfoStyle" id="editPwd">
+                    <div class="row">
+                        <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+                            <div class="form-group col-xs-12">
+                                <label for="oldPwd" class="col-xs-3 control-label">
+                                    <span class="glyphicon glyphicon-star red"></span>
+                                    旧密码:
+                                </label>
+
+                                <div class="col-xs-3">
+                                    <input type="password" class="form-control" id="oldPwd" name='oldPwd'
+                                           placeholder="旧密码"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="newPwd" class="col-xs-3 control-label">
+                                    <span class="glyphicon glyphicon-star red"></span>
+                                    新密码:
+                                </label>
+
+                                <div class="col-xs-3">
+                                    <input type="password" class="form-control" id="newPwd" name='newPwd'
+                                           placeholder="新密码"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label for="seNewPwd" class="col-xs-3 control-label">
+                                    <span class="glyphicon glyphicon-star red"></span>
+                                    确认新密码:
+                                </label>
+
+                                <div class="col-xs-3">
+                                    <input type="password" class="form-control" id="seNewPwd" name='seNewPwd'
+                                           placeholder="确认新密码"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xs-offset-2 col-xs-4">
+                    <a href='#' type='button' style="cursor:pointer;text-decoration: none;" id="personInfoSave">
+                        <button class="btn btn-primary">保存</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="template">
+    <div class="personInfo">
+        <div class="person-left" style="float:left;">
+            <img src="${avatarUri}" class='person-avatar' id="personInfoHead"/>
+
+            <div class="person-left-down">
+                <div style="float:left;margin-left:-35px;">
+                    <ul>
+                        <li>${friendCount}</li>
+                        <li>
+                            <strong>好友</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100px;">
+                    <ul>
+                        <li>${score}</li>
+                        <li>
+                            <strong>积分</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="person-right">
+            <div class="person-right-up padding-l-0">
+                <ul>
+                    <li style="font-size:23px;">
+                        <strong>${userName}</strong>
+                    </li>
+                    <li>
+                        收藏资源：
+                        <span>${likeRes}</span>
+                    </li>
+                    <li>
+                        等级：
+                        <span>${starLevel}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="person-right-down padding-l-0" style="color:black;margin-left:35px;">
+                <span style="font-size:20px;">个人简介：</span>
+
+                <p style="font-size: 16px;">${summary}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.validate.js"></script>
+<script src="js/libs/messages_zh.js"></script>
+<script src="js/libs/redactor.js"></script>
+<script src="js/libs/zh_cn.js"></script>
+<script src="js/uploadFiles.js"></script>
+<script src="js/util.js"></script>
+<script src="js/personInfo-set.js"></script>
+</body>
+</html>

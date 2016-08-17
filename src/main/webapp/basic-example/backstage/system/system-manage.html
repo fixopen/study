@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/redactor.css"/>
+    <link href="../../js/libs/uploadify.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li>
+        <a href="../index.html">主页</a>
+    </li>
+    <li>
+        <a href="system-manage.html">系统管理</a>
+    </li>
+</ol>
+
+<div class="container" style="margin-bottom: 100px;">
+    <!--<div class='row'>-->
+        <!--<form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>-->
+            <!--<div class="form-group col-xs-12">-->
+                <!--<label for="systemName" class="col-xs-2 control-label"><span-->
+                        <!--class="glyphicon glyphicon-star red"></span>网站名字:</label>-->
+
+                <!--<div class="col-xs-5">-->
+                    <!--<input type="text" class="form-control" id="systemName" name='systemName' placeholder="网站名字"/>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group col-xs-12">-->
+                <!--<label for="systemUrl" class="col-xs-2 control-label"><span class="glyphicon glyphicon-star red"></span>网站链接地址:</label>-->
+
+                <!--<div class="col-xs-5">-->
+                    <!--<input type="text" class="form-control" id="systemUrl" name='systemUrl' placeholder="网站链接地址"/>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group col-xs-12">-->
+                <!--<label class="col-xs-2 control-label">网站logo:</label>-->
+
+                <!--<div class="col-xs-2">-->
+                    <!--<img id='systemLogo' src="" style='width:40px;height:40px'/>-->
+
+                    <!--<div>-->
+                        <!--<input id="file_upload" name="file_upload" type="file">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group col-xs-12">-->
+                <!--<label for="systemDescribe" class="col-xs-2 control-label">关于我们:</label>-->
+
+                <!--<div class="col-xs-8">-->
+                    <!--<textarea id="systemDescribe" name="systemDescribe" row=3-->
+                              <!--style='width:900px;height: 380px'></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<div class="col-xs-offset-2 col-xs-4">-->
+                    <!--<button id='btnSubmit' class="btn btn-success">保存</button>-->
+                    <!--<button id='btnOnReset' class="btn btn-primary">取消</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+
+    <div class="row" style="margin-top:5px;">
+
+    <div class="col-xs-10"  id='panel-container'style="border:1px solid lightgray;padding:0px;">
+    <div class="row">
+         <span class="row col-xs-9">
+        <ul class="nav nav-tabs" role="tablist">
+            <li  class="active">
+                <a href="#check" role="tab" data-toggle="tab" >系统参数设定</a>
+            </li>
+            <li >
+                <a href="#pass" role="tab" data-toggle="tab" >系统权限控制</a>
+            </li>
+        </ul>
+          </span>
+    </div>
+
+    <div class="tab-content">
+        <!--系统参数-->
+        <div class="tab-pane padding-l-0 personInfoStyle active" id="check">
+            <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+                <div class="row">
+                    <div class="col-xs-2"style="padding: 0px;margin: 0px;">
+                        <lable>允许下载次数</lable>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" id="allow_download_times"> </input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2"style="padding: 0px;margin: 0px;">
+                        <lable>订单生效延迟时间</lable>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" id="order_freedom_minute"> </input>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="systemName" class="col-xs-2 control-label"><span
+                            class="glyphicon glyphicon-star red"></span>网站名字:</label>
+
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control" id="systemName" name='systemName' placeholder="网站名字"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="systemUrl" class="col-xs-2 control-label"><span class="glyphicon glyphicon-star red"></span>网站链接地址:</label>
+
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control" id="systemUrl" name='systemUrl' placeholder="网站链接地址"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-xs-2 control-label">网站logo:</label>
+
+                    <div class="col-xs-2">
+                        <img id='systemLogo' src="" style='width:40px;height:40px'/>
+
+                        <div>
+                            <input id="file_upload" name="file_upload" type="file">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="systemDescribe" class="col-xs-2 control-label">关于我们:</label>
+
+                    <div class="col-xs-8">
+                        <textarea id="systemDescribe" name="systemDescribe" row=3
+                                  style='width:900px;height: 380px'></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-4">
+                        <button id='btnSubmit' class="btn btn-success">保存</button>
+                        <button id='btnOnReset' class="btn btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--系统参数-->
+        <!--系统权限控制-->
+        <div class="tab-pane padding-l-0 personInfoStyle" id="pass" style="padding: 0px;margin: 0px;">
+            <div class="row" style="padding: 0px;float:right;">
+                <button class="btn btn-primary"onclick="operation()"style="margin: 0px;"><img src="/images/back/edit2.png"/>生效</button>
+            </div>
+            <div class="row  col-xs-12" style="padding: 0px;margin: 0px;">
+                <div class="col-xs-2" style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" name="select" value="timeLimit">时间限制</input>
+                </div>
+                <div class="col-xs-4">
+                    累计时常<input type="text" style="width: 40px;" id="timeLimit"> </input>小时
+                </div>
+                <div class="col-xs-6" >
+                    <!--时间日期插件-->
+                    <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="input-sm form-control" name="start"id="timeLimitBegin" />
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="input-sm form-control" name="end" id="timeLimitEnd"/>
+                    </div>
+                    <!--时间日期插件-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2" style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" name="select" value="timesLimit">次数限制</input>
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" style="width:40px;" id="timesLimit"> </input>次
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2" style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" name="select" value="userLimit">用户绑定</input>
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" style="width: 40px;" id="userLimit"> </input>个
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-2"style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" name="select" value="deviceLimit">设备绑定</input>
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" style="width: 40px;" id="devLimit"> </input>个
+                </div>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="select"value="resourceLimit">资源绑定</input>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="select"value="printLimit">禁止内容打印</input>
+            </div>
+            <div class="row">
+                <input type="checkbox" name="select"value="copyLimit">禁止内容复制</input>
+            </div>
+            <div class="row">
+                <lable class="col-xs-6">版本号</lable>
+                <div  class="col-xs-6">
+                    <input type="text" id="versionNum"/>
+                </div>
+            </div>
+            <div class="row">
+                <lable class="col-xs-6">颁发者</lable>
+                <div class="col-xs-6">
+                    <input type="text" id="issuer"/>
+                </div>
+            </div>
+        </div>
+        <!--系统权限控制-->
+    </div>
+    </div>
+    </div>
+</div>
+<div id="template">
+    <label for="${name}" class="col-xs-2 control-label"><span
+            class="glyphicon glyphicon-star red"></span>${caption}:</label>
+
+    <div class="col-xs-5">
+        <input type="text" class="form-control" id="${name}" name="${name}" placeholder="${caption}" value="${value}"/>
+    </div>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/libs/jquery.validate.js"></script>
+<script src="../../js/libs/messages_zh.js"></script>
+<script src="../../js/libs/redactor.js"></script>
+<script src="../../js/libs/zh_cn.js"></script>
+<script src="../../js/uploadFiles.js"></script>
+<script src="../../js/bootstrap-datepicker.js"></script>
+<script src="../../js/bootstrap-datepicker.zh-CN.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/system-manage.js"></script>
+</body>
+</html>

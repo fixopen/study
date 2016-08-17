@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>UploadiFive Test</title>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/jquery.uploadify.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="js/libs/uploadify.css">
+    <style type="text/css">
+        body {
+            font: 13px Arial, Helvetica, Sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+<h1>资源上传</h1>
+
+<form>
+    <div id="queue"></div>
+    <input id="file_upload" name="file_upload" type="file" multiple="true">
+    <a href="javascript:upload()">上传</a>|
+    <a href="javascript:cancelUpload()">取消上传</a>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#file_upload').uploadify({
+            'formData': {
+                'timestamp': '11111',
+                'token': 'dddd'
+            },
+            'swf': 'js/libs/uploadify.swf',
+            'cancelImg': 'js/libs/uploadify-cancel.png',
+            'uploader': '',
+            'auto': false,
+            'multi': true,
+            'scriptData': {"token": "123456", "sessionId": getCookie('sessionId')}
+        });
+    });
+    function upload(argument) {
+        $('#file_upload').uploadify('upload', '*');
+    }
+    function cancelUpload(argument) {
+        $('#file_upload').uploadify('cancel');
+    }
+</script>
+</body>
+</html>

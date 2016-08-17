@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+    <style type="text/css">
+        .nav-tabs{
+            border-bottom: 0px;
+        }
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            color: #3986BD;
+            background-color: #ffffff;
+            border-top-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;;
+        }
+        .nav-tabs > li > a {
+            border-radius: 0px 0px 0 0;
+            line-height: 2px;
+            color: #555;
+            margin-right: 0px;
+        }
+        .nav >li >a:hover, .nav >li >a:focus{
+            background-color: #ffffff;
+            border-top-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;;
+
+        }
+    </style>
+</head>
+<body>
+<div id="header" type='navPerson'></div>
+<div class="container-fluid">
+    <div class="personCurrentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt; <strong><a href="personInfo.html">个人中心</a></strong>
+        &gt; <strong><a href="">我的反馈</a></strong>
+    </div>
+</div>
+<div class="container" style="margin-top:15px;">
+    <div id="personInfoTopContainer"  class="row" style="border-bottom: 1px solid #CECBCE"></div>
+    <div class="row">
+        <div id="personInfoLeftContainer" data-personactive="navPersonFeedBack">
+        </div>
+        <div class="col-xs-10 padding-r-0" style="margin-top: 10px;">
+            <div class="panel ">
+                <div class="panel-body">
+                    <div class="">
+                        <ul class="nav nav-tabs" style="font-size:18px;margin-top:3px;">
+                            <li class="active" id="btnSuggestion" style="height:25px;border-right: 1px solid #CECBCE">
+                                <a href="#preOne" role="tab"data-toggle="tab">意见反馈</a>
+                            </li>
+                            <li>
+                                <a href="#preTwo" data-toggle="tab" style="height:25px;border-right: 1px solid #CECBCE">
+                                    <span id="btnImprove">改进建议</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#preThree" role="tab" data-toggle="tab"style="height:25px;">
+                                    <span id="btnReport">投诉举报</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="preOne">
+                                <div id='suggestion-tbody'></div>
+                                <div class='row'>
+                                    <div class='col-xs-offset-4 col-xs-8'>
+                                        <ul class="pagination" id='pagicontainer1'></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="preTwo">
+                                <div id='suggestionTwo-tbody'></div>
+                                <div class='row'>
+                                    <div class='col-xs-offset-4 col-xs-8'>
+                                        <ul class="pagination" id='pagicontainer2'></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="preThree">
+                                <div id='suggestionThree-tbody'></div>
+                                <div class='row'>
+                                    <div class='col-xs-offset-4 col-xs-8'>
+                                        <ul class="pagination" id='pagicontainer3'></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="template">
+    <div  class='feedback-template'>
+        <div class="row" style="padding-top:20px;padding-bottom:10px;border-bottom: 1px solid #CECBCE">
+            <div class="col-xs-9" style="font-size: 15px;">
+                <strong>${caption}</strong>
+            </div>
+            <div class="col-xs-3 " style="font-size: 16px;color: #C6CBC6">
+                <span class="pull-right">${dateCreated}</span>
+            </div>
+            <div class="col-xs-10" style="font-size: 15px;margin-top: 10px;">
+                ${content}
+            </div>
+            <div class="col-xs-2" style="font-size: 15px;margin-top: 10px;">
+                <a class='btn-delRow' rowid='${id}' style="color: #D6515A;cursor: pointer">删除</a>
+                <a class='btn-checkReply pull-right' rowid='${id}' style="color: #4286bd;cursor: pointer">查看回复</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/uploadFiles.js"></script>
+<script src="js/util.js"></script>
+<script src="js/util-personInfo.js"></script>
+<script src="js/personInfo-feedBack.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <runtime>
+        <logDirectory>~~/logs</logDirectory>
+        <cacheDirectory>~~/cache</cacheDirectory>
+    </runtime>
+
+    <smtp>
+        <server>smtp.163.com</server>
+        <port>25</port>
+        <user>nx2800</user>
+        <password>vtejliq</password>
+    </smtp>
+
+    <siteInfo handler="com.textbookpub.config.core.SiteInfoConfigHandler">
+        <!-- 站点图标 -->
+        <siteIcon></siteIcon>
+        <!-- 实例名称，如果为空，则服务每次启动时自动生成，
+               如果在Tomcat启动时有-DInstanceId=，则优先于此设置 -->
+        <instanceId>99</instanceId>
+        <!-- Http 基础地址 -->
+        <httpBaseUrl>http://192.168.1.101:8080</httpBaseUrl>
+        <!-- 图片服务器地址，如果为空，则等同于httpBaseUrl -->
+        <imageBaseUrl></imageBaseUrl>
+        <!-- 消息队列:local或jms，当系统不是jms时，被认为是local -->
+        <messageProvider>local</messageProvider>
+    </siteInfo>
+
+    <resourceStore handler="com.textbookpub.config.core.ResourceStoreHandler">
+        <upload>/D:/var/textbook/upload</upload>
+        <files>/D:/var/textbook/files</files>
+    </resourceStore>
+
+    <downloadUrl handler="com.textbookpub.config.core.DownloadUrlHandler">
+        <files>
+            <item>http://filedata.am985.net</item>
+        </files>
+        <zip>
+            <item>http://zipdata.am985.net</item>
+        </zip>
+    </downloadUrl>
+
+    <resourceStore handler="com.textbookpub.config.core.FileConverConfig">
+        <swf2pdf>
+            <commandLine>
+                F:\opt\swftools\bin\pdf2swf.exe
+            </commandLine>
+            <arguments>
+                -o {0} -t {1} -T -z -s flashversion=9
+            </arguments>
+        </swf2pdf>
+        <openoffice>
+            <!-- soffice.exe" -headless -accept="socket,host=127.0.0.1,port=8100;urp;" -nofirststartwizard -->
+            <ipAddr>127.0.0.1</ipAddr>
+            <port>8100</port>
+        </openoffice>
+    </resourceStore>
+
+</configuration>

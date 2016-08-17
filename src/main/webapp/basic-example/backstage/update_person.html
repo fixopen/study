@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/person_set.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNav">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt=""/>北京市中小学课程教材资源网</a>
+        </div>
+        <div class="navbar-collapse collapse" id="topNav">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="#" id='login'>
+                    <img src="../images/login.png" alt=""/>登录</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            Go!
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class='navbar  navbar-default navbar-second' role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#secondNavbar">
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse" id="secondNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="../index.html">
+                <img src="../images/nav.png" alt="">首页</a></li>
+            <li><a href="../resource.html">
+                <img src="../images/nav.png" alt="">资源中心</a></li>
+            <li><a href="../community.html">
+                <img src="../images/nav.png" alt="">学习社区</a></li>
+            <li><a href="../bbs-index.html">
+                <img src="../images/nav.png" alt="">论坛</a></li>
+            <li><a href="backstage/person.html">
+                <img src="images/help.png" alt="">个人空间</a></li>
+        </ul>
+    </div>
+</div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">首页</a></li>
+    <li><a href="person.html">个人空间</a></li>
+    <li class="active"><a href="#">修改/绑定</a></li>
+</ol>
+<hr style="visibility: hidden;"/>
+<div class="row">
+    <div class="col-md-12">
+        <div id="self_info">
+        </div>
+    </div>
+</div>
+<hr style="height: 60px; visibility: hidden"/>
+<div class="row" style="text-align: center;">
+    <div class="col-md-12">
+        <button id="changeImage" class="btn-primary btn btn-lg" data-toggle="modal" data-target="#self_img">
+            <!--position:relative;top:100px; button -->
+            修改头像
+        </button>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#blinding_account">
+            账户绑定
+        </button>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update_pwd">
+            修改密码
+        </button>
+    </div>
+</div>
+<hr/>
+<div class="modal fade" id="self_img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改头像</h4>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary">
+                    本地照片
+                </button>
+                <button type="button" class="btn btn-primary">
+                    自拍头像
+                </button>
+                <br>
+                <img src="images/upload_img.png"/>
+
+                <p>
+                    仅支持jpg,gif,png格式的图片文件，文件不能大于2M.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="blinding_account" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    账户绑定</h4>
+            </div>
+            <div class="modal-body">
+                绑定邮箱:<input type="text"></input>
+                <button type="button" name="blinding">
+                    绑定
+                </button>
+                <br/>
+                <h5>
+                    (绑定后的邮箱地址可以用作登陆用户名,或者找回密码)</h5>
+                <br/>
+                绑定手机(未绑定):<input type="text"></input>
+                <button type="button" name="blinding">
+                    绑定
+                </button>
+                <br/>
+                <h5>
+                    (绑定后的手机号码可以用作登陆用户名,或者找回密码)</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="update_pwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码：<input type="text"></input></p>
+
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：<input type="text"></input></p>
+
+                <p>
+                    确认新密码：<input type="text"></input></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="copyright">
+            <p>
+                <a href="">意见反馈</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="">关于我们</a>
+            </p>
+
+            <p>
+                联系方式:010-00000001 help@mocc.com 王老师</p>
+
+            <p>
+                Copyright 2011 New Corporation, All Rights Reserved 2011 北京市课程中心版权所有</p>
+
+            <p>
+                京ICP备1304316</p>
+        </div>
+    </div>
+</div>
+</div>
+<div id="template">
+    <div class="update_self_info">
+        <div class="row userinfo">
+            <img class="col-md-1" src="${photo}" alt="${name}" onclick="#"/>
+
+            <p class="col-md-2">
+                姓名：${name}<br/>
+                积分：${score}<br/>
+                等级：${starLevel}
+                <!-- -->
+            </p>
+        </div>
+    </div>
+</div>
+<script src="../js/libs/jquery.min.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/util.js"></script>
+</body>
+</html>

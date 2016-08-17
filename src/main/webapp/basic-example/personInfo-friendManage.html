@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type='navPerson'></div>
+<div class="container">
+    <div class="currentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt; <strong><a href="personInfo.html">个人中心</a></strong>
+        &gt; <strong><a href="">我的好友</a></strong>
+    </div>
+</div>
+<div class="container" style="margin-top:15px;">
+    <div class="one" style="background-image:url(images/041.jpg);width:100%;height:262px;">
+        <div id="personInfo" class="two" style="padding-top: 58px;">
+
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-2">
+            <ul class="nav nav-sidebar tabs-right" role="tablist">
+                <li><a href="personInfo.html"><strong>我的收藏</strong></a></li>
+                <li><a href="personInfo-recommend.html"><strong>我的推荐</strong></a></li>
+                <hr/>
+                <!--<li><a href="personInfo-publishMes.html"><strong>我要发言</strong></a></li>-->
+                <!--<li  class='active'><a href="#"><strong>我的好友</strong></a></li>-->
+                <li><a href="personInfo-notice.html"><strong>我的通知</strong></a></li>
+                <li><a href="personInfo-discuss.html"><strong>我的评价</strong></a></li>
+                <li><a href="personInfo-feedBack.html"><strong>我的反馈</strong></a></li>
+                <li><a href="personInfo-myMessage.html"><strong>我的消息</strong></a></li>
+                <li><a href="personInfo-set.html"><strong>我的设置</strong></a></li>
+            </ul>
+        </div>
+        <div class="col-xs-10 padding-r-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <span>我的好友</span>
+                        <a style="float:right; cursor:pointer;" id="addFriend">
+                            <img src="images/add.jpg"/>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="panel-body row" id="myFriends">
+
+                </div>
+                <ul class="pagination" id='pagicontainer1'></ul>
+            </div>
+            <!--添加好友的模态框-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">查找好友</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <form autocomplete="off" class="form-horizontal" role="form">
+                                    <div class="form-group col-xs-12">
+                                        <label  class="col-xs-3 control-label">
+                                            关键词:</label>
+
+                                        <div class="col-xs-6">
+                                            <input type="text" class="form-control" id="title" placeholder="赵"/>
+                                        </div>
+                                        <a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">
+                                            查询
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="row" id="friendFindMessage">
+
+                            </div>
+                            <div class="row">
+                                <ul class="pagination" id='pagicontainerFind'></ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        好友日志</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="friendMessage">
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-xs-offset-4 col-xs-8'>
+                        <ul class="pagination" id='pagicontainer'></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <span class="panel-title">友情链接</span>
+    </div>
+    <div class="space-1"></div>
+    <div class="row" id='friendlink-container'>
+    </div>
+    <div id="footer"></div>
+</div>
+<div id="template">
+    <div class="personInfo">
+        <div class="person-left" style="float:left;">
+            <img src="${avatarUri}" class='person-avatar'/>
+
+            <div class="person-left-down">
+                <div style="float:left;margin-left:-35px;">
+                    <ul>
+                        <li>${friendCount}</li>
+                        <li><strong>好友</strong></li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100px;">
+                    <ul>
+                        <li>${score}</li>
+                        <li><strong>积分</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="person-right">
+            <div class="person-right-up padding-l-0">
+                <ul>
+                    <li style="font-size:23px;"><strong>${userName}</strong></li>
+                    <!--<li>上传资源：<span>${uploadRes}</span></li>-->
+                    <li>收藏资源：<span>${likeRes}</span></li>
+                    <li>等级：<span>${starLevel}</span></li>
+                </ul>
+            </div>
+            <div class="person-right-down padding-l-0" style="color:black;margin-left:35px;">
+                <span style="font-size:20px;">个人简介：</span>
+
+                <p style="font-size: 16px;">${summary}</p>
+            </div>
+        </div>
+    </div>
+    <div class="myFriends col-xs-2">
+        <img src="${photo}" style="width:50px;height:50px;"/>
+        <h6><strong style="color:#666;">${name}</strong></h6>
+    </div>
+    <!--添加好友-->
+    <div class="friendFindMessage col-xs-4">
+        <a class="pull-left" href="${href}">
+            <img class="media-object img-rounded" src="${photo}" style="width:50px;height:50px;">
+        </a>
+
+        <div class="media-body">
+            <strong>${findFrindName}</strong><br/>
+            <a>
+                <button class="btn">
+                    添加好友
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="media friendMessage" style="padding-top:8px;">
+        <a class="pull-left" href="${href}" style="position:relative;top:0.5em;">
+            <img class="media-object img-rounded" src="images/personInfoimg.jpg" style="width:50px;height:50px;">
+        </a>
+
+        <div class="media-body" style="position:relative;left:0.8em;top:0.6em;">
+            <strong>${friendName}</strong><br/>
+            <span style="font-size:12px;">${time}</span><br/>
+        </div>
+        <br/>
+
+        <div>${friendMessage}</div>
+    </div>
+    <div class="recommendRes">
+    </div>
+</div>
+
+<div class="modal fade" data-backdrop="static" id="loginModal" tabindex="-1" role="dialog"
+     aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="loginModalLabel">
+                    登录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-offset-2 hidden col-sm-10 alert alert-danger">
+                    Hello World
+                </div>
+                <form autocomplete="off" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputUsername" class="col-sm-2 control-label">
+                            用户名</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputUsername" placeholder="Username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-2 control-label">
+                            密码</label>
+
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" data-loading-text="Loading..." class="btn btn-primary">
+                                登录
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/personInfo-publishMes.js"></script>
+</body>
+</html>

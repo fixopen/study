@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-treeview.css">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header"></div>
+
+<div class="container">
+    <div class="currentLocation">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt;
+        <a href="resource-index.html">资源中心</a>
+        &gt; <strong><a href="resource-search.html">资源查询</a></strong>
+        &gt; <strong><a href="#">按教材浏览</a></strong>
+    </div>
+</div>
+<div class="container">
+
+    <div class="condition-container">
+        <div class='row'>
+            <div class='row'>
+                <form autocomplete="off" class="form-horizontal" role="form">
+                    <div class="form-group col-xs-4">
+                        <label for="name" class="col-xs-4 control-label">年级:</label>
+
+                        <div class="col-xs-8">
+                            <select class="form-control" id='queryStage'>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <label for="name" class="col-xs-4 control-label">版本:</label>
+
+                        <div class="col-xs-8">
+                            <select class="form-control" id='queryVersion'>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <label for="name" class="col-xs-4 control-label">学科:</label>
+
+                        <div class="col-xs-8">
+                            <select class="form-control" id='querySubject'>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-left">
+                            <a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">查询</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class='row'>
+                <div class='col-xs-3'>
+                    <div id='tree'></div>
+                </div>
+                <div class='col-xs-9'>
+                    <div class='row res-list'>
+                        <ul id='resource-container'>
+                        </ul>
+                    </div>
+                    <div class='row'>
+                        <div class='col-xs-offset-3 col-xs-8'>
+                            <ul class="pagination" id='pagicontainer'></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--copyright-->
+    <div id="footer"></div>
+</div>
+<div id="template">
+    <li class="resource-tpl">
+        <a href='${href}'>
+            <img src='${photo}' style='width:40px;height:40px'/><span>${name}--大小:${size}</span><br/>
+        </a>
+        <span>${description}</span><br/>
+        <span style='color:#ccc'>适用对象:${applies}|学科:${subject}|版本:${version}|年级:${stage}</span>
+    </li>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/resource-textbooks.js"></script>
+<style>
+
+    body {
+        padding-top: 140px;
+    }
+
+    .condition-tpl, .selected-tpl {
+        padding: 0px 5px;
+    }
+
+    .conditionrow {
+        padding-top: 4px;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/redactor.css"/>
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li>
+        <a href="../index.html">主页</a>
+    </li>
+    <li>
+        <a href="resource-manage.html">资源管理</a>
+    </li>
+    <li class="active">
+        <a href="#">编辑资源</a>
+    </li>
+</ol>
+
+<div class="container">
+    <div class='row'>
+        <!--<form autocomplete="off" class="form-horizontal col-xs-offset-3" role="form" id='mainForm'>-->
+        <div class="form-group col-xs-12">
+            <label for="caption" class="col-xs-2 control-label"><span class="glyphicon glyphicon-star red"></span>资源标题:</label>
+
+            <div class="col-xs-5">
+                <input type="text" class="form-control" id="caption" name='caption'/>
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label for="typeCaption" class="col-xs-2 control-label">资源类型:</label>
+
+            <div class="col-xs-5">
+                <input type="text" class="form-control" id="typeCaption" name='typeCaption'/>
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label for="subjectCaption" class="col-xs-2 control-label">学科:</label>
+
+            <div class="col-lg-5">
+                <input type="text" class="form-control" id="subjectCaption" name='subjectCaption'/>
+            </div>
+        </div>
+        <!-- <div class="form-group col-xs-12">
+            <label for="thumb " class="col-xs-2 control-label">图片:</label>
+            <div class="col-xs-2">
+                <img id='imgPreview' src="" alt="Drag & drop category photo" ondragenter="return false" ondragover="return false" ondrop="dropIt(event)" />
+                <div>
+                    <input class='file' type="file" id="files-input" name='file[]' size="10" accept="image/*" multiple="multiple" style="opacity:0" />
+                    <span class="btn btn-primary uploadbutton">请选择要上传的图片文件(小于2M)</span>
+                </div>
+            </div>
+        </div> -->
+        <div class="form-group col-xs-12">
+            <label for="dateCreated" class="col-xs-2 control-label">上传时间:</label>
+
+            <div class="col-xs-5">
+                <input type="text" class="form-control" id="dateCreated" name='dateCreated' readonly="true"/>
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <label for="creatorUserName" class="col-xs-2 control-label">上传者:</label>
+
+            <div class="col-xs-5">
+                <input type="text" class="form-control" id="creatorUserName" name='creatorUserName' readonly="true"/>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="1:1"> 一年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="1:2"> 一年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="2:1"> 二年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="2:2"> 二年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="3:1"> 三年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="3:2"> 三年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="4:1"> 四年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="4:2"> 四年级下学期 </label>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="5:1"> 五年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="5:2"> 五年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="6:1"> 六年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="6:2"> 六年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="7:1"> 七年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="7:2"> 七年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="8:1"> 八年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="8:2"> 八年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="9:1"> 九年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="9:2"> 九年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="10:1"> 十年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="10:2"> 十年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="11:1"> 十一年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="11:2"> 十一年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group col-xs-3 col-sm-3 col-md-3  col-lg-3">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="12:1"> 十二年级上学期 </label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <label class="checkbox"><input type="checkbox" name="stageChks" value="12:2"> 十二年级下学期 </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-4">
+                <button id='btnSubmit' class="btn btn-success">保存</button>
+                <button id='btnOnReset' class="btn btn-primary">取消</button>
+            </div>
+        </div>
+        <div class="space-3"></div>
+        <!--</form>-->
+    </div>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/libs/jquery.validate.js"></script>
+<script src="../../js/libs/messages_zh.js"></script>
+<script src="../../js/libs/redactor.js"></script>
+<script src="../../js/libs/zh_cn.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/resource-edit.js"></script>
+</body>
+</html>

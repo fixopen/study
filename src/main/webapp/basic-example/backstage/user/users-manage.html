@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="users-manage.html">用户管理</a></li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form autocomplete="off" class="form-horizontal" role="form">
+                <div class="form-group col-xs-4">
+                    <label for="txtQueryUserName" class="col-xs-4 control-label">
+                        用户名:</label>
+
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="txtQueryUserName" placeholder="用户名"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-5">
+                    <label for="txtQueryRealName" class="col-xs-6  control-label">
+                        用户真实姓名:</label>
+
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="txtQueryRealName" placeholder="用户真实姓名"/>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <select class="form-control" id="userType">
+                        <option value="0">全部</option>
+                        <option value="1">教职工</option>
+                        <option value="2">学生</option>
+                        <option value="3">家长</option>
+                        <option value="4">其他</option>
+                        <option value="910">运维人员</option>
+                        <option value="990">系统管理员</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-1">
+                    <div class="text-left">
+                        <a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">
+                            查询
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="btn-group" style="text-align:center;">
+        <button type="button" class="btn btn-default" id='btnNew'>添加</button>
+    </div>
+    <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th style="width: 100px;">真实姓名</th>
+            <th>性别</th>
+            <th>联系电话</th>
+            <th style="width: 200px;">所属区域</th>
+            <th>用户类型</th>
+            <th style="width: 290px;">操作</th>
+        </tr>
+        </thead>
+        <tbody id='users-tbody'></tbody>
+    </table>
+    <div class="row" style="text-align:center;position:relative;top:1em;">
+        <div class="col-md-12">
+            <ul class="pagination" id='pagicontainer'></ul>
+        </div>
+    </div>
+</div>
+<div id="template">
+    <table>
+        <tbody>
+        <tr class='users-tr'>
+            <td>${userName}</td>
+            <td style="width: 100px;">${realName}</td>
+            <td>${gender}</td>
+            <td>${telephone}</td>
+            <td>${address}</td>
+            <td>${userType}</td>
+            <td style="width: 290px;">
+                <button class='btn btn-xs btn-rowEdit' rowid='${id}'>编辑</button>
+                <button class='btn btn-xs btn-rowUserRole' rowid='${id}'>关联角色</button>
+                <!--<button class='btn btn-xs btn-rowUserEmpower' rowid='${id}'>权限设置</button>-->
+                <button class='btn btn-xs btn-rowDelete' rowid='${id}'>删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/users-manage.js"></script>
+</body>
+</html>
+

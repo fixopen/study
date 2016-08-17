@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body style="background-color: #ffffff;">
+<div id="header" type='navResourseCenter'></div>
+<div class="container">
+    <div class="row" style="padding:10px;">
+            <!--当前位置：-->
+            <a href="index.html" style="color: #000000;">首页</a>
+            &gt; <strong><a href="/resource-index.html" style="color: #000000;">资源中心</a></strong>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" style="padding-top:5px;padding-left: 0px;">
+            <div class="input-group" style="width:300px;border:1px solid #CECBCE;border-radius:5px;">
+                <input type="text" class="form-control" style="border:0px;" id="searchCap"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="search"><img src="images/resIndex/search.png"></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-xs-7" style="padding-top:6px;">
+            <!--<strong >已选条件:</strong>-->
+            <span id='selected-Container'></span>
+        </div>
+        <div class="col-xs-2" style="padding-top:5px;">
+            <span class='row pull-right btn btn-default'style="background-color: #3b86bf;" >
+                <a href='resource-catalogue.html' style="text-decoration: none;color: #ffffff;" type='button'>
+                    <strong>按教材浏览 </strong></a>
+            </span>
+        </div>
+    </div>
+    <!--<div class="row" style="margin-top: -15px;">-->
+    <!--<img src="images/resourcecenter_banner1.png" alt="" style="width:100%;height:221px"/>-->
+    <!--</div>-->
+    <div class="row" style="border:1px solid #CECBCE;margin-top: 25px;border-radius:5px;">
+        <div class="condition-container">
+            <!--<div class='col-xs-12 conditionrow'>-->
+                <div class="col-xs-1" style="font-size: 15px;padding-right: 0px;text-align: center;line-height: 25px;"><strong >学科 </strong></div>
+                <div id='subject-Container' class="col-xs-11"  style="line-height: 25px;padding-left: 0px;">
+                    <span class='condition-tpl'>
+                        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+                        <span class="resSelectCont" data-id='-1' data-catalog='subject'>全部</span></a>
+                    </span>
+                </div>
+            <div class="col-xs-12"><hr style="color:  black;margin: 5px;"/></div>
+            <!--</div>-->
+            <!--<div class='col-xs-12 conditionrow'>-->
+                <div class="col-xs-1" style="font-size: 15px;padding-right: 0px;text-align: center;line-height: 25px;"><strong> 年级 </strong></div>
+                <div  id='stage-Container'class="col-xs-11"  style="line-height: 25px;padding-left: 0px;">
+                    <span class='condition-tpl'>
+                        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+                        <span class="resSelectCont" data-id='-1' data-catalog='stage'>全部</span></a>
+                    </span>
+                </div >
+            <div class="col-xs-12"><hr style="color:  black;margin: 5px;"/></div>
+            <!--</div>-->
+            <!--<div class='col-xs-12 conditionrow'>-->
+                <div class="col-xs-1" style="font-size: 15px;padding-right: 0px;text-align: center;line-height: 25px;"><strong>类型 </strong></div>
+                <div id='type-Container' class="col-xs-11"  style="line-height: 25px;padding-left: 0px;">
+                    <span class='condition-tpl'>
+                        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+                        <span class="resSelectCont" data-id='-1' data-catalog='type'>全部</span></a>
+                    </span>
+                </div>
+            <div class="col-xs-12"><hr style="color:  black;margin: 5px;"/></div>
+            <!--</div>-->
+            <!--<div class='col-xs-12 conditionrow'>-->
+                <div class="col-xs-1" style="font-size: 15px;padding-right: 0px;text-align: center;line-height: 25px;"><strong>范围 </strong></div>
+                <div id='scope-Container'class="col-xs-11"  style="line-height: 25px;padding-left: 0px;">
+                    <span class='condition-tpl'>
+                        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+                        <span class="resSelectCont" data-id='-1' data-catalog='scope'>全部</span></a>
+                    </span>
+                </div>
+            <div class="col-xs-12"><hr style="color:  black;margin: 5px;"/></div>
+            <!--</div>-->
+            <!--<div class='col-xs-12 conditionrow' style="padding-bottom: 15px;">-->
+                <div class="col-xs-1" style="font-size: 15px;padding-right: 0px;text-align: center;line-height: 25px;"><strong>版本 </strong></div>
+                <div id='version-Container'class="col-xs-11"  style="line-height: 25px;padding-left: 0px;">
+                    <span class='condition-tpl'>
+                        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+                        <span class="resSelectCont" data-id='-1' data-catalog='version'>全部</span></a>
+                    </span>
+                </div>
+            <div class="col-xs-12" style="height: 10px;"></div>
+            <!--</div>-->
+        </div>
+    </div>
+
+    <div class='space-2'></div>
+    <div class="row">
+        <div class="col-xs-6">
+            共有<strong id="resourceTotal"></strong>资源
+        </div>
+        <div class="col-xs-6">
+            <div class="row" style="float: right;">
+                <a href="#" id="normal" style="padding-right: 20px;">默认排序 </a>
+                <a href="#" id="highPreview" style="padding-right: 20px;">评价最高 </a>
+                <a href="#" id="uploadTime" style="padding-right: 10px;">最新上传 </a>
+            </div>
+        </div>
+    </div>
+    <hr style="color:  #CECBCE;"/>
+    <div class="row">
+        <div id="book-container" class=""></div>
+        <div class="col-xs-12" style="text-align: center;">
+            <a id="getMore" class="btn btn-default" type="button" style="background-color:#CECBCE;">
+                加载更多</a>
+        </div>
+    </div>
+    <!--<div class="" id='panel-container'></div>-->
+</div>
+<div id="footer"></div>
+<div id="template">
+    <!--筛选条件模板-->
+    <span class='selected-tpl'>
+            <a type='button' class='btn btn-default btn-xs resselectcont' data-id='${id}' name='selected'
+               data-catalog='${catalog}'style="font-size:20px;">
+                ${title}
+                <span class="glyphicon glyphicon-remove red"></span>
+            </a>
+    </span>
+    <span class='condition-tpl'>
+        <a type='button' style="cursor:pointer;text-decoration:none;" name='condition'>
+            <!--resSelectCont-->
+            <span class="resSelectCont" data-id='${id}' data-catalog='${catalog}'>${title}</span></a>
+    </span>
+    <!--书的模板-->
+    <div class="resource-tpl col-xs-2 resInner" style='padding-top:20px;margin-bottom:20px;'>
+        <a href='${href}' >
+            <img src="${coverFile}" class="img-responsive" style='width:120px;height:160px'>
+            <div style="position: absolute;bottom:35px;right:30px;background-color:rgba(0,0,0,0.3);width:100px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;margin-right: 30px;">
+                ${caption}
+            </div>
+            <div style="position: absolute;bottom:0px;right:30px;background-color:rgba(0,0,0,0.3);width:66px;padding-right:10px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;margin-right: 30px;">
+                ${gradeTermCaption}
+            </div>
+            <!--<div class="text" style="width:120px;text-align: center;position: absolute; bottom: 0%;background-color:rgba(0,0,0,0.5);color: #ffffff;">-->
+               <!--</br>-->
+                <!--</br>-->
+                <!--<span>${subjectCaption}</span>-->
+            <!--</div>-->
+
+            <!--<div class="inner" style='height:22px'>${caption}</div>-->
+        </a>
+    </div>
+    <!--视频资源模板-->
+    <div class="">
+        <a href='${href}'>
+            <img src="${coverFile}" class="img-responsive" style='width:120px;height:160px'>
+
+            <div class="text">
+                <div class="inner">
+                    ${gradeTermCaption}&nbsp;&nbsp;${typeCaption}
+                </div>
+            </div>
+            <div class="tags tags-top">
+                <span class="label-holder">
+                    <span class="label label-default">${subjectCaption}</span>
+                </span>
+            </div>
+        </a>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/util-resourceSearch.js"></script>
+<script src="js/resource-index.js"></script>
+<style>
+    .condition-tpl, .selected-tpl {
+        padding: 0px 5px;
+    }
+
+    .conditionrow {
+        padding-top: 4px;
+    }
+
+    /*.resName{*/
+    /*width: 100px ;height: 24px ;margin-top:3px;*/
+    /*}*/
+    .resSelectCont:hover {
+        color: dodgerblue;
+    }
+</style>
+</body>
+</html>

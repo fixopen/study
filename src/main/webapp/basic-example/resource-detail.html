@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!--     <link rel="stylesheet" type="text/css" href="css/flexpaper.css" /> -->
+    <link href="css/easyui.css" rel="stylesheet">
+    <link href="css/icon.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body style="background-color: #ffffff;">
+<div id="header" type="navResourseCenter"></div>
+<div class="container" >
+    <div class="row" style="padding:10px;">
+        <!--当前位置：-->
+        <a href="index.html" style="color: #000000;">首页</a>
+        &gt;
+        <a href="resource-index.html" style="color: #000000;">资源中心</a>
+        &gt; <strong><a href="#" style="color: #000000;">资源详情</a></strong>
+    </div>
+</div>
+<div class="container" id="resourceContainer" style="padding-top: 20px;">
+    <div class="row">
+        <div class="col-xs-9">
+            <div class="row">
+                <div class="col-xs-3" style="text-align: center;">
+                    <img class="media-object" alt="" src="${coverFile}" style="top:0.5em;width:162px;height:210px">
+                    <div id="share" >
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="media-body" style="color:grey;">
+                        <h4 style="color: #000000;margin-top: 0px;">${caption}</h4>
+                        <h5 >类型 : ${typeCaption}</h5>
+                        <!--<br>-->
+                        <h5 >学段 : ${gradeTermCaption}</h5>
+                        <!--<br>-->
+                        <h5 >学科 : ${subjectCaption}</h5>
+                        <!--<br>-->
+                        <div class='' id='level-Container'>
+                            评分 :
+                            <span class='glyphicon glyphicon-star-empty orange'></span>
+                            <span class='glyphicon glyphicon-star-empty orange'></span>
+                            <span class='glyphicon glyphicon-star-empty orange'></span>
+                            <span class='glyphicon glyphicon-star-empty orange'></span>
+                            <span class='glyphicon glyphicon-star-empty orange'></span>
+                        </div>
+                        <div class="row" style="padding-top: 15px;">
+                            <div class="col-xs-2" style="text-align: center;padding-left: 0px;">
+                                <a class="down" href="${zipFile}" style="color: #808080;text-decoration: none;">
+                                </a>
+                                <span>打包下载 </span>
+                            </div>
+                            <div class="col-xs-2" style="text-align: center;padding-left: 0px;" id="onlineView" >
+                                <a class="view"></a>
+                                <span >在线预览 </span>
+                            </div>
+                            <div class="col-xs-2" style="text-align: center;padding-left: 0px;" id="btnFavoriteResource">
+                                <a class="collection"></a>
+                                <span >收藏 </span>
+                            </div>
+                            <div class="col-xs-2"style="text-align: center;padding-left: 0px;display: none;" id="phoneDownload">
+                                <a class="phone"></a>
+                                <span >下载到手机 </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--资源分享-->
+                <!--<div class="col-xs-12" id="share" >-->
+                <!--</div>-->
+            </div>
+            <hr style="border:1px solid #CECBCE;"/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h5>教材简介</h5>
+                    <span>${summary}</span>
+                </div>
+            </div>
+            <hr style="border:1px solid #CECBCE;"/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h5>文件列表</h5>
+                    <div id="files-Container"></div>
+                </div>
+            </div>
+            <hr style="border:1px solid #CECBCE;"/>
+            <div class="row">
+                <div class="col-xs-12 " >
+                    <ul class="nav nav-tabs" role="tablist" style="border: 0px;">
+                        <li class="active" >
+                            <a href="#home" role="tab" data-toggle="tab"style="border: 0px;text-decoration: none;" >评论资源</a>
+                            <!--<button class="btn btn-default dropdown-toggle"-->
+                                    <!--style="padding-left: 0px; padding-right: 0px;height: 68px;" type="button" id="dropdownMenu1"-->
+                                    <!--data-toggle="dropdown" aria-expanded="true">-->
+                                <!--<img id="userHeadPortrait" src="" class="img-circle"-->
+                                     <!--style="width:40px;height: 40px;"/>-->
+                                <!--<span class="caret" style="margin-left: 1px;"></span>-->
+                            <!--</button>-->
+                        </li>
+                        <li >
+                            <a  role="tab" data-toggle="tab"  style="border: 0px;text-decoration: none;"class="btn btn-default dropdown-toggle"id="profile" data-toggle="dropdown" aria-expanded="true">我要评分</a>
+                        </li>
+                        <li >
+                            <a href="#report" role="tab" data-toggle="tab"  style="border: 0px;text-decoration: none;" >举报</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="row">
+
+                                <div class='col-xs-12 padding-lr-0'>
+                                    <div class='row'>
+                                        <div class="col-xs-2 padding-l-0">
+                                            <input type='radio' name='commenttype' value=1 checked/>&nbsp;&nbsp;提问
+                                        </div>
+                                        <div class="col-xs-2 padding-l-0">
+                                            <input type='radio' name='commenttype' value=2/>&nbsp;&nbsp;建议
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <textarea style='width:100%' rows="5" id='txtComment'></textarea>
+
+                                        <div>
+                                                <span>
+                                                  0/200
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type='button' class='btn btn-primary btn-xs pull-right' id='btnComment'style="width:80px;height: 30px;">
+                                        发表
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="media-list" id='comments-Container'></ul>
+                            <div class='col-xs-offset-4 col-xs-8'>
+                                <ul class="pagination" id='pagicontainer'></ul>
+                            </div>
+                        </div>
+                        <div class="tab-pane" class="dropdown-menu" role="menu" aria-labelledby="profile">
+                            <div class='space-2'></div>
+                            <div class='col-xs-4 padding-lr-0' style="cursor: pointer;">
+                            资源评价:
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score01'
+                            score='1'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score01'
+                            score='2'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score01'
+                            score='3'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score01'
+                            score='4'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score01'
+                            score='5'></span>
+                            <br/>
+
+                            <div class="space-1"></div>
+                            资源质量:
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score02'
+                            score='1'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score02'
+                            score='2'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score02'
+                            score='3'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score02'
+                            score='4'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score02'
+                            score='5'></span>
+                            <br/>
+
+                            <div class="space-1"></div>
+                            媒体质量:
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score03'
+                            score='1'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score03'
+                            score='2'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score03'
+                            score='3'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score03'
+                            score='4'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score03'
+                            score='5'></span>
+                            <br/>
+
+                            <div class="space-1"></div>
+                            查找快捷:
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score04'
+                            score='1'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score04'
+                            score='2'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score04'
+                            score='3'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score04'
+                            score='4'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score04'
+                            score='5'></span>
+                            <br/>
+
+                            <div class="space-1"></div>
+                            相&nbsp;&nbsp;关&nbsp;&nbsp;性:
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score05'
+                            score='1'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score05'
+                            score='2'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score05'
+                            score='3'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score05'
+                            score='4'></span>
+                            <span class='glyphicon glyphicon-star-empty orange score' name='score05'
+                            score='5'></span>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="report">
+                            <div class="row">
+                                <div class="space-2"></div>
+                                <div class='col-xs-12 padding-lr-0'>
+                                    <div class='row'>
+                                        <textarea style='width:100%' rows="5" id='txtReport'></textarea>
+
+                                        <div>
+                                                <span>
+                                                  0/200
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type='button' class='btn btn-primary btn-xs pull-right' id='btnReport'style="height: 40px;width: 80px;">举报
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3" style="padding-right: 0px;">
+            <div class="panel panel-default" style='clear:both'>
+                <div class="panel-heading">
+                    <span>其他相关资源</span>
+                </div>
+                <div class="panel-body" id='recommend-Container'style="background-color: #f5f5f5;border:0px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="template">
+    <!--资源分享-->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"data="{'url':'${href}','title':'${caption}'}"  >
+        <!--<a class="bds_qzone" style="height: 30px;">QQ空间</a>-->
+        <!--<a class="bds_tsina" style="height: 30px;">新浪微博</a>-->
+        <!--<a class="bds_tqq" style="height: 30px;">腾讯微博</a>-->
+        <!--<a class="bds_renren" style="height: 30px;">人人网</a>-->
+        <a id='doShareToBBs' style="color: #000000;text-decoration: none;background-image: url('');height: 30px;"  ><img src="images/resDetail/classroom.png" style="height: 17px;width: 17px;"/> 班级空间</a>
+        <span class="bds_more" style="height: 30px;">资源分享</span>
+    </div>
+    <!--文件列表模板-->
+    <div class="row file-tpl"  style='height:50px'>
+        <div class="col-xs-2" style="padding-top: 5px;padding-left: 0px;">
+            <a href='#'>
+                <img src='${coverFile}' style='width:40px;height:40px'/>
+            </a>
+        </div>
+        <div class="col-xs-7" style="text-align: center;padding-top: 15px;">
+            <span style="float: left;">${fileName}</span>
+        </div>
+        <div class="col-xs-1"style="text-align: center;padding-top: 15px;">
+            <span>${size}</span>
+        </div>
+        <div class="co-xs-2" style="float: right;padding-top: 15px;">
+            <a type="button" class="btn btn-primary btn-xs" id='btnDownloadFile' href='${downUri}' download="123.pdf" rid='${id}'>
+                <span class="glyphicon glyphicon-download-alt"></span>
+                下载
+            </a>
+            <!--<a type="button" class="btn btn-primary btn-xs btnPreview" style="margin-left:10px;" rid='${id}'>-->
+                <!--<span class="glyphicon glyphicon-bookmark"></span>-->
+                <!--预览-->
+            <!--</a>-->
+        </div>
+    </div>
+    <div class="doc-media-tpl">
+        <div id="documentViewer"  class="flexpaper_viewer"  style="width:688px;height:500px"></div>
+    </div>
+    <div class='image-media-tpl'>
+        <img src='${previewUri}' class='img-responsive'/>
+    </div>
+    <div class='video-media-tpl'>
+        <embed allowscriptaccess="never" allownetworking="internal" invokeurls="false" src="${previewUri}"
+               pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"
+               quality="high" autostart="0" wmode="transparent" width="100%" height="200" align="middle"/>
+    </div>
+    <li class="media comment-tpl">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="${avatarUri}" alt="" style='width:50px;height:50px'></a>
+
+        <div class="media-body">
+            <h4 class="media-heading">用户：${ownerCaption}</h4>
+            <span style="font-size:12px;">${dateCreated}</span><br/>
+
+            <div class='' id='score-Container'>
+                <span class='glyphicon glyphicon-star-empty orange'></span>
+                <span class='glyphicon glyphicon-star-empty orange'></span>
+                <span class='glyphicon glyphicon-star-empty orange'></span>
+                <span class='glyphicon glyphicon-star-empty orange'></span>
+                <span class='glyphicon glyphicon-star-empty orange'></span>
+            </div>
+            <p>评论内容：${content}</p>
+        </div>
+    </li>
+    <!--书的模板-->
+    <div class="recommend-tpl col-xs-6 resInner" style='padding-top:20px;margin-bottom:20px;'>
+        <a href='${href}'>
+            <img src="${coverFile}" class="img-responsive" style='width:100px;height:140px'>
+            <div style=";position: absolute;bottom:35px;right:25px;background-color:rgba(0,0,0,0.3);width:90px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${caption}
+            </div>
+            <div style="position: absolute;bottom:0px;right:25px;background-color:rgba(0,0,0,0.3);width:46px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${gradeTermCaption}
+            </div>
+            <!--<div class="inner" style='height:22px'>${caption}</div>-->
+        </a>
+    </div>
+    <!--<div class="media recommend-tpl">-->
+        <!--<a class="col-xs-offset-1 pull-left" href="${href}">-->
+            <!--<img class="media-object" alt="" src="${coverFile}"-->
+                 <!--style="position:relative;top:0.5em;width:70px;height:100px"></a>-->
+
+        <!--<div class="media-body">-->
+            <!--<div class="col-lg-12">-->
+                <!--<h5>${caption}</h5>-->
+
+                <!--<div class='' id='level-Container1'>-->
+                    <!--<span class='glyphicon glyphicon-star-empty orange'></span>-->
+                    <!--<span class='glyphicon glyphicon-star-empty orange'></span>-->
+                    <!--<span class='glyphicon glyphicon-star-empty orange'></span>-->
+                    <!--<span class='glyphicon glyphicon-star-empty orange'></span>-->
+                    <!--<span class='glyphicon glyphicon-star-empty orange'></span>-->
+                <!--</div>-->
+                <!--<div style="margin-top: 15px;"><a type="button" class="btn btn-primary btn-xs" id='btnDownloadRecommend'-->
+                                                  <!--href='${downUri}' rid='${id}'>-->
+                    <!--<span class="glyphicon glyphicon-download-alt"></span>-->
+                    <!--下载 </a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+<div class="modal fade" data-backdrop="static" id="editModal" tabindex="-1" role="dialog"
+     aria-labelledby="loginModalLabel" aria-hidden="true" style='z-index:1052'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="loginModalLabel1">请输入名称</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-offset-2 hidden col-sm-10 alert alert-danger"></div>
+                <form autocomplete="off" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputTitle" class="col-sm-2 control-label">收藏夹名称</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTitle" placeholder="title"/>
+                        </div>
+                    </div>
+                    <div class="space-2"></div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <a type='button' class="btn btn-primary" href='javascript:void(0)' id='btnEditOk'>确定</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--收藏夹-->
+<div class="modal fade" data-backdrop="static" id="selectFolderModal" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="loginModalLabel">选择文件夹</h4>
+            </div>
+            <div class="modal-body">
+                <ul id="tt"></ul>
+                <div id="mm" class="easyui-menu" style="width:120px;">
+                    <div onclick="addFolder()" data-options="iconCls:'icon-add'">新增</div>
+                    <div onclick="editFolder()" data-options="iconCls:'icon-add'">修改</div>
+                    <div onclick="removeFolder()" data-options="iconCls:'icon-remove'">删除</div>
+                    <div class="menu-sep"></div>
+                    <div onclick="expand()">展开</div>
+                    <div onclick="collapse()">关闭</div>
+                </div>
+                <div class="space-2"></div>
+                <div class=''>
+                    <a type='button' class="btn btn-primary" href='javascript:void(0)' id='btnSelectOk'>确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--手机二维码图片-->
+<div class="modal fade" data-backdrop="static" id="phoneImage" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content" style="width :300px;height : 300px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span></button>
+                <h4 class="modal-title" >手机下载二维码图片</h4>
+            </div>
+            <div class="modal-body">
+                <img id="image"src=""/>
+                <!--<div class=''>-->
+                    <!--<a  >关闭</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--预览-->
+<div class="modal fade" data-backdrop="static" id="view" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" >
+    <div  style="width : 80%; margin: auto auto">
+        <div class="modal-content" style="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" >预览</h4>
+            </div>
+            <div class="modal-body" style="width: 100%; height : 600px ">
+                <!--http://www.sina.com.cn/media/123.flv-->
+                <!--<object type="application/x-shockwave-flash"  width="100%" height="100%">-->
+                    <!--<param  id="previewContainer" name="movie"  value="" />-->
+                <!--</object>-->
+                <!--可以播放swf文件-->
+                <!--<object type="application/x-shockwave-flash"  width="100%" height="100%" data="/img/qqqq.swf">-->
+                    <!--<param name="movie"  value="/img/qqqq.swf" />-->
+                <!--</object>-->
+                <object type="application/x-shockwave-flash" width="100%" height="100%"data="" id="previewContainer">
+                    <param name="movie" value="" />
+                    <param name="wmode" value="window" />
+                    <param name="quality" value="high" />
+                    <param name="allowfullscreen" value="true" />
+                    <param name="menu" value="true" />
+                    <param name="scale" value="noscale">
+                </object>
+
+                <!--<embed  id="previewContainer" src="" style="width: 100%; height: 100%"></embed>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.easyui.min.js"></script>
+<script src="js/util.js"></script>
+<script type='text/javascript' id='bdshare_js' data='type=tools'></script>
+<script type='text/javascript' id='bdshell_js'></script>
+<script type="text/javascript" src="js/libs/flexpaper.js"></script>
+<script type="text/javascript" src="js/libs/flexpaper_handlers.js"></script>
+<script src="js/util-resourceSearch.js"></script>
+<script src="js/resource-detail.js"></script>
+<!--<script>window._bd_share_config =-->
+<!--{"common": {-->
+    <!--"bdSnsKey": {},-->
+    <!--"bdText": "",-->
+    <!--"bdMini": "2",-->
+    <!--"bdMiniList": false,-->
+    <!--"bdPic": "",-->
+    <!--"bdStyle": "0",-->
+    <!--"bdSize": "24"},-->
+  <!--"share": {"bdSize": 16}-->
+<!--};-->
+<!--</script>-->
+<!--<script src="js/share.js"></script>-->
+<style>
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        color: #3986BD;
+        background-color: #ffffff;
+        border-top-width: 0px;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-bottom-style: solid;
+        border-color: #3986BD;
+        border-bottom-width: 2px;;
+    }
+    .nav-tabs > li > a {
+        color: #555
+    }
+    .nav >li >a:hover, .nav >li >a:focus{
+        background-color: #ffffff;
+        border-top-width: 0px;
+        border-left-width: 0px;
+        border-right-width: 0px;
+        border-bottom-style: solid;
+        border-color: #3986BD;
+        border-bottom-width: 2px;
+        color:#3986BD;
+    }
+
+    a.down {background:url('images/resDetail/r-d-download.png') no-repeat; width:75px; height:75px; display:inline-block;_float:left;}
+    a.down:hover {background:url('images/resDetail/r-d-download-h.png') no-repeat;}
+    a.view {background:url('images/resDetail/r-d-online.png') no-repeat; width:75px; height:75px; display:inline-block;_float:left;}
+    a.view:hover {background:url('images/resDetail/r-d-online-h.png') no-repeat;}
+    a.phone {background:url('images/resDetail/r-d-phonedown.png') no-repeat; width:75px; height:75px; display:inline-block;_float:left;}
+    a.phone:hover {background:url('images/resDetail/r-d-phonedown-h.png') no-repeat;}
+    a.collection {background:url('images/resDetail/r-d-collection.png') no-repeat; width:75px; height:75px; display:inline-block;_float:left;}
+    a.collection:hover {background:url('images/resDetail/r-d-collection-h.png') no-repeat;}
+
+    /*.selImg:hover {*/
+        /*background-image: url("/images/ad.png");*/
+    /*}*/
+</style>
+</body>
+</html>
+
+
+

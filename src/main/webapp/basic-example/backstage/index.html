@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header"></div>
+<div class="container">
+    <div class="col-xs-12 padding-lr-0">
+        <div class="row" id="whole-body"></div>
+    </div>
+
+</div>
+<div id="footer"></div>
+</div>
+<div id="template">
+    <div class="panel panel-default inner-body">
+        <div class="panel-heading">
+            <span>${caption}</span>
+        </div>
+        <div class="panel-body">
+            <div class="row" id="${id}">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2 system">
+        <div class="space-1"></div>
+        <a href='${targetUri}'>
+            <img src="${iconUri}" style="width: 58px;height: 58px;" class="img-responsive" alt="">
+            <span class="text-muted">${caption}</span></a>
+    </div>
+</div>
+<script src="../js/libs/jquery.min.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/util.js"></script>
+<script src="../js/back/backindex.js"></script>
+</body>
+</html>

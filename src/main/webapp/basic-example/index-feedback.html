@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+    <style type="text/css">
+        .nav-about-us >li >a:hover, .nav-about-us >li >a:focus{
+            background-color: #DEE3DE;
+            color: #4A8ABD;
+            border-top-width: 0px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 0px;;
+        }
+        .nav-about-us >li.active >a {
+            background-color: #DEE3DE;
+            color: #4A8ABD;
+        }
+        .form-horizontal .control-label {
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+<div id="header" type="navIndex"></div>
+<div class="personCurrentLocation BreadDischarge">
+    当前位置：
+    <a href="index.html">首页</a>
+    &gt; <strong><a href="#">意见反馈</a></strong>
+</div>
+<div class="container" style="background-color: #DEE3DE;padding-right: 0px; padding-left: 0px;">
+    <div class="row">
+        <div class="col-xs-2" style="padding-top: 20px;font-weight: bolder;">
+            <ul class="nav nav-sidebar nav-about-us" style="margin-left: 28px;">
+                <li id='sidebar-type'><a href="about-us.html">关于我们</a></li>
+                <li class="active" id='sidebar-stage' style="margin-top: 10px;"><a href="index-feedback.html">意见反馈</a></li>
+            </ul>
+        </div>
+        <div class='col-xs-10' style="background-color:#fff;padding-top: 20px;padding-right: 60px;padding-left: 50px;padding-bottom: 20px;">
+            <div style="font-size: 20px"><strong>意见反馈</strong></div>
+            <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+                <div class="form-group col-xs-12" style="margin-top:40px;">
+                    <label for="caption" class="col-xs-2 control-label"><span
+                            class="glyphicon glyphicon-star red"></span>标题:</label>
+
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="caption" name='caption' placeholder="标题"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-xs-2 control-label">
+                        反馈类型:</label>
+
+                    <div class="col-xs-2">
+                        <select class="form-control" id="suggestionKind">
+                            <option value="1">意见反馈</option>
+                            <option value="2">改进建议</option>
+                            <option value="3">投拆举报</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="sugContent" class="col-xs-2 control-label">内容:</label>
+
+                    <div class="col-xs-10">
+                        <textarea id="sugContent" name="sugContent" style="height: 160px;width:600px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4" style="margin-left: 100px;">
+                        <button onclick='doSubmit();' class="btn btn-primary">提交</button>
+                        <button onclick='onReset();' class="btn btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.validate.js"></script>
+<script src="js/libs/messages_zh.js"></script>
+<script src="js/libs/redactor.js"></script>
+<script src="js/libs/zh_cn.js"></script>
+<script src="js/util.js"></script>
+<script src="js/index-feedback.js"></script>
+</body>
+</html>

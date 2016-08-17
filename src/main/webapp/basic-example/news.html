@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header"></div>
+<div class="personCurrentLocation BreadDischarge" >
+    当前位置：
+    <a href="index.html">首页</a>
+    &gt; <strong><a href="#">新闻中心</a></strong>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 padding-lr-0" style="padding-left:20px;padding-right: 200px;">
+            <div class="panel-title" style="font-size: 18px;margin-top: 30px;">
+                新闻快讯</div>
+            <ul class="newUl" style="margin-top:30px;padding-left:0px;" id="news-list-container"></ul>
+        </div>
+    </div>
+    <div class="row" style="text-align:center;position:relative;">
+        <div class="col-xs-12">
+            <ul class="pagination" id='pagicontainer'>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="template">
+    <li class="news-item padding-l-0">
+        <div style='float:left'>
+            <a href="${href}"
+               style='width:600px;color:#000;font-size:15px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;display:inline-block;'>${caption}</a>
+        </div>
+        <div style='float:right;color:#999;display:inline'>${dateCreated}</div>
+    </li>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/news.js"></script>
+</body>
+</html>

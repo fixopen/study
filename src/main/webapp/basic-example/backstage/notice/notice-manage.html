@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">首页</a></li>
+    <li class="active"><a href="notice.html">通知公告管理</a></li>
+</ol>
+<div class="container">
+    <!--<div class="row">-->
+    <!--<form autocomplete="off" class="form-horizontal" role="form">-->
+    <!--<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">-->
+    <!--<label for="txtQuery" class="col-xs-2 col-sm-4 col-md-4 col-lg-4 control-label">-->
+    <!--公告信息:</label>-->
+
+    <!--<div class="col-xs-8 col-sm- col-md-8 col-lg-8">-->
+    <!--<input type="text" class="form-control" id="txtQuery" placeholder="公告信息"/>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">-->
+    <!--<div class="text-left" style="float:left;">-->
+    <!--<a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">-->
+    <!--查询-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <div class="btn-group" style="text-align:center;">
+        <button type="button" class="btn btn-default" id='btnNew'>添加</button>
+    </div>
+    <div class="row tabbable" style="position:relative;top:2em;">
+        <!--<ul class="nav nav-pills" role="tablist">-->
+        <!--<li role="presentation" class="active"><a href="#preOne" data-toggle="pill" data-type="normal">已发布</a></li>-->
+        <!--<li role="presentation"><a href="#preTwo" data-toggle="pill" data-type="noCheck">未发布</a></li>-->
+        <!--<li role="presentation"><a href="#preThree" data-toggle="pill" data-type="noPass">审核中</a></li>-->
+        <!--</ul>-->
+
+        <!--<div class="tab-content">-->
+        <!--<div class="tab-pane active" id="preOne">-->
+        <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+            <thead>
+            <tr>
+                <th>标题</th>
+                <th>发表内容</th>
+                <th>发表时间</th>
+                <th>发布人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id='normalNotices'></tbody>
+        </table>
+        <!--<ul class="pagination" id='normalPager'></ul>-->
+        <div class="row" style="text-align:center;position:relative;top:1em;">
+            <div class="col-xs-12">
+                <ul class="pagination" id='pagicontainer'></ul>
+            </div>
+        </div>
+        <!--</div>-->
+
+        <!--<div class="tab-pane" id="preTwo">-->
+        <!--<table class="table table-striped table-bordered" style="position:relative;top:2em;">-->
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<th><input type="checkbox" /></th>-->
+        <!--<th>标题</th>-->
+        <!--<th>发表人</th>-->
+        <!--<th>发表时间</th>-->
+        <!--<th>操作</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody id='noCheckNotices'></tbody>-->
+        <!--</table>-->
+        <!--<ul class="pagination" id='noCheckPager'></ul>-->
+        <!--</div>-->
+        <!--<div class="tab-pane" id="preThree">-->
+        <!--<table class="table table-striped table-bordered" style="position:relative;top:2em;">-->
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<th><input type="checkbox" /></th>-->
+        <!--<th>标题</th>-->
+        <!--<th>发表人</th>-->
+        <!--<th>发表时间</th>-->
+        <!--<th>操作</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody id='noPassNotices'></tbody>-->
+        <!--</table>-->
+        <!--<ul class="pagination" id='noPassPager'></ul>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<div id="template">
+    <table>
+        <tbody>
+        <tr class='normalNotice'>
+            <td>${caption}</td>
+            <td>${message}</td>
+            <td>${dateCreated}</td>
+            <td>${creatorName}</td>
+            <td>
+                <button class='btn btn-xs btn-rowEdit' rowid='${id}'>编辑</button>
+                <button type="button" class="btn btn-xs btn-rowDelete" rowid='${id}'>删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/notice-manage.js"></script>
+</div>
+</body>
+</html>

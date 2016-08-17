@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type="navIndex"></div>
+<div class="personCurrentLocation BreadDischarge">
+    当前位置：
+    <a href="index.html">首页</a>
+    &gt;
+    <a href="news.html">新闻中心</a>
+    &gt; <strong><a href="#">新闻详情</a></strong>
+</div>
+<div class="container">
+    <div class='space-1'></div>
+    <div class="row">
+        <div class="col-xs-12" style="padding-bottom: 200px;" id="new-detail"></div>
+    </div>
+</div>
+<div class='space-3'></div>
+<div id="footer"></div>
+<div id="template">
+    <!-- 新闻详情 -->
+    <div class="temNewsClass">
+        <h3 align="center">
+            ${caption}
+        </h3>
+
+        <div class="artInfo">
+            <span>责任编辑：${editor}</span>
+            <span id="pub_date" style="margin-left: 40px;">发布时间：${dateCreated}</span>
+            <span style="margin-left: 40px;" >
+                来源地址：<a href="${sourceUrl}" target="_blank" style="text-decoration: none;color: #999"> ${sourceUrl}</a>
+            </span>
+            <div style="color: #000;margin-top: 10px;">标签：${tags}</div>
+        </div>
+        <div style="margin-top: 30px;font-size: 15px;font-weight: bolder">
+            ${content}
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/news-detail.js"></script>
+</body>
+</html>

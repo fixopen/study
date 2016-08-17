@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="subject-manage.html">学科管理</a></li>
+    <li class="active"><a href="#">新建学科</a></li>
+</ol>
+<div class="container">
+    <div class="row">
+
+        <div class="col-offset-2 col-md-10">
+            <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+                <div class="form-group col-xs-12">
+                    <label for="code" class="col-xs-2 control-label"><span class="glyphicon glyphicon-star red"></span>学科编号:</label>
+
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="code" name='code' placeholder="学科编号"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="caption" class="col-xs-2 control-label"><span
+                            class="glyphicon glyphicon-star red"></span>学科名称:</label>
+
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="caption" name='caption' placeholder="学科名称"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-4">
+                        <button id='btnSubmit' class="btn btn-success">保存</button>
+                        <button id='btnOnReset' class="btn btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/libs/jquery.validate.js"></script>
+<script src="../../js/libs/messages_zh.js"></script>
+<script src="../../js/libs/redactor.js"></script>
+<script src="../../js/libs/zh_cn.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/create-subject.js"></script>
+</body>
+</html>

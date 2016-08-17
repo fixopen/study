@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="#">学段管理</a></li>
+</ol>
+<div class="container">
+    <!--<form autocomplete="off" class="form-horizontal" role="form">-->
+    <!--<div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">-->
+    <!--<label for="name" class="col-xs-2 col-sm-3 col-md-4 col-lg-4 control-label">-->
+    <!--学段名称:</label>-->
+    <!--<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">-->
+    <!--<input type="text" class="form-control" id="txtQuery" placeholder="学段名称" />-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<div class="text-left">-->
+    <!--<a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">-->
+    <!--查询-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <div class="btn-group" style="text-align:center;">
+        <button type="button" class="btn btn-default" id='btnNew'>新建学段</button>
+    </div>
+    <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+        <thead>
+        <tr>
+            <th>学段名称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id='studySection-tbody'>
+
+        </tbody>
+    </table>
+</div>
+<div id="template">
+    <table>
+        <tbody>
+        <tr class='studySection-tr'>
+            <td>${caption}</td>
+            <td>
+                <button class='btn btn-xs btn-rowEdit' rowid='${id}'>编辑</button>
+                <button class='btn btn-xs btn-rowDelete' rowid='${id}'>删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/studySection-manage.js"></script>
+</body>
+</html>

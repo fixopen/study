@@ -1,0 +1,68 @@
+﻿<div id="headerUserInfo" style="padding-top: 40px;">
+    <div class="col-xs-6" style="height: 200px;">
+        <div class="row">
+            <div class="col-xs-3">
+                <img id="uploadPersonData" src="${avatarUri}" style="float:left;" class='img-circle person-avatar'/>
+                    <button id="opacitySpan" style="border-radius:120px; width: 120px;height: 120px;display: none; cursor:pointer;background-color:rgba(0,0,0,0.4);
+                 color:#fff;position: absolute; left: 10px; top: 0; right: 100%; bottom: 50%" type="button" style="" class="btn" data-toggle="modal" data-target="#personInfoModal">
+                       修改个人资料
+                    </button>
+            </div>
+            <div class="col-xs-9"style="color:black;">
+                <span style="font-size: 24px;">${userName}</span>
+                <div style="font-size: 16px;">
+                    <!--<span style="position:relative;top: 10px"> 等级：${starLevel}</span></br>-->
+                    <span style="position:relative;top: 20px">个人简介：
+                        <span id="personSummary"style="word-wrap:break-word">${summary}</span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2 personTop-dataDetail">
+        <h2>${likeResCount}</h2>
+        <h4 style="padding-top: 20px;">收藏资源</h4>
+    </div>
+
+    <div class="col-xs-2 personTop-dataDetail">
+        <h2>${uploadCount}</h2>
+        <h4 style="padding-top: 20px;">上传数</h4>
+    </div>
+    <div class="col-xs-2" style="text-align:center;">
+        <h2>${score}</h2>
+        <h4 style="padding-top: 20px;">积分</h4>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="personInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改个人资料</h4>
+            </div>
+            <div class="modal-body">
+                <div class="padding-l-0"style="color: #7B797B" id="home">
+                    <span >仅支持jpg,gif,png格式的图片文件，文件不能大于2M.</span>
+                    <input type='file' id='personHeadFileUpload' name='personHeadFileUpload'
+                           style="margin-top:20px;width: 250px;border-color:#7B797B;-moz-border-radius:0.5em;-webkit-border-radius:0.5em;border-radius:0.5em;"/>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-xs-3">
+                            <img id="photo" src="${avatarUri}" class='img-circle person-avatar'/>
+                        </div>
+                        <div class="col-xs-9">
+                            <span style="font-size:16px;">个人简介（不超过90字）</span>
+                            <textarea text="${summary}" id="mySummary"  style='height:100px;width:400px;color: #000000'></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style=" border-top: 0px;padding: 15px;text-align: center;">
+                <button type="button" class="btn" style="border-color: #949694;background-color:#949694;color: #fff " data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="personInfoSave">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
