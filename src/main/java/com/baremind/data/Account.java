@@ -20,7 +20,7 @@ public class Account {
     private Long id;
 
     @Column(name="subject_type")
-    @Convert(converter = SubjectTypeEnumConverter.class, attributeName = "subject_type")
+    //@Convert(converter = SubjectTypeEnumConverter.class, attributeName = "subject_type")
     private String subjectType;
 
     @Column(name="subject_id")

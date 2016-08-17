@@ -13,12 +13,18 @@ public class JPAEntry {
         void touch(Account a);
     }
 
-    private static final String PERSISTENCE_UNIT_NAME = "sd";
+    private static final String PERSISTENCE_UNIT_NAME = "supportData";
     private static EntityManagerFactory factory;
 
     public static EntityManager getEntityManager() {
-        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        return factory.createEntityManager();
+        EntityManager result = null;
+        try {
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+            result = factory.createEntityManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static <T> T getObject(Class<T> type, String fieldName, Object fieldValue) {

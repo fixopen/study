@@ -55,10 +55,17 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>9.4.1209</version> <!-- Java 8 -->
+          <!-- <version>9.4.1209.jre7</version> --> <!-- Java 7 -->
+          <!-- <version>9.4.1209.jre6</version> --> <!-- Java 6 -->
+        </dependency>
+        <!-- <dependency>
             <groupId>org.postgresql.jdbc</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1201.jdbc41</version>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>bouncycastle</groupId>
             <artifactId>bouncycastle-jce-jdk13</artifactId>
