@@ -180,7 +180,6 @@ CREATE TABLE users (
     telephone character varying(256),
     site character varying(256) DEFAULT ''::character varying NOT NULL,
     location character varying(256),
-    city_id bigint,
     description text,
     timezone jsonb,
     create_time timestamp without time zone DEFAULT now() NOT NULL,

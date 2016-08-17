@@ -1,124 +1,172 @@
 package com.baremind.data;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by fixopen on 16/8/15.
+ * Created by lenovo on 2016/8/17.
  */
 @Entity
 @Table(name="users")
 public class User {
-    @Id
-    @Column(name="id")
-    private Long id;
+	@Id
+	@Column(name = "id")
+	public Long id;
+	
+	@Column(name = "login_name")
+	public String LoginName;
+	
+	@Column(name = "password")
+	public String password;
+	
+	@Column(name = "is_administrator")
+	public Boolean isAdministrator;
+	
+	@Column(name = "name")
+	public String name;
+	
+	@Column(name = "head")
+	public String head;
+	
+	@Column(name = "email")
+	public String email;
+	
+	@Column(name = "telephone")
+	public String telephone;
+	
+	@Column(name = "site")
+	public String site;
+	
+	@Column(name = "location")
+	public String location;
+	
+	@Column(name = "description")
+	public String description;
+	
+	@Column(name = "timezone")
+	public String timezone;
+	
+	@Column(name = "create_time")
+	public Date createTime;
+	
+	@Column(name = "update_time")
+	public Date updateTime;
 
-    @Column(name="no")
-    private String no;
+	public Long getId() {
+		return id;
+	}
 
-    @Column(name="name")
-    private String name;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Column(name="organization_id")
-    private Long organizationId;
+	public String getLoginName() {
+		return LoginName;
+	}
 
-    @Column(name="id_type")
-    private String idType;
+	public void setLoginName(String loginName) {
+		LoginName = loginName;
+	}
 
-    @Column(name="id_no")
-    private String idNo;
+	public String getPassword() {
+		return password;
+	}
 
-    @Column(name="company_name")
-    private String companyName;
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    @Column(name="company_no")
-    private String companyNo;
+	public Boolean getIsAdministrator() {
+		return isAdministrator;
+	}
 
-    @Column(name="position")
-    private String position;
+	public void setIsAdministrator(Boolean isAdministrator) {
+		this.isAdministrator = isAdministrator;
+	}
 
-    @Column(name="address")
-    private String address;
+	public String getName() {
+		return name;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getHead() {
+		return head;
+	}
 
-    public String getNo() {
-        return no;
-    }
+	public void setHead(String head) {
+		this.head = head;
+	}
 
-    public void setNo(String no) {
-        this.no = no;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getTelephone() {
+		return telephone;
+	}
 
-    public Long getOrganizationId() {
-        return organizationId;
-    }
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
 
-    public void setOrganizationId(Long organizationId) {
-        this.organizationId = organizationId;
-    }
+	public String getSite() {
+		return site;
+	}
 
-    public String getIdNo() {
-        return idNo;
-    }
+	public void setSite(String site) {
+		this.site = site;
+	}
 
-    public void setIdNo(String idNo) {
-        this.idNo = idNo;
-    }
+	public String getLocation() {
+		return location;
+	}
 
-    public String getIdType() {
-        return idType;
-    }
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-    public void setIdType(String idType) {
-        this.idType = idType;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getCompanyName() {
-        return companyName;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
+	public String getTimezone() {
+		return timezone;
+	}
 
-    public String getCompanyNo() {
-        return companyNo;
-    }
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
+	}
 
-    public void setCompanyNo(String companyNo) {
-        this.companyNo = companyNo;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public String getPosition() {
-        return position;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	
 }
