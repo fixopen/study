@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="import" href="title.p" />
+</head>
+<body>
+<div id="title"></div>
+<div id="content"></div>
+<script>
+    window.addEventListener('load', function(e) {
+        //load title
+        let title = document.getElementById('title')
+        var link = document.querySelector('link[rel=import]');
+        title.appendChild(link.import)
+        //insert to title
+        $('#title').load('title.p')
+        //load content
+        $.get('actionItemTemplate.t', function (t){
+            $.get('/api/data', function (d) {
+                let content = document.getElementById('content')
+                for (let i = 0; i < d.length; ++i) {
+                    let layout = t.clone()
+                    layout.bind(d[i])
+                    content.appendChild(layout)
+                }
+            })
+        })
+        //insert to content
+    }, false)
+    //ajax
+</script>
+</body>
+</html>
