@@ -15,16 +15,18 @@ public class JPAEntry {
 
     private static final String PERSISTENCE_UNIT_NAME = "supportData";
     private static EntityManagerFactory factory;
+    private static EntityManager entityManager;
 
     public static EntityManager getEntityManager() {
-        EntityManager result = null;
-        try {
-            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-            result = factory.createEntityManager();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (entityManager == null) {
+            try {
+                factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+                entityManager = factory.createEntityManager();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return result;
+        return entityManager;
     }
 
     public static <T> T getObject(Class<T> type, String fieldName, Object fieldValue) {
