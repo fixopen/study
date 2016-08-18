@@ -13,28 +13,28 @@ import javax.persistence.*;
 public class Card {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "user_id")
-	public Long UserId;
+	private Long UserId;
 	
 	@Column(name = "no")
-	public String no;
+	private String no;
 	
 	@Column(name = "password")
-	public String password;
+	private String password;
 	
 	@Column(name = "active_time")
-	public Date activeTime;
+	private Date activeTime;
 	
 	@Column(name = "end_time")
-	public Date endTime;
+	private Date endTime;
 	
 	@Column(name = "duration")
-	public String duration;
+	private String duration;
 	
 	@Column(name = "subject")
-	public Long subject;
+	private Long subject;
 
 	public Long getId() {
 		return id;

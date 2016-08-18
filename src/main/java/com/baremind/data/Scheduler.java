@@ -10,43 +10,43 @@ import javax.persistence.*;
 public class Scheduler {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "year")
-	public int year;
+	private int year;
 	
 	@Column(name = "week")
-	public int week;
+	private int week;
 	
 	@Column(name = "state")
-	public int state;
+	private int state;
 	
 	@Column(name = "state_time")
-	public int stateTime;
+	private int stateTime;
 	
 	@Column(name = "end_time")
-	public int endTime;
+	private int endTime;
 	
 	@Column(name = "duration")
-	public String duration;
+	private String duration;
 	
 	@Column(name = "subject_id")
-	public Long subjectId;
+	private Long subjectId;
 	
 	@Column(name = "grade")
-	public int grade;
+	private int grade;
 	
 	@Column(name = "title")
-	public String title;
+	private String title;
 	
 	@Column(name = "description")
-	public String description;
+	private String description;
 	
 	@Column(name = "teacher")
-	public String teacher;
+	private String teacher;
 	
 	@Column(name = "teacher_description")
-	public String teacherDescription;
+	private String teacherDescription;
 
 	public Long getId() {
 		return id;

@@ -13,16 +13,16 @@ import javax.persistence.Table;
 public class Volume {
 	@Id
     @Column(name = "id")
-    public Long id;
+	private Long id;
 	
 	@Column(name = "subject_id")
-    public Long subjectId;
+	private Long subjectId;
  	
 	@Column(name = "grade")
-    public int grade;
+	private int grade;
  	
  	@Column(name = "title")
-    public String title;
+ 	private String title;
 
 	public Long getId() {
 		return id;

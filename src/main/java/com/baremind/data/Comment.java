@@ -15,28 +15,28 @@ public class Comment {
 
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "client_id")
-	public String clientId;
+	private String clientId;
 	
 	@Column(name = "user_id")
-	public Long userId;
+	private Long userId;
 	
 	@Column(name = "object_type")
-	public String objectType;
+	private String objectType;
 	
 	@Column(name = "object_id")
-	public Long objectId;
+	private Long objectId;
 	
 	@Column(name = "content")
-	public String content;
+	private String content;
 	
 	@Column(name = "create_time")
-	public Date createTime;
+	private Date createTime;
 	
 	@Column(name = "update_time")
-	public Date updateTime;
+	private Date updateTime;
 
 	public Long getId() {
 		return id;

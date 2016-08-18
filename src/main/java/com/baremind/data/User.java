@@ -13,61 +13,61 @@ import javax.persistence.*;
 public class User {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "login_name")
-	public String LoginName;
+	private String LoginName;
 	
 	@Column(name = "password")
-	public String password;
+	private String password;
 	
 	@Column(name = "is_administrator")
-	public Boolean isAdministrator;
+	private Boolean isAdministrator;
 	
 	@Column(name = "name")
-	public String name;
+	private String name;
 	
 	@Column(name = "head")
-	public String head;
+	private String head;
 	
 	@Column(name = "email")
-	public String email;
+	private String email;
 	
 	@Column(name = "telephone")
-	public String telephone;
+	private String telephone;
 	
 	@Column(name = "birthday")
-	public Date birthday;
+	private Date birthday;
 	
 	@Column(name = "sex")
-	public int sex;
+	private int sex;
 	
 	@Column(name = "amount")
-	public String amount;
+	private String amount;
 	
 	@Column(name = "school")
-	public String school;
+	private String school;
 	
 	@Column(name = "grade")
-	public String grade;
+	private String grade;
 	
 	@Column(name = "class")
-	public String classname;
+	private String classname;
 	
 	@Column(name = "location")
-	public String location;
+	private String location;
 	
 	@Column(name = "description")
-	public String description;
+	private String description;
 	
 	@Column(name = "timezone")
-	public String timezone;
+	private String timezone;
 	
 	@Column(name = "create_time")
-	public Date createTime;
+	private Date createTime;
 	
 	@Column(name = "update_time")
-	public Date updateTime;
+	private Date updateTime;
 
 	public Long getId() {
 		return id;

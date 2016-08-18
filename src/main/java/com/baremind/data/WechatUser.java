@@ -15,52 +15,52 @@ import javax.persistence.Table;
 public class WechatUser {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "user_id")
-	public Long userId;
+	private Long userId;
 	
 	@Column(name = "token")
-	public String token;
+	private String token;
 	
 	@Column(name = "refresh_token")
-	public String refreshToken;
+	private String refreshToken;
 	
 	@Column(name = "expiry")
-	public Date expiry;
+	private Date expiry;
 	
 	@Column(name = "ref_id")
-	public String refId;
+	private String refId;
 	
 	@Column(name = "open_id")
-	public String openId;
+	private String openId;
 	
 	@Column(name = "union_id")
-	public String unionId;
+	private String unionId;
 	
 	@Column(name = "nickname")
-	public String nickname;
+	private String nickname;
 	
 	@Column(name = "sex")
-	public Long sex;
+	private Long sex;
 	
 	@Column(name = "city")
-	public String city;
+	private String city;
 	
 	@Column(name = "province")
-	public String province;
+	private String province;
 	
 	@Column(name = "country")
-	public String country;
+	private String country;
 	
 	@Column(name = "head")
-	public String head;
+	private String head;
 	
 	@Column(name = "privilege")
-	public String[] privilege;
+	private String[] privilege;
 	
 	@Column(name = "info")
-	public String info;
+	private String info;
 
 	public Long getId() {
 		return id;

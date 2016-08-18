@@ -13,13 +13,13 @@ import javax.persistence.Table;
 public class Property {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "name")
-	public String name;
+	private String name;
 	
 	@Column(name = "value")
-	public String value;
+	private String value;
 
 	public Long getId() {
 		return id;

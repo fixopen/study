@@ -13,28 +13,28 @@ import javax.persistence.Table;
 public class KnowledgePoint {
 	 	@Id
 	    @Column(name = "id")
-	    public Long id;
+	 	private Long id;
 	 	
 	 	@Column(name = "subject_id")
-	    public Long subjectId;
+	 	private Long subjectId;
 	 	
 	 	@Column(name = "volume_id")
-	    public Long volumeId;
+	 	private Long volumeId;
 	 	
 	 	@Column(name = "grade")
-	    public int grade;
+	 	private int grade;
 	 	
 	 	@Column(name = "title")
-	    public String title;
+	 	private String title;
 	 	
 	 	@Column(name = "order")
-	    public int order;
+	 	private int order;
 	 	
 	 	@Column(name = "store_path")
-	    public String storePath;
+	 	private String storePath;
 	 	
 	 	@Column(name = "video_url")
-	    public String videoUrl;
+	 	private String videoUrl;
 
 		public Long getId() {
 			return id;

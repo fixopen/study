@@ -1,6 +1,9 @@
 package com.baremind.data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by lenovo on 2016/8/17.
@@ -10,19 +13,19 @@ import javax.persistence.*;
 public class Additional {
     @Id
     @Column(name = "id")
-    public Long id;
+    private Long id;
 
     @Column(name = "table_name")
-    public String tableName;
+    private String tableName;
 
     @Column(name = "object_id")
-    public String objectId;
+    private String objectId;
 
     @Column(name = "name")
-    public String name;
+    private String name;
 
     @Column(name = "value")
-    public String value;
+    private String value;
 
 	public Long getId() {
 		return id;

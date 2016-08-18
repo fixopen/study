@@ -13,19 +13,19 @@ import javax.persistence.Table;
 public class Device {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "user_id")
-	public Long userId;
+	private Long userId;
 	
 	@Column(name = "platform")
-	public String platform;
+	private String platform;
 	
 	@Column(name = "platform_identity")
-	public String platformIdentity;
+	private String platformIdentity;
 	
 	@Column(name = "platform_notification_token")
-	public String platformNotificationToken;
+	private String platformNotificationToken;
 
 	public Long getId() {
 		return id;

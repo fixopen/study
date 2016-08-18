@@ -13,28 +13,28 @@ import javax.persistence.Table;
 public class Video {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "mime_type")
-	public String mimeType;
+	private String mimeType;
 	
 	@Column(name = "size")
-	public Long size;
+	private Long size;
 	
 	@Column(name = "name")
-	public String name;
+	private String name;
 	
 	@Column(name = "ext")
-	public String ext;
+	private String ext;
 	
 	@Column(name = "store_path")
-	public String storePath;
+	private String storePath;
 	
 	@Column(name = "duration")
-	public int duration;
+	private int duration;
 	
 	@Column(name = "bit_rate")
-	public Double bitRate;
+	private Double bitRate;
 
 	public Long getId() {
 		return id;
@@ -99,6 +99,6 @@ public class Video {
 	public void setBitRate(Double bitRate) {
 		this.bitRate = bitRate;
 	}
-	
+
 	
 }

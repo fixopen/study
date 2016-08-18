@@ -13,22 +13,22 @@ import javax.persistence.Table;
 public class Media {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "mime_type")
-	public String mimeType;
+	private String mimeType;
 	
 	@Column(name = "size")
-	public Long size;
+	private Long size;
 	
 	@Column(name = "name")
-	public String name;
+	private String name;
 	
 	@Column(name = "ext")
-	public String ext;
+	private String ext;
 	
 	@Column(name = "store_path")
-	public String storePath;
+	private String storePath;
 
 	public Long getId() {
 		return id;

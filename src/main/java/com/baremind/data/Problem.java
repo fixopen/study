@@ -13,34 +13,34 @@ import javax.persistence.Table;
 public class Problem {
 	@Id
     @Column(name = "id")
-    public Long id;
+	private Long id;
 	
 	@Column(name = "subject_id")
-    public Long subjectId;
+	private Long subjectId;
  	
  	@Column(name = "volume_id")
-    public Long volumeId;
+ 	private Long volumeId;
 	
 	@Column(name = "knowledge_point_id")
-    public Long knowledgePointId;
+	private Long knowledgePointId;
 	
 	@Column(name = "title")
-    public String title;
+	private String title;
 	
 	@Column(name = "options ")
-    public String[] options ;
+	private String[] options ;
 	
 	@Column(name = "standard_answers")
-    public int[] standardAnswers;
+	private int[] standardAnswers;
 	
 	@Column(name = "order")
-    public int order;
+	private int order;
  	
  	@Column(name = "store_path")
-    public String storePath;
+ 	private String storePath;
  	
  	@Column(name = "video_url")
-    public String videoUrl;
+ 	private String videoUrl;
 
 	public Long getId() {
 		return id;

@@ -15,19 +15,19 @@ import javax.persistence.Table;
 public class Like {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "user_id")
-	public Long userId;
+	private Long userId;
 	
 	@Column(name = "object_type")
-	public String objectType;
+	private String objectType;
 	
 	@Column(name = "object_id")
-	public Long ObjectId;
+	private Long ObjectId;
 	
 	@Column(name = "create_time")
-	public Date createTime;
+	private Date createTime;
 
 	public Long getId() {
 		return id;

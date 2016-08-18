@@ -13,10 +13,10 @@ import javax.persistence.Table;
 public class Tag {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "name")
-	public String name;
+	private String name;
 
 	public Long getId() {
 		return id;

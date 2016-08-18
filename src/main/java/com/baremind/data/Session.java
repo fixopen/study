@@ -15,22 +15,22 @@ import javax.persistence.Table;
 public class Session {
 	@Id
 	@Column(name = "id")
-	public Long id;
+	private Long id;
 	
 	@Column(name = "user_id")
-	public Long userId;
+	private Long userId;
 	
 	@Column(name = "device_id")
-	public Long deviceId;
+	private Long deviceId;
 	
 	@Column(name = "identity")
-	public String identity;
+	private String identity;
 	
 	@Column(name = "last_operation_time")
-	public Date lastOperationTime;
+	private Date lastOperationTime;
 	
 	@Column(name = "ip")
-	public String ip;
+	private String ip;
 
 	public Long getId() {
 		return id;
