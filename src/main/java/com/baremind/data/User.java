@@ -2,10 +2,8 @@ package com.baremind.data;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 /**
  * Created by lenovo on 2016/8/17.
@@ -38,8 +36,23 @@ public class User {
 	@Column(name = "telephone")
 	public String telephone;
 	
-	@Column(name = "site")
-	public String site;
+	@Column(name = "birthday")
+	public Date birthday;
+	
+	@Column(name = "sex")
+	public int sex;
+	
+	@Column(name = "amount")
+	public String amount;
+	
+	@Column(name = "school")
+	public String school;
+	
+	@Column(name = "grade")
+	public String grade;
+	
+	@Column(name = "class")
+	public String classname;
 	
 	@Column(name = "location")
 	public String location;
@@ -120,12 +133,12 @@ public class User {
 		this.telephone = telephone;
 	}
 
-	public String getSite() {
-		return site;
+	public String getClassname() {
+		return classname;
 	}
 
-	public void setSite(String site) {
-		this.site = site;
+	public void setClassname(String classname) {
+		this.classname = classname;
 	}
 
 	public String getLocation() {
@@ -166,6 +179,46 @@ public class User {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
 	
