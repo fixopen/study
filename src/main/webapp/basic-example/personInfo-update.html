@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type='navPerson'></div>
+<div class="container">
+    <div class="currentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt; <strong><a href="/product/">资源中心</a></strong>
+    </div>
+</div>
+<div class="container" style="margin-top:15px;">
+    <div class="one" style="background-image:url(images/041.jpg);width:100%;height:262px;">
+        <div id="personInfo" class="two" style="padding-top: 58px;">
+
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-2">
+            <ul class="nav nav-sidebar tabs-right" role="tablist">
+                <li><a href="personInfo.html"><strong>我的收藏</strong></a></li>
+                <li><a href="personInfo-recommend.html"><strong>我的推荐</strong></a></li>
+                <hr/>
+                <!--<li><a href="personInfo-publishMes.html"><strong>我要发言</strong></a></li>-->
+                <!--<li><a href="personInfo-friendManage.html"><strong>我的好友</strong></a></li>-->
+                <li><a href="personInfo-notice.html"><strong>我的通知</strong></a></li>
+                <li><a href="personInfo-discuss.html"><strong>我的评价</strong></a></li>
+                <li><a href="personInfo-feedBack.html"><strong>我的反馈</strong></a></li>
+                <li><a href="personInfo-myMessage.html"><strong>我的消息</strong></a></li>
+                <li><a href="personInfo-set.html"><strong>我的设置</strong></a></li>
+            </ul>
+        </div>
+        <div class="col-xs-10 padding-r-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <span>我的上传</span><a href="#" style="float:right;"><img src="images/add.jpg"/></a>
+                    </div>
+                </div>
+                <div class="panel-body" id="updateRes">
+                </div>
+                <div class='row'>
+                    <div class='col-xs-offset-4 col-xs-8'>
+                        <ul class="pagination" id='pagicontainer'></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--<div class="row">-->
+    <!--<span class="panel-title">友情链接</span>-->
+    <!--</div>-->
+    <!--<div class="space-1"></div>-->
+    <!--<div class="row" id='friendlink-container'>-->
+    <!--</div>-->
+</div>
+<div id="footer"></div>
+<!--copyright-->
+<div id="template">
+    <div class="personInfo">
+        <div class="person-left" style="float:left;">
+            <img src="${avatarUri}" class='person-avatar'/>
+
+            <div class="person-left-down">
+                <div style="float:left;margin-left:-35px;">
+                    <ul>
+                        <li>${friendCount}</li>
+                        <li><strong>好友</strong></li>
+                    </ul>
+                </div>
+                <div style="float:left;width:100px;">
+                    <ul>
+                        <li>${score}</li>
+                        <li><strong>积分</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="person-right">
+            <div class="person-right-up padding-l-0">
+                <ul>
+                    <li style="font-size:23px;"><strong>${userName}</strong></li>
+                    <!--<li>上传资源：<span>${uploadRes}</span></li>-->
+                    <li>收藏资源：<span>${likeRes}</span></li>
+                    <li>等级：<span>${starLevel}</span></li>
+                </ul>
+            </div>
+            <div class="person-right-down padding-l-0" style="color:black;margin-left:35px;">
+                <span style="font-size:20px;">个人简介：</span>
+
+                <p style="font-size: 16px;">${summary}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-3 widthHeight res-thumbnails update-res"
+         style="background-color:#75867C; width:150px;height:200px;margin-left:2em;margin-top:1em;">
+        <div style='margin:0px'>
+            <a href='${href}'>
+                <img src="${photo}" style='width:150px;height:200px'/>
+            </a>
+
+            <div style="font-size:14px;width:150px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+                名称:${name}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/personInfo-update.js"></script>
+</body>
+</html>

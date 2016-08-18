@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNav">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt=""/>北京市中小学课程教材资源网</a>
+        </div>
+    </div>
+</div>
+<ol class="breadcrumb" style="margin-top:-50px">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="login.html">登录页面</a></li>
+    <li class="active">注册</li>
+</ol>
+
+<div class="container" style="margin-top:-40px;">
+    <div>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputUsername" class="col-sm-3 control-label">
+                    用户类型：</label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 学生
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 教师
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 领导
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 管理员
+                </label>
+            </div>
+
+            <div class="form-group row" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-lg" id="inputEmail" placeholder="常用邮箱地址"
+                           onFocus="emailFocus(this)"/>
+                </div>
+                <div class="col-md-3">
+                    <label id="emailLabel" style="display:none;line-height:40px;">邮箱为6-20个字符,不能有标点</label>
+                </div>
+            </div>
+            <div class="form-group row" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-lg" id="inputUsername" placeholder="用户姓名"
+                           onFocus="userNameFocus(this)"/>
+                </div>
+                <div class="col-md-3">
+                    <label id="userNameLabel" style="display:none;line-height:40px">2到10位字符，支持中文和英文姓名</label>
+                </div>
+            </div>
+            <div class="form-group row" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-lg" id="inputPassword" placeholder="设置密码"
+                           onFocus="passWordFocus1(this)"/>
+                </div>
+                <div class="col-md-3">
+                    <label id="passwordLabel1" style="display:none;line-height:40px">6到16位字符，区分大小写</label>
+                </div>
+            </div>
+
+            <div class="form-group row" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control input-lg" id="inputPassword" placeholder="再次输入密码"
+                           onFocus="passWordFocus2(this)"/>
+                </div>
+                <div class="col-md-3">
+                    <label id="passwordLabel2" style="display:none;line-height:40px">再次输入您的密码</label>
+                </div>
+            </div>
+
+            <div class="form-group row" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <input type="" class="form-control input-lg" id="inputPassword" placeholder=" 验证码"
+                           onFocus="checkCodeFocus(this)"/>
+                </div>
+                <div class="col-md-3" style="margin-left:-15px">
+                    <img id="checkCode" src="images/register.jpg" alt="验证码" title="验证码">
+                    <a href=""></a>
+                    <button type="button" class="btn btn-default btn-lg" style="margin-left:0px">
+                        <span class="glyphicon glyphicon-repeat"></span>
+                    </button>
+                </div>
+                <div class="col-md-2" style="margin-left:-80px">
+                    <label id="checkCodeLabel" style="display:none;line-height:40px">请输入正确的验证码</label>
+                </div>
+            </div>
+
+            <div class="row col-md-12" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input name="agree" id="agree" checked="checked" type="checkbox">
+                    我同意 <a href="" target="">" 服务条款 "</a> 和 <a href="" target="">" 教育资源信息利用政策 "</a>
+                </div>
+            </div>
+
+            <div class="form-group" style="padding:6px">
+                <div class="col-md-2"></div>
+                <div class="col-md-4 ">
+                    <a data-loading-text="Loading..." id='btnRegiste' class="btn btn-primary btn-lg btn-block">
+                        立即注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--copyright-->
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/login.js"></script>
+<script type="text/javascript">
+    function emailFocus() {
+        document.getElementById('emailLabel').style.display = 'block'
+    }
+    function userNameFocus() {
+        document.getElementById('userNameLabel').style.display = 'block'
+    }
+    function passWordFocus1() {
+        document.getElementById('passwordLabel1').style.display = 'block'
+    }
+    function passWordFocus2() {
+        document.getElementById('passwordLabel2').style.display = 'block'
+    }
+    function checkCodeFocus() {
+        document.getElementById('checkCodeLabel').style.display = 'block'
+    }
+</script>
+</body>
+</html>

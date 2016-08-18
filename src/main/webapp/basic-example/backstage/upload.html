@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/upload.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNav">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" alt=""/>北京市中小学课程教材资源网</a>
+        </div>
+        <div class="navbar-collapse collapse" id="topNav">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="#" id='login'>
+                    <img src="../images/login.png" alt=""/>登录</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            Go!
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class='navbar  navbar-default navbar-second' role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#secondNavbar">
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+                class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse" id="secondNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="../index.html">
+                <img src="../images/nav.png" alt="">首页</a></li>
+            <li><a href="../resource.html">
+                <img src="../images/nav.png" alt="">资源中心</a></li>
+            <li><a href="../community.html">
+                <img src="../images/nav.png" alt="">学习社区</a></li>
+            <li><a href="../bbs-index.html">
+                <img src="../images/nav.png" alt="">论坛</a></li>
+            <li><a href="backstage/person.html">
+                <img src="images/help.png" alt="">个人空间</a></li>
+        </ul>
+    </div>
+</div>
+
+<ol class="breadcrumb">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="person.html">个人空间</a></li>
+    <li class="active"><a href="#">我要上传</a></li>
+</ol>
+<div class="container">
+    <hr style="visibility: hidden;"/>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="self_info">
+            </div>
+        </div>
+    </div>
+    <hr style="position: relative; top: 20px;"/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span>我要上传</span>
+                </div>
+                <div class="panel-body">
+                    <div class="">
+                        <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="name" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    名称:</label>
+
+                                <div class="col-xs-8 col-sm- col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="name" name='name' placeholder="名称"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="stage" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    年级:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="stage" name='stage' placeholder="年级"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="subject" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    学科:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="subject" name='subject'
+                                           placeholder="学科"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="version" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    版本:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="version" name='version'
+                                           placeholder="版本"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="filetype" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    文件类型:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="filetype" name='filetype'
+                                           placeholder="文件类型"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="fileformat" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    文件格式:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="fileformat" name='fileformat'
+                                           placeholder="文件格式"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="knowlege" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    知识点:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="knowlege" name='knowlege'
+                                           placeholder="知识点"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="directory" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    教材目录:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="directory" name='directory'
+                                           placeholder="教材目录"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <label for="useregion" class="col-xs-2 col-sm-4 col-md-3 col-lg-3 control-label">
+                                    资源使用范围:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+                                    <input type="text" class="form-control" id="useregion" name='useregion'
+                                           placeholder="西城区"/>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="thumb " class="col-xs-2 col-sm-2 col-md-1 col-lg-1 control-label">
+                                    缩略图:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
+                                    <img id="thumbImg" src="" alt="Drag & drop category photo"
+                                         ondragenter="return false"
+                                         ondragover="return false" ondrop="dropIt(event)"/>
+                                    <input id='thumbImgUrl' type='text' name='thumbImgUrl'/>
+
+                                    <p class="text-center">
+                                        <button id="choose-thumbimg-button" class="btn">
+                                            选择文件
+                                        </button>
+                                        <input type="file" id="thumbimg-input" size="10" accept="image/*" multiple
+                                               style="display: none"/>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="comment " class="col-xs-2 col-sm-2 col-md-1 col-lg-1 control-label">
+                                    简介:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
+                                    <textarea type="text" class="form-control" id="comment" name='comment'
+                                              placeholder="简介"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="file " class="col-xs-2 col-sm-2 col-md-1 col-lg-1 control-label">
+                                    选择文件:</label>
+
+                                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
+                                    <input type="file" class="form-control" id="file" name='file'/>
+                                    <span>您可以上传多个文件，允许上传最大200MB的文件</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+                                    <button type="submit" data-loading-text="Loading..." class="btn btn-primary">
+                                        上传
+                                    </button>
+                                    <button type="submit" data-loading-text="Loading..." class="btn btn-primary">
+                                        取消
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="copyright footer" style="text-align: center;">
+                <p>
+                    <a href="">意见反馈</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="">关于我们</a>
+                </p>
+
+                <p>
+                    联系方式:010-00000001 help@mocc.com 王老师</p>
+
+                <p>
+                    Copyright 2011 New Corporation, All Rights Reserved 2011 北京市课程中心版权所有</p>
+
+                <p>
+                    京ICP备1304316</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="template">
+    <div class="update_self_info">
+        <div class="row">
+            <img class="col-md-1" src="${photo}" alt="${name}" onclick="#"/>
+
+            <div class="col-md-11">
+                姓名：${name}<br/>
+                积分：${score}<br/>
+                等级：${starLevel}
+                <!-- -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/libs/jquery.min.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/back/resource-upload.js"></script>
+<script src="../js/libs/jquery.validate.js"></script>
+<script src="../js/libs/messages_zh.js"></script>
+<script src="../js/util.js"></script>
+</body>
+</html>

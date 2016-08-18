@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <style type="text/css">
+        .more {
+            left: 47%;
+            position: absolute;
+            text-align: center;
+            bottom: 2em;
+        }
+
+        .more a span {
+            -moz-user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 2;
+            margin-bottom: 0;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+            background-color: #fff;
+            border-color: #ccc;
+            color: #333;
+        }
+
+        .recShadow:hover {
+            -moz-box-shadow:5px 5px 5px #333333; -webkit-box-shadow:5px 5px 5px #333333; box-shadow:5px 5px 5px #333333;
+        }
+        .recVideoShadow #playIcon {
+            visibility: hidden;
+        }
+        .recVideoShadow:hover #playIcon {
+            visibility: visible;
+            position:absolute;
+            top:65px;
+            left:103px;
+            width:67px;
+            height:67px;
+        }
+    </style>
+</head>
+<body style="background-color: #ffffff">
+<div id="header" type="navIndex"></div>
+<div class="container-fluid" style="padding-left: 0px;padding-right: 0px;">
+    <div class="row">
+        <div class="col-xs-12" style="padding-left: 0px;padding-right: 0px;">
+            <div id="banner" class="carousel slide" data-ride="carousel" style="height: 300px">
+                <ol class="carousel-indicators" id="bannerIndicatorContainer" style="display: none"></ol>
+                <div class="carousel-inner" role="listbox" id="bannerContainer" style="height: 300px"></div>
+                <a class="left carousel-control" href="#banner" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">&lt;&lt;</span>
+                </a>
+                <a class="right carousel-control" href="#banner" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">&gt;&gt;</span>
+                </a>
+            </div>
+            <div style="position: absolute; top: 60%; margin-left: 0; left:35%; width: 30%">
+                <div class="input-group" style="opacity: 0.8;border:1px solid #CECBCE;border-radius:5px;">
+                    <input type="text" class="form-control" style="color:#000;width: 100%; height: 37px;border:0px;"
+                           id="searchCap"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="search"><img src="images/resIndex/search.png">
+                        </button>
+                    </span>
+                </div>
+                <!--<form role="search" onSubmit="return false;">-->
+                <!--<div class="input-group" style="filter:opacity: 0.8;">-->
+                <!--<input type="text" class="form-control" onchange="g.search()"-->
+                <!--onkeydown="if(event.keyCode==13){g.search()}"/>-->
+                <!--<span class="input-group-btn">-->
+                <!--<button class="btn btn-default" type="button">搜索</button>-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid"
+     style="background-color: #f0f0f0;padding-bottom:20px;padding-top:20px;border-bottom: 1px solid #CECBCE;">
+    <div id="typeContainer" style="width: 1200px; margin: auto;padding-right: 0px;padding-left: 0px;">
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-xs-12">
+            <div class="panel-title" style="text-align: center;font-size: 18px;">热门资源</div>
+        </div>
+    </div>
+    <div class="row" style="border-bottom: 1px solid #CECBCE;">
+        <div class="col-xs-12" role="tabpanel" style="padding-right: 0px;padding-left: 0px;">
+            <ul class="nav nav-tabs" role="tablist" style="padding-left: 200px;padding-right: 200px;">
+                <li class="active" role="presentation">
+                    <a id="electronicTeachingMaterialTab" data-type="electronicTeachingMaterial"
+                       href="#electronicTeachingMaterialHref"
+                       aria-controls="electronicTeachingMaterial" role="tab" data-toggle="tab">电子教材</a>
+                </li>
+                <li role="presentation">
+                    <a id="courseWareTab" data-type="courseWare" href="#courseWareHref" aria-controls="courseWare"
+                       role="tab" data-toggle="tab">&nbsp;&nbsp;课&nbsp;&nbsp;&nbsp;&nbsp;件&nbsp;&nbsp;</a>
+                </li>
+                <li role="presentation">
+                    <a id="smallCourseTab" data-type="smallCourse" href="#smallCourseHref"
+                       aria-controls="smallCourse"
+                       role="tab" data-toggle="tab">&nbsp;&nbsp;微&nbsp;&nbsp;&nbsp;&nbsp;课&nbsp;&nbsp;</a>
+                </li>
+                <li role="presentation">
+                    <a id="teachingGameTab" data-type="teachingGame" href="#teachingGameHref"
+                       aria-controls="teachingGame" role="tab" data-toggle="tab">教学游戏</a>
+                </li>
+                <li role="presentation">
+                    <a id="teachingCaseTab" data-type="teachingCase" href="#teachingCaseHref"
+                       aria-controls="teachingCase" role="tab" data-toggle="tab">教学案例</a>
+                </li>
+                <li role="presentation">
+                    <a id="activityCaseTab" data-type="activityCase" href="#activityCaseHref"
+                       aria-controls="activityCase" role="tab" data-toggle="tab">活动案例</a>
+                </li>
+                <li role="presentation">
+                    <a id="teachingToolTab" data-type="teachingTool" href="#teachingToolHref"
+                       aria-controls="teachingTool" role="tab" data-toggle="tab">教学工具</a>
+                </li>
+                <li role="presentation">
+                    <a id="teachingMatterTab" data-type="teachingMatter" href="#teachingMatterHref"
+                       aria-controls="teachingMatter" role="tab" data-toggle="tab">教学素材</a>
+                </li>
+            </ul>
+            <div class="tab-content" style="height: 520px;">
+                <div class="tab-pane active" id="electronicTeachingMaterialHref">
+                    <div id="electronicTeachingMaterialContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=1"><span class="" style="">更多电子教材</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="courseWareHref" style="height: 300px;">
+                    <div id="courseWareContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=2"><span class="" style="">更多课件</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="smallCourseHref" style="height: 300px;">
+                    <div id="smallCourseContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=3"><span class="" style="">更多微课</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="teachingGameHref" style="height: 300px;">
+                    <div id="teachingGameContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=4"><span class="" style="">更多教学游戏</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="teachingCaseHref" style="height: 300px;">
+                    <div id="teachingCaseContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=5"><span class="" style="">更多教学案例</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="activityCaseHref" style="height: 300px;">
+                    <div id="activityCaseContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=6"><span class="" style="">更多活动案例</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="teachingToolHref" style="height: 300px;">
+                    <div id="teachingToolContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=7"><span class="" style="">更多教学工具</span></a>
+                    </div>
+                </div>
+                <div class="tab-pane" id="teachingMatterHref" style="height: 300px;">
+                    <div id="teachingMatterContainer" class="row"></div>
+                    <div class="more">
+                        <a href="resource-index.html?type=8"><span class="" style="">更多教学素材</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px;padding-bottom:30px;border-bottom: 1px solid #CECBCE">
+        <div class="col-xs-6">
+            <span class="panel-title" style="font-size: 18px;">学习社区</span>
+            <a href="learn/communication/groups/groupListFront.htm"
+               style="margin-left: 30px; color: #000000"><span>更多</span></a>
+
+            <div id="bannerRecommendActivity" style="margin-top: 15px;" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators" id="recommendActivityIndicatorContainer"
+                    style="margin-top: 0px; top: 140px; left: 240px;"></ol>
+                <div class="carousel-inner" role="listbox" id="recommendActivityContainer"></div>
+                <a class="left carousel-control" href="#bannerRecommendActivity" role="button" data-slide="prev"
+                   style="height: 170px;">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">&lt;&lt;</span>
+                </a>
+                <a class="right carousel-control" href="#bannerRecommendActivity" role="button" data-slide="next"
+                   style="height: 170px;">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">&gt;&gt;</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-6" style="border-left-style: solid; border-left-color: #CECBCE;border-left-width: 1px;">
+            <span class="panel-title" style="font-size: 18px;">用户之星</span>
+            <a href="#" style="margin-left: 30px;color: #000000"><span>更多</span></a>
+
+            <div id="userStarContainer"
+                 style="padding-top :20px; padding-bottom: 20px; height: 300px;"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px;border-bottom: 1px solid #CECBCE;padding-bottom: 10px">
+        <div class="col-xs-12 padding-lr-1" style="margin-bottom: 15px;">
+            <span class="panel-title" style="font-size: 18px;">新闻</span>
+            <a href="news.html" style="margin-left: 30px;color: #000000"><span>更多</span>
+            </a>
+        </div>
+        <div class="col-xs-6 padding-lr-1">
+            <div id="bannerNews" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators" id="slideNewsIndicatorContainer"></ol>
+                <div class="carousel-inner" role="listbox" id="slideNewsContainer"></div>
+                <a class="left carousel-control" href="#bannerNews" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">&lt;&lt;</span>
+                </a>
+                <a class="right carousel-control" href="#bannerNews" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">&gt;&gt;</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-6 padding-lr-1">
+            <ul class="newUl" style="margin-left:-30px;" id="newsListContainer"></ul>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px;">
+        <span class="panel-title" style="padding-left: 15px;font-size: 18px;">问卷调查</span>
+
+        <div class="col-xs-12" style="margin-top: 15px;" id="questionContainer"></div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+        <span class="panel-title" style="padding-left: 15px;font-size: 18px;">友情链接</span>
+
+        <div class="col-xs-12" id="friendLinkContainer"
+             style="margin-top: 15px;border-bottom: 1px solid #CECBCE;padding-bottom:20px"></div>
+    </div>
+</div>
+
+
+<div id="footer"></div>
+<div id="template">
+    <li data-target="#banner" class="banner-indicator-template"></li>
+    <div class="item banner-template">
+        <a href="${urlAddr}"><img src="${imageFile}" style="width: 100%; height: 300px;"/></a>
+
+        <div style="top: 80px; right: 50%; position: absolute; font-size: 22px; color: #fff; text-align: center;">
+            ${caption}
+        </div>
+    </div>
+    <div class="col-xs-4 padding-lr-0 navigator-template" style="padding-bottom: 4px">
+        <a href="resource-index.html?${type}=${id}" style="color: #000;">${caption}</a>
+    </div>
+
+    <div class="type-template" style="float: left;width: 150px; text-align: center">
+        <a href="resource-index.html?type=${id}">
+            <img class="recShadow" src="${image}" style="width: 75px;height: 60px;"/>
+            <h4 style="color: #000">${caption}</h4>
+        </a>
+    </div>
+
+    <div class="question-template">
+        <a href='${urlAddr}'>
+            <img src="${imageFile}" class="" style="width: 100%; height: 90px;"/>
+        </a>
+    </div>
+
+    <div class="hotResource-col2-template col-xs-2 " style="float:left;margin-top:20px;margin-bottom:10px;height:195px;padding-left:26px;">
+        <a class="recVideoShadow" href="resource-detail.html?id=${id}" style="height:195px;text-decoration: none">
+            <img src="${coverFile}" class="recShadow" style="width:140px; height: 195px"/>
+            <div style="position: absolute;bottom:35px;right:30px;background-color:rgba(0,0,0,0.3);width:100px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${caption}
+            </div>
+            <div style="position: absolute;bottom:0px;right:30px;background-color:rgba(0,0,0,0.3);width:66px;padding-right:10px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${grade}
+            </div>
+        </a>
+    </div>
+
+    <div class="hotResource-col3-template col-xs-3" style="float:left;margin-top:20px;margin-bottom:10px;height:195px;padding-left: 10px;">
+        <a class="recVideoShadow" href="resource-detail.html?id=${id}" style="height:195px;text-decoration: none">
+            <img src="${coverFile}" class="recShadow" style="width:273px; height: 195px"/>
+            <!--<button  id="playIcon" class="btn btn-lg" style="color:#fff;background-color: rgba(0,0,0,0.4)">-->
+                <!--<span class="glyphicon glyphicon-play" style="font-size: 24px;" aria-hidden="true"></span>-->
+            <!--</button>-->
+            <div style="position: absolute;bottom:35px;right:10px;background-color:rgba(0,0,0,0.3);width:100px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${caption}
+            </div>
+            <div style="position: absolute;bottom:0px;right:10px;background-color:rgba(0,0,0,0.3);width:66px;padding-right:10px;height:25px;line-height:25px;overflow:hidden;text-align: right;color: #ffffff;text-overflow: ellipsis; white-space: nowrap;">
+                ${grade}
+            </div>
+        </a>
+    </div>
+    <!--<div class="hotResource-col2-template recShadow" style="float:left;margin-left:29px;margin-right:25px;margin-top:20px;margin-bottom:10px;width:140px;height:195px;">-->
+        <!--<a href="resource-detail.html?id=${id}" style="text-decoration: none">-->
+            <!--<img src="${coverFile}" class="img-responsive" style="width:140px; height: 195px"/>-->
+            <!--<div style="background-color:rgba(0,0,0,0.5);width:140px;text-align: center;position: relative;top:-78px;color: #ffffff;">-->
+                <!--<h5 style=" width: 140px;height: 1.2em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">-->
+                    <!--${caption}</h5>-->
+                <!--下载次数：<span style="width: 35px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${downloadCount}</span>-->
+
+                <!--<div id="levelContainer${id}" style="font-size: 15px">-->
+                    <!--评价：-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="hotResource-col3-template recShadow" style="float:left;margin-left:12px;margin-right:5px;margin-top:20px;margin-bottom:10px;width:273px;height:195px;">-->
+        <!--<a href="resource-detail.html?id=${id}" style="text-decoration: none">-->
+            <!--<img src="${coverFile}" class="img-responsive" style="width:273px; height: 195px"/>-->
+            <!--<div style="background-color:rgba(0,0,0,0.5);width:273px;text-align: center;position: relative;top:-78px;color: #ffffff;">-->
+                <!--<h5 style=" width: 273px;height: 1.2em; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">-->
+                    <!--${caption}</h5>-->
+                <!--下载次数：<span style="width: 35px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${downloadCount}</span>-->
+
+                <!--<div id="levelContainer${id}" style="font-size: 15px">-->
+                    <!--评价：-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                    <!--<span class="glyphicon glyphicon-star-empty orange"-->
+                          <!--style="width: 8px; height: 7px; margin-left: 1px; margin-right: 1px;"></span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <li data-target="#bannerNews" class="slide-news-indicator-template"></li>
+    <div class="item slide-news-template padding-r-0">
+        <a href="${href}">
+            <img src="${imageFile}" href="${href}" style="width: 100%; height: 275px;"/>
+        </a>
+
+        <div class="carousel-caption">${caption}</div>
+    </div>
+    <li class="news-template padding-l-0">
+        <div style="margin-bottom: 8px;float: left">
+            <a href="${href}"
+               style="width: 420px; color: #393C39;text-overflow: ellipsis; white-space: nowrap; overflow: hidden; display: inline-block;">${caption}</a>
+        </div>
+        <div style="margin-bottom: 8px;float: right; color: #999; display: inline">${dateCreated}</div>
+    </li>
+
+    <li data-target="#bannerRecommendActivity" class="recommendActivity-indicator-template"></li>
+    <div class="item recommendActivity-template padding-r-0">
+        <a href="${urlAddr}">
+            <img src="${imageFile}" href="${urlAddr}" style="width: 100%; height: 170px;"/>
+        </a>
+
+        <div style="top: 160px; color: #000000">
+            <h4>${caption}</h4>
+
+            <p>${describe}</p>
+        </div>
+    </div>
+
+    <div class="col-xs-3 user-star-template padding-left-15 recShadow"
+         style="margin-bottom: 25px; padding-bottom: 10px; padding-top: 10px">
+        <div class="padding-lr-0">
+            <a href="#">
+                <img class="media-object img-circle" src="${avatarUri}" style="width: 56px; height: 56px">
+            </a>
+
+            <div class="media-body" style="position: relative; left: 0.8em; top: 0.6em;">
+                <strong>${realName}</strong><br/>
+                <span style="font-size: 12px;">积分: ${score}</span><br/>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-3 friend-link-template" style="margin-bottom: 15px;">
+        <a href="${urlAddr}" target="_blank">
+            <span style="font-size:15px;color: #000000">${caption}</span>
+            <!--<img src="${imageFile}" alt="" style="width: 100%; height:43px;"/>-->
+        </a>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/util-resourceSearch.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

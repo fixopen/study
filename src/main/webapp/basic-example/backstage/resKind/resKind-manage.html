@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="#">资源类型管理</a></li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" id='btnNew'>新建</button>
+        </div>
+        <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+            <thead>
+            <tr>
+                <th>资源类型名称</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id='resKind-tbody'>
+
+            </tbody>
+        </table>
+        <!--<div class="row" style="text-align:center;position:relative;top:1em;">-->
+        <!--<div class="col-md-12">-->
+        <!--<ul class="pagination pagination-lg" id='pagicontainer'>-->
+        <!---->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--</div> -->
+    </div>
+</div>
+<div id="template">
+    <table>
+        <tbody>
+        <tr class='resKind-tr'>
+            <td>${caption}</td>
+            <td>
+                <button class='btn btn-xs btn-rowEdit' rowid='${id}'>编辑</button>
+                <button class='btn btn-xs btn-rowDelete' rowid='${id}'>删除</button>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/resKind-manage.js"></script>
+</body>
+</html>

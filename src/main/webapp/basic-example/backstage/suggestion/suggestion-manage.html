@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="#">意见反馈管理</a></li>
+</ol>
+<div class="container">
+    <div class="row tabbable">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active" id="btnSuggestion"><a href="#preOne" data-toggle="tab">意见反馈</a></li>
+            <li role="presentation"><a href="#preTwo" data-toggle="tab"><span id="btnImprove">改进建议</span></a></li>
+            <li role="presentation"><a href="#preThree" data-toggle="tab"><span id="btnReport">投诉举报</span></a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="preOne">
+                <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id='suggestion-tbody'>
+
+                    </tbody>
+                </table>
+                <div class='row'>
+                    <div class='col-xs-offset-4 col-xs-8'>
+                        <ul class="pagination" id='pagicontainer1'></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="preTwo">
+                <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id='suggestionTwo-tbody'>
+
+                    </tbody>
+                </table>
+                <div class='row'>
+                    <div class='col-xs-offset-4 col-xs-8'>
+                        <ul class="pagination" id='pagicontainer2'></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="preThree">
+                <table class="table table-striped table-bordered" style="position:relative;top:2em;">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id='suggestionThree-tbody'>
+
+                    </tbody>
+                </table>
+                <div class='row'>
+                    <div class='col-xs-offset-4 col-xs-8'>
+                        <ul class="pagination" id='pagicontainer3'></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="template">
+    <table>
+        <tbody>
+        <tr class='suggestion-tr'>
+            <td>${caption}</td>
+            <td>${content}</td>
+            <td>
+                <button class='btn btn-xs btn-rowdelete' rowid='${id}'>删除</button>
+                <button class="btn btn-xs btn-checkReply" rowid="${id}">查看回复</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/suggestion.js"></script>
+</body>
+</html>

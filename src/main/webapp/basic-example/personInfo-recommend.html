@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type='navPerson'></div>
+<div class="container-fluid">
+    <div class="personCurrentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt; <strong><a href="personInfo.html">个人中心</a></strong>
+        &gt; <strong><a href="">我的推荐</a></strong>
+    </div>
+</div>
+<div class="container" style="margin-top:15px;">
+    <div id="personInfoTopContainer"  class="row" style="border-bottom: 1px solid #CECBCE"></div>
+    <div class="row" style="padding-bottom:0px;">
+        <div id="personInfoLeftContainer" data-personactive="navPersonRecommend">
+        </div>
+        <div class="col-xs-10 padding-r-0" >
+            <span style="font-size: 22px;"> 我的推荐</span>
+            <div class="panel" style="padding-top: 30px;">
+                <div id="recommendRes">
+                </div>
+                <div class='row'>
+                    <div class='col-xs-offset-3 col-xs-9'>
+                        <ul class="pagination" id='pagicontainer'></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="footer"></div>
+<!--copyright-->
+
+<div id="template">
+    <!--<div class=" res-thumbnails collection-res" style="margin-left:2em;margin-top:1em;"-->
+    <div class="col-xs-3 resource">
+        <div class="row" style="height:240px;">
+            <a href="${href}"><!--${href}-->
+                <img src="${coverFile}" style='width:150px;height:200px'/>
+                <div class="text">
+                    <div class="inner">
+                        <div style="font-size:14px;width:150px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+                            名称:${caption}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/uploadFiles.js"></script>
+<script src="js/util.js"></script>
+<script src="js/util-resourceSearch.js"></script>
+<script src="js/util-personInfo.js"></script>
+<script src="js/personInfo-recommend.js"></script>
+</body>
+</html>

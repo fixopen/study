@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-treeview.css">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <link href="css/easyui.css" rel="stylesheet">
+    <link href="css/icon.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body style="background-color: #ffffff;">
+<div id="header" type="navResourseCenter"></div>
+<div class="container" >
+    <div class="row" style="padding:10px;" >
+        <div class="col-xs-12" style="padding: 0px;">
+            <a href="index.html" style="color: #000000">首页</a>
+            &gt;
+            <a href="resource-index.html" style="color: #000000">资源中心</a>
+            &gt; <strong><a href="#" style="color: #000000;">教材目录</a></strong>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3" style="padding-top:5px;padding-left: 0px;">
+            <div class="input-group" style="width:300px;border:1px solid #CECBCE;border-radius:5px;">
+                <input type="text" class="form-control" style="border:0px;" id="searchCap"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="search"><img src="images/resIndex/search.png"></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-xs-7" style="padding-top:6px;">
+            <!--<strong >已选条件:</strong>-->
+            <span id='selected-Container'></span>
+        </div>
+        <div class="col-xs-2" style="padding-top:5px;">
+            <span class='row pull-right btn btn-default'style="background-color: #3b86bf;" >
+                <a href='resource-catalogue.html' style="text-decoration: none;color: #ffffff;" type='button'>
+                    <strong>按类型浏览 </strong></a>
+            </span>
+        </div>
+    </div>
+    <div class='row' style="padding-top: 20px;">
+        <div class='col-xs-3'style="padding-left: 0px;">
+            <div>
+                <label>学科:</label>
+                <div>
+                    <select class="form-control" id='querySubject'>
+                        <!--<option value="-1">全部-->
+                        <!--</option>-->
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label>版本:</label>
+
+                <div>
+                    <select class="form-control" id='queryVersion'>
+                        <!--<option value="-1">全部-->
+                        <!--</option>-->
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label>教材:</label>
+
+                <div>
+                    <select class="form-control" id='queryBooks'>
+                        <!--<option value="-1">全部-->
+                        <!--</option>-->
+                    </select>
+                </div>
+            </div>
+            <!-- <div>
+                <label>年级:</label>
+                <div>
+                    <select class="form-control" id='queryStage'>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label>学期:</label>
+                <div>
+                    <select class="form-control" id='queryTerm'>
+                    </select>
+                </div>
+            </div> -->
+            <div><h4>教材目录</h4></div>
+            <div id='tree-Container'>
+                <ul id='tree'></ul>
+            </div>
+        </div>
+        <div class='col-xs-9'>
+            <div class="row">
+                <div class="col-xs-12" style="background-color: #f5f5f5;">
+                    <span>类型 : </span>
+                    <span id='type-Container' style="line-height: 59px;"></span>
+                </div>
+                <div class="col-xs-12 " style='border-top:2px dashed #fff;padding-bottom:10px;padding-top:10px;padding-left: 5px;'>
+                    <a href="#" id="normal" style="padding-right: 20px;text-decoration: none;color: #000000;"><span  class="resSelectCont">默认排序 </span></a>
+                    <a href="#" id="highPreview" style="padding-right: 20px;text-decoration: none;color: #000000;"><span  class="resSelectCont">评价最高 </span></a>
+                    <a href="#" id="uploadTime" style="padding-right: 10px;text-decoration: none;color: #000000;"><span  class="resSelectCont">最新上传 </span></a><br/>
+                    <hr style="color:  #CECBCE;margin-top: 10px;"/>
+                    <!--<strong>排序方式:</strong>-->
+                    <!--<div class="btn-group">-->
+                        <!--<button type="button" class="btn btn-default btn-xs" id='defaultSort'-->
+                                <!--style='margin-right:10px;'>默认<span class="glyphicon glyphicon-arrow-down"></span>-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-default btn-xs" id='scortSort'-->
+                                <!--style='margin-right:10px;'>评价<span class="glyphicon glyphicon-arrow-down"></span>-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-default btn-xs" id='timeSort'-->
+                                <!--style='margin-right:10px;'>上传时间<span class="glyphicon glyphicon-arrow-down"></span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class='row res-list'>
+                <ul id='resource-container'style="padding-left: 0px;">
+                </ul>
+            </div>
+            <div class='row'>
+                <div class='col-xs-offset-5 col-xs-8'>
+                    <ul class="pagination" id='pagicontainer'></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="template">
+    <a  class=' condition-tpl' type='button' style="cursor:pointer;padding-left :30px;text-decoration: none;color: #000000;" id='${id}' name='condition' catalog='type'><span  class="resSelectCont">${title}</span></a>
+    <li class="resource-tpl" style="background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
+        <div class='row'>
+            <div class='col-xs-2'>
+                <img src='${coverFile}' style='width:120px;height:150px'/>
+            </div>
+            <div class='col-xs-10'>
+                <div class='row'>
+                    <div class='pull-left'>
+                        <a href='${href}' style="color: #000000;text-decoration: none;font-size: 15px;"><strong ><span  class="resSelectCont">${caption}</span></strong></a>
+                    </div>
+                    <div class='pull-right' style="color: darkgray;"><span  >${viewCount}</span>人阅读</div>
+                </div>
+                <div class="row">
+                    <span style="color: darkgray;">上传时间 : ${dateCreated}</span>
+                </div>
+                <div class="row">
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                </div>
+                <div class='row'style="padding-top: 20px;">
+                    <div class='col-xs-4 ' style='text-align:left;padding-left: 0px;'>
+                        <a type="button" class="btn btn-primary btn-xs btnFavoriteResource" rid='${id}' style="width: 67px;line-height: 34px;">
+                            <span class="glyphicon glyphicon-bookmark"></span>
+                            收藏
+                        </a>
+                        <a type="button" class="btn btn-primary btn-xs" href='${downUri}' rid='${id}'style="width: 67px;line-height: 34px;">
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                            下载
+                        </a>
+                    </div>
+                    <div class='col-xs-8 'style='padding-right: 0px;'>
+                        <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"
+                             data="{'url':'${href}','title':'${caption}'}" style='float:right;'>
+                            <a class="bds_qzone"></a>
+                            <a class="bds_tsina"></a>
+                            <a class="bds_tqq"></a>
+                            <a class="bds_renren"></a>
+                            <span class="bds_more"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <div class="media recommend-tpl">
+        <a class="pull-left" href="update_person.html">
+            <img class="media-object" alt="" src="${photo}" style="position:relative;top:0.5em;width:60px;height:100px"></a>
+
+        <div class="media-body">
+            <div class="col-lg-12">
+                <h4>${name}</h4>
+
+                <div class='' id='level-Container'>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                    <span class='glyphicon glyphicon-star-empty orange'></span>
+                </div>
+                <a type="button" class="btn btn-primary btn-xs" id='btnDownloadRecommend' href='${downUrl}' rid='${id}'>
+                    <span class="glyphicon glyphicon-download-alt"></span>
+                    下载
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="modal fade" data-backdrop="static" id="editModal" tabindex="-1" role="dialog"-->
+     <!--aria-labelledby="loginModalLabel" aria-hidden="true" style='z-index:1052'>-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span-->
+                        <!--class="sr-only">Close</span></button>-->
+                <!--<h4 class="modal-title" id="loginModalLabel">请输入名称</h4>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="col-sm-offset-2 hidden col-sm-10 alert alert-danger"></div>-->
+                <!--<form autocomplete="off" class="form-horizontal" role="form">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="inputTitle" class="col-sm-2 control-label">收藏夹名称</label>-->
+
+                        <!--<div class="col-sm-10">-->
+                            <!--<input type="text" class="form-control" id="inputTitle" placeholder="title"/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="space-2"></div>-->
+                    <!--<div class="form-group">-->
+                        <!--<div class="col-sm-offset-2 col-sm-10">-->
+                            <!--<a type='button' class="btn btn-primary" href='javascript:void(0)' id='btnEditOk'>确定</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="modal fade" data-backdrop="static" id="selectFolderModal" tabindex="-1" role="dialog"
+     aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="loginModalLabel">选择文件夹</h4>
+            </div>
+            <div class="modal-body">
+                <ul id="tt"></ul>
+                <div id="mm" class="easyui-menu" style="width:120px;">
+                    <div onclick="addFolder()" data-options="iconCls:'icon-add'">新增</div>
+                    <div onclick="editFolder()" data-options="iconCls:'icon-add'">修改</div>
+                    <div onclick="removeFolder()" data-options="iconCls:'icon-remove'">删除</div>
+                    <div class="menu-sep"></div>
+                    <div onclick="expand()">展开</div>
+                    <div onclick="collapse()">关闭</div>
+                </div>
+                <div class="space-2"></div>
+                <div >
+                    <a type='button' class="btn btn-primary" href='javascript:void(0)' id='btnSelectOk'>确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/jquery.easyui.min.js"></script>
+<script type='text/javascript' id='bdshare_js' data='type=tools'></script>
+<script type='text/javascript' id='bdshell_js'></script>
+<script src="js/util.js"></script>
+<script src="js/pagination.js"></script>
+<script src="js/resource-catalogue.js"></script>
+<script src="js/util-resourceSearch.js"></script>
+<!--
+<script>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" +  new Date().getHours();
+</script>
+-->
+<style>
+    .condition-tpl, .selected-tpl {
+        padding: 0px 5px;
+    }
+
+    .conditionrow {
+        padding-top: 4px;
+    }
+
+    #bdshare > a {
+        height: 30px;
+    }
+
+    #bdshare > span {
+        height: 30px;
+    }
+    .resSelectCont:hover {
+        color: dodgerblue;
+    }
+</style>
+</body>
+</html>

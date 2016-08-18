@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <link href="../../js/libs/uploadify.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li>
+        <a href="../index.html">主页</a>
+    </li>
+    <li>
+        <a href="news-manage.html">新闻管理</a>
+    </li>
+    <li class="active">
+        <a href="#">新闻配图</a>
+    </li>
+</ol>
+
+<div class="container">
+    <div class='row'>
+        <form autocomplete="off" class="form-horizontal" role="form" id='mainForm'>
+
+            <div class="form-group col-xs-12">
+                <label for="caption" class="col-xs-2 control-label"><span class="glyphicon glyphicon-star red"></span>标题:</label>
+
+                <div class="col-xs-2">
+                    <input type="text" class="form-control" id="caption" name='caption' placeholder="标题"/>
+                </div>
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-primary " data-toggle="modal"
+                            data-target="#selectNews">选择新闻
+                    </button>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="col-xs-2 control-label">图片:</label>
+
+                <div class="col-xs-2">
+                    <img id='imgPreview' src="" style='width:200px;height:200px'/>
+
+                    <div>
+                        <input id="file_upload" name="file_upload" type="file">
+                        <!-- <input id="file_upload_trigger" type="button" value="Image Selector"> -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label for="describe" class="col-xs-2 control-label">描述:</label>
+
+                <div class="col-xs-6">
+                    <textarea id="describe" name="describe" row=3 style='width:100%'></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-4">
+                    <button id='btnSubmit' class="btn btn-success">保存</button>
+                    <button id='btnOnReset' class="btn btn-primary">取消</button>
+                </div>
+            </div>
+        </form>
+        <div class="modal fade" id="selectNews" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form autocomplete="off" class="form-horizontal" role="form">
+                                    <div class="form-group col-xs-10">
+                                        <label class="col-xs-5 control-label">
+                                            新闻标题:</label>
+
+                                        <div class="col-xs-7">
+                                            <input type="text" class="form-control" id="txtQuery" placeholder="新闻标题"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-2">
+                                        <div class="text-left">
+                                            <a data-loading-text="Loading..." id='btnQuery' class="btn btn-primary">
+                                                查询
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row tabbable" style="position:relative;top:2em;">
+                            <ul class="nav nav-pills">
+                                <li role="presentation" class="active"><a href="#preOne" id="normal" data-toggle="pill"
+                                                                          data-type="normal">已发布</a></li>
+                                <li role="presentation"><a href="#preTwo" id="controlled" data-toggle="pill"
+                                                           data-type="controlled">未发布</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="preOne">
+                                    <table class="table table-striped table-bordered"
+                                           style="position:relative;top:2em;">
+                                        <thead>
+                                        <tr>
+                                            <th>标题</th>
+                                            <th>责任编辑</th>
+                                            <th>来源标题</th>
+                                            <th>来源链接</th>
+                                            <th>标签</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id='normalNews'></tbody>
+                                    </table>
+
+                                    <div class="row" style="text-align:center;position:relative;">
+                                        <div class="col-md-12">
+                                            <ul class="pagination" id='normalNewsPager'></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="preTwo">
+                                    <table class="table table-striped table-bordered"
+                                           style="position:relative;top:2em;">
+                                        <thead>
+                                        <tr>
+                                            <th>标题</th>
+                                            <th>责任编辑</th>
+                                            <th>来源标题</th>
+                                            <th>来源链接</th>
+                                            <th>标签</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id='controlledNews'></tbody>
+                                    </table>
+                                    <div class="row" style="text-align:center;position:relative;">
+                                        <div class="col-md-12">
+                                            <ul class="pagination " id='controlledNewsPager'></ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="template">
+                            <table>
+                                <tbody>
+                                <tr class='passNews-tr'>
+                                    <td>${caption}</td>
+                                    <td>${editor}</td>
+                                    <td>${sourceCaption}</td>
+                                    <td>${sourceUrl}</td>
+                                    <td>${tags}</td>
+                                    <td>
+                                        <button class='btn btn-xs btn-rowselect' rowid='${id}'>选择</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                <tr class='noPassNews-tr'>
+                                    <td>${caption}</td>
+                                    <td>${editor}</td>
+                                    <td>${sourceCaption}</td>
+                                    <td>${sourceUrl}</td>
+                                    <td>${tags}</td>
+                                    <td>
+                                        <button class='btn btn-xs btn-rowselect' rowid='${id}'>选择</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/libs/jquery.validate.js"></script>
+<script src="../../js/libs/messages_zh.js"></script>
+<script src="../../js/uploadFiles.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/back/news-manage.js"></script>
+<script src="../../js/back/newsImg-newsManage-create.js"></script>
+</body>
+</html>

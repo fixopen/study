@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!--     <link rel="stylesheet" type="text/css" href="css/flexpaper.css" /> -->
+    <link href="css/easyui.css" rel="stylesheet">
+    <link href="css/icon.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body >
+<!--header-->
+<div class="container"  style="background-color: #ffffff;border-bottom: 1px solid #CECBCE;">
+    <div class="row" style="width: 1200px; margin: auto;padding-right: 0px;padding-left: 0px;">
+        <div class="col-xs-4" style="height: 52px;">
+            <a href="/index.html" style="display: block; height: 40px; margin-top:14px;text-decoration: none;">
+                <img src="" style="width: 40px;height: 30px;"/>
+            <span style="margin-left: 3px; font-size: 16px;color: #000000">
+                <span>北京市中小学教育资源网</span>
+            </span>
+            </a>
+        </div>
+        <div class="col-xs-7">
+            <div class="navbar-second" role="navigation">
+                <div class="navbar-collapse collapse" id="secondNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="navIndex">
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li id="navResourseCenter">
+                            <a href="resource-index.html">资源中心</a>
+                        </li>
+                        <li id="navBbs">
+                            <a href="learn/community/login/login.htm?f=0">学习社区</a>
+                        </li>
+                        <li id="navClass">
+                            <a href="learn/community/login/login.htm?f=1">班级空间</a>
+                        </li>
+                        <li id="usingHelp">
+                            <a href="usingHelp.html">使用帮助</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-1">
+            <div class="dropdown navbar-right">
+                <button class="btn btn-default dropdown-toggle"
+                        style="padding-left: 0px; padding-right: 0px;height: 52px;" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown" aria-expanded="true">
+                    <img id="userHeadPortrait" src="classRoom/head.png" class="img-circle"style="width:50px;height: 52px; margin-top: -8px;"/>
+                    <span class="caret" style="margin-left: 1px;"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="left:0px;">
+                    <li id="navPerson">
+                        <a href="personInfo.html">
+                            <img src="images/headerImg/index-person.png"style="margin-bottom:1px;">
+                            个人中心
+                        </a>
+                    </li>
+                    <li>
+                        <a href="personInfo.html">
+                            <img src="images/headerImg/index-collect.png" style="margin-bottom:2px;">
+                            我的收藏
+                        </a>
+                    </li>
+                    <li>
+                        <a href="personInfo-myMessage.html" id="message">
+                            <img src="images/headerImg/index-message.png" style="margin-bottom:1px;">
+                        <span style="margin-left:4px;line-height: 25px;">消息
+                            <span class="badge hidden">0</span>
+                        </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' id='logOut'>
+                            <img src="images/headerImg/index-logout.png"style="margin-bottom:1px;">
+                            <span style="margin-left: 5px;color: #000000">退出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--正文内容-->
+<div class="container" style="background-color: #f0f0f0;padding-top: 10px;">
+    <!--当前位置-->
+    <div class="row">
+        <a href="index.html" style="color: #000000;">首页</a>
+        &gt; <strong><a href="#" style="color: #000000;">学习社区</a></strong>
+    </div>
+    <div class="row" style="padding-top: 10px;">
+        <!--左侧选项栏-->
+        <div class="col-xs-2" style="background-color: #3b86bf;height : 600px;padding-right: 0px;width :126px;">
+            <img style="padding-left: 30px; text-align: center;padding-top: 20px;" src="classRoom/head.png"/><br/>
+            <ul style="padding-top: 20px;padding-left: 0px;">
+                <li id="publicSpace" style="list-style-type:none;height :100px;text-align: center;padding-top: 20px;background-color: #ffffff;">
+                    <img src="classRoom/publicSpaceA.png"/><br/>
+                    <span style="color: #54b9a7;">公共空间</span>
+                </li>
+                <li id="interest" style="list-style-type:none;height :100px;text-align: center;padding-top: 20px;">
+                    <img src="classRoom/interestN.png"/><br/>
+                    <span style="color: #ffffff;">兴趣交流</span>
+                </li>
+                <li id="interactive" style="list-style-type:none;height :100px;text-align: center;padding-top: 20px;">
+                    <img src="classRoom/interactiveN.png"/><br/>
+                    <span style="color: #ffffff;">互动学习</span>
+                </li>
+            </ul>
+        </div>
+        <!--右侧内容-->
+        <div class="col-xs-10" style="background-color: #ffffff;padding: 0px;">
+           <div  class="row" style="padding-top : 15px;display: none;" id="publicSpaceContent">
+               <div class="col-xs-2" style="padding-left: 30px;">
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;" >发表调查</button>
+               </div>
+               <div class="col-xs-2" style="padding-left: 0px;">
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;" id="newVote">发表投票</button>
+               </div>
+               <div class="col-xs-8">
+                   <div class="input-group" style="width:300px;border:1px solid #CECBCE;border-radius:5px;float: right;">
+                       <input type="text" class="form-control" style="border:0px;" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="search"><img src="images/resIndex/search.png"></button>
+                        </span>
+                   </div>
+               </div>
+               <br/>
+               <hr style="color:  #CECBCE;margin-top: 30px;"/>
+               <div class="col-xs-2"  style="padding-left: 50px;">
+                   <a style="color: #808080;text-decoration:none;"  >
+                       <span class="resSelectCont" >按时间排序</span>
+                   </a>
+               </div>
+               <div class="col-xs-2">
+                   <a style="color: #808080;text-decoration:none;" >
+                       <span class="resSelectCont"  >按回复数排序</span>
+                   </a>
+               </div>
+               <div class="col-xs-2">
+                   <a style="color: #808080;text-decoration:none;"   >
+                       <span class="resSelectCont">安浏览次数排序</span>
+                   </a>
+               </div>
+               <br/>
+               <div class="col-xs-12 "style="padding-left :40px;padding-top: 15px;">
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 调查</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <span style="font-size: 100%">你认为学习这件事很有必要么？</span>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 投票</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a id="publicSpaceDetail"><span style="font-size: 100%">你认为学习这件事很有必要么？</span></a>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 投票</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <span style="font-size: 100%">你认为学习这件事很有必要么？</span>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="interestContent">
+               <div class="col-xs-2" style="padding-left: 30px;">
+                   <button id="newGroup" style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">新建小组</button>
+               </div>
+               <br/>
+               <hr style="color:  #CECBCE;margin-top: 30px;"/>
+               <div class="col-xs-2"  style="padding-left: 50px;">
+                   <a style="color: #808080;text-decoration:none;"  >
+                       <span class="resSelectCont" >所有兴趣小组</span>
+                   </a>
+               </div>
+               <div class="col-xs-2">
+                   <a style="color: #808080;text-decoration:none;" >
+                       <span class="resSelectCont"  >我的兴趣小组</span>
+                   </a>
+               </div>
+               <br/>
+               <div class="col-xs-5" style="border: 1px solid #808080;height: 150px;margin-left: 30px;margin-top: 20px;">
+                   <div class="row">
+                       <div class='col-xs-2'style="width: 100px;height:100px;background-color: royalblue;margin-top: 20px;">
+                       </div>
+                       <div class="col-xs-8" style="margin-top: 20px;">
+                           <a id="interestDetail"><span style="font-size: 150%;"> 我建立的小组名称</span></a><br/>
+                           <span >我建立的小组名称描述的内容显示在这里面，长度过多时候换行显示。超出界面时候用点点点。。。。。。。表示</span>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-xs-5" style="border: 1px solid #808080;height: 150px;margin-left: 30px;margin-top: 20px;">
+                   <div class="row">
+                       <div class='col-xs-2'style="width: 100px;height:100px;background-color: royalblue;margin-top: 20px;">
+                       </div>
+                       <div class="col-xs-8" style="margin-top: 20px;">
+                           <span style="font-size: 150%;"> 我建立的小组名称</span><br/>
+                           <span >我建立的小组名称描述的内容显示在这里面，长度过多时候换行显示。超出界面时候用点点点。。。。。。。表示</span>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-xs-5" style="border: 1px solid #808080;height: 150px;margin-left: 30px;margin-top: 20px;">
+                   <div class="row">
+                       <div class='col-xs-2'style="width: 100px;height:100px;background-color: royalblue;margin-top: 20px;">
+                       </div>
+                       <div class="col-xs-8" style="margin-top: 20px;">
+                           <span style="font-size: 150%;"> 我建立的小组名称</span><br/>
+                           <span >我建立的小组名称描述的内容显示在这里面，长度过多时候换行显示。超出界面时候用点点点。。。。。。。表示</span>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-xs-5" style="border: 1px solid #808080;height: 150px;margin-left: 30px;margin-top: 20px;">
+                   <div class="row">
+                       <div class='col-xs-2'style="width: 100px;height:100px;background-color: royalblue;margin-top: 20px;">
+                       </div>
+                       <div class="col-xs-8" style="margin-top: 20px;">
+                           <span style="font-size: 150%;"> 我建立的小组名称</span><br/>
+                           <span >我建立的小组名称描述的内容显示在这里面，长度过多时候换行显示。超出界面时候用点点点。。。。。。。表示</span>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="interactiveContent">
+               <div class="col-xs-2" style="padding-left: 30px;">
+                   <button id="newQuestion" style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">我要提问</button>
+               </div>
+               <div class="col-xs-10">
+                   <div class="input-group" style="width:300px;border:1px solid #CECBCE;border-radius:5px;float: right;">
+                       <input type="text" class="form-control" style="border:0px;" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ><img src="images/resIndex/search.png"></button>
+                        </span>
+                   </div>
+               </div>
+               <br/>
+               <hr style="color:  #CECBCE;margin-top: 30px;"/>
+               <div class="col-xs-2"  style="padding-left: 50px;">
+                   <a style="color: #808080;text-decoration:none;"  >
+                       <span class="resSelectCont" >按时间排序</span>
+                   </a>
+               </div>
+               <div class="col-xs-2">
+                   <a style="color: #808080;text-decoration:none;" >
+                       <span class="resSelectCont"  >按回复数排序</span>
+                   </a>
+               </div>
+               <div class="col-xs-2">
+                   <a style="color: #808080;text-decoration:none;"   >
+                       <span class="resSelectCont">安浏览次数排序</span>
+                   </a>
+               </div>
+               <div class="col-xs-4"  >
+                   <div style="float: right;">
+                       <input type="checkbox"/><span >只显示我的提问</span>
+                   </div>
+               </div>
+               <br/>
+               <div class="col-xs-12 "style="padding-left :40px;padding-top: 15px;">
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 调查</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a id="interactiveDetail" ><span style="font-size: 100%">你认为学习这件事很有必要么？</span></a>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 投票</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <span style="font-size: 100%">你认为学习这件事很有必要么？</span>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+                   <div class="row">
+                       <div class="col-xs-1" style="background-color: #54b9a7;width: 60px;text-align: center;">
+                           <span > 投票</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <span style="font-size: 100%">你认为学习这件事很有必要么？</span>
+                       </div>
+                       <div class="col-xs-3">
+                           <span style="color:#808080;font-size: 90%;">小明 2015-01-01</span>
+                       </div>
+                       <div class="col-xs-4">
+                           <a style="color: #808080;" href="#">浏览次数（<span > 12</span>）</a>
+                           <a style="color: #808080;" href="#">投票数（<span > 100</span>）</a>
+                       </div>
+                   </div>
+                   <hr style="color: #CECBCE;margin-right: 30px;padding-top: 15px;"/>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="voteContent" >
+                <div class="col-xs-12">
+                    <a style="color: #000000;text-decoration:none;"><span class="resSelectCont">&lt 返回 </span></a>|
+                    <a style="color: #000000;text-decoration:none;"><span class="resSelectCont"> 新建投票</span></a>
+                </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                    <span style="padding-left: 100px;color: #808080;padding-right: 40px;">标题</span>
+                    <input style="height :30px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 100px;color: #808080;padding-right: 40px;">描述</span>
+                   <input type="text" style="height :90px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">投票期限</span>
+                   <input type="text" style="height :30px;width: 50px;border: 1px solid #808080;"/>天
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 100px;color: #808080;padding-right: 40px;">其他</span>
+                   <input type="checkbox" style="border: 1px solid #808080;"/>投票后才能查看结果
+               </div>
+               <div class="col-xs-12" style="margin-left :90px;margin-top:15px;background-color:#f1f1f1;height: 260px;width: 400px; ">
+                   <a><img  src="classRoom/garbage.png" style="float: right;"/></a>
+                   <br/>
+                   <span style="color: #808080;padding-right: 40px;padding-left:10px; ">题目</span>
+                   <input type="text" style="border: 1px solid #808080;width: 200px;height :30px;"/>
+                   <br/><br/>
+                   <span style="color: #808080;padding-right: 40px;padding-left:10px;padding-top: 15px; ">类型</span>
+                   <select style="border: 1px solid #808080;width: 100px;height :30px;" ></select>
+                   <br/><br/>
+                   <span style="color: #808080;padding-right: 40px;padding-left:10px;padding-top: 15px; ">选项</span>
+                   <input type="text" style="border: 1px solid #808080;width: 200px;height :30px;"/>
+                   <br/><br/>
+                   <input type="text" style="border: 1px solid #808080;width: 200px;height :30px;margin-left: 80px;"/>
+                   <a ><img src="classRoom/redImage.png"/></a>
+                   <br/><br/>
+                   <a style="text-decoration:none;color: #000000;margin-left: 80px;">
+                       <span class="resSelectCont">继续添加选项</span>
+                   </a>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <a  style="text-decoration:none;color: #000000;padding-left: 100px;">
+                       <span class="resSelectCont">+继续添加题目</span>
+                   </a >
+               </div>
+               <div class="col-xs-2" style="padding-left: 300px;">
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">提交</button>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="groupContent">
+               <div class="col-xs-12">
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont">&lt 返回 </span></a>|
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont"> 新建小组</span></a>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">小组名称</span>
+                   <input style="height :30px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">小组简介</span>
+                   <input type="text" style="height :90px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">小组标志</span>
+                   <img  src="" />
+                   <span style="font-size: 90%;">建议像素100*100像素</span>
+               </div>
+               <div class="col-xs-2" style="padding-left: 300px;">
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">提交</button>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="questionContent">
+               <div class="col-xs-12">
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont">&lt 返回 </span></a>|
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont"> 新建问题</span></a>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">问题标题</span>
+                   <input style="height :30px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">问题类型</span>
+                   <select style="height :30px;width: 100px;border: 1px solid #808080;" ></select>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                   <span style="padding-left: 73px;color: #808080;padding-right: 40px;">问题内容</span>
+                   <input type="text" style="height :90px;width: 300px;border: 1px solid #808080;"/>
+               </div>
+               <div class="col-xs-2" style="padding-left: 300px;">
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">提交</button>
+               </div>
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display:none;" id="publicSpaceDetailContent" >
+               <div class="col-xs-2" style="width: 140px;padding-right: 0px;">
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont">&lt 返回 </span></a>|
+                   <img  src="classRoom/head.png" class="img-circle"style="width:50px;height: 52px; margin-top: -8px;"/>
+               </div>
+               <div class="col-xs-10" style="padding: 0px;">
+                   <a style="color: #5bc0de;text-decoration: none;font-size :20px;"> <span >大家觉得学习是否有必要？</span></a><br/>
+                   <span style="color: #808080;line-height: 25px;">小明  2015-01-20</span>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;padding-left: 100px;">
+                  <span style="">请大家说一说学习是否有必要？</span>
+               </div>
+               <div class="col-xs-12" style="margin-left :90px;margin-top:15px;background-color:#f1f1f1;height: 180px;width: 85%; ">
+                   <div class="row" style="line-height: 40px;padding-left: 30px;"> <input type="radio" value="" /><span style="padding-left: 20px;font-size: 15px;"> 有</span><br/></div>
+                   <div class="row" style="line-height: 40px;padding-left: 30px;"><input type="radio" value="" /><span style="padding-left: 20px;font-size: 15px;"> 没有</span><br/></div>
+                   <div class="row" style="line-height: 40px;padding-left: 30px;"><input type="radio" value="" /><span style="padding-left: 20px;font-size: 15px;"> 不好说</span><br/></div>
+                   <button style="border :0px;width: 100px; height: 40px; background-color: #3b86bf; text-align: center; font-size: 100%; color: white;">投票</button>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;">
+                  <div class="row" >
+                      <div class="col-xs-2" >
+                          <span style="font-size: 15px;float: right;">有</span>
+                      </div>
+                      <div class="col-xs-10" style="">
+                          <hr style="width: 150px;height: 10px;background-color: red;float: left;margin-top: 8px;"/>
+                          <span style="font-size: 20px;">900票</span>
+                      </div>
+                  </div>
+                   <div class="row" >
+                       <div class="col-xs-2" >
+                           <span style="font-size: 15px;float: right;">没有</span>
+                       </div>
+                       <div class="col-xs-10" style="">
+                           <hr style="width: 150px;height: 10px;background-color: red;float: left;margin-top: 8px;"/>
+                           <span style="font-size: 20px;">900票</span>
+                       </div>
+                   </div>
+                   <div class="row" >
+                       <div class="col-xs-2" >
+                           <span style="font-size: 15px;float: right;">不好说</span>
+                       </div>
+                       <div class="col-xs-10" style="">
+                           <hr style="width: 150px;height: 10px;background-color: red;float: left;margin-top: 8px;"/>
+                           <span style="font-size: 20px;">900票</span>
+                       </div>
+                   </div>
+               </div>
+
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="interestDetailContent" >
+               <div class="col-xs-10" style="border-right: 1px solid #000000;">
+                   <div class="row">
+                       <div class="col-xs-1" style="width: 90px;">
+                            <a style="color: #000000;text-decoration:none;margin-top: 0px;"><span class="resSelectCont" >&lt 返回 </span></a>|
+                       </div>
+                       <div class="col-xs-2" style="padding-right :0px;">
+                           <img  src="classRoom/head.png" class="img-circle"style="width:100px;height: 100px; margin-top: -8px;"/>
+                       </div>
+                       <div class="col-xs-8"  style="padding :0px;">
+                           <a style="color: #5bc0de;text-decoration: none;font-size :20px;"> <span >大家觉得学习是否有必要？</span></a>
+                           <button style="background-color: #808080;width: 80px;height: 100%;color: #ffffff;border: 0px;">解散小组</button>
+                           <button style="background-color: red;width: 80px;height: 100%;color: #ffffff;border: 0px;">解散小组</button><br/>
+                           <span style="color: #808080;line-height: 30px;">创建时间：2015-01-01</span><span style="color: #808080;line-height: 30px;">创建人：小明</span><br/>
+                           <span >小组介绍：我们一起来学习吧！</span>
+                       </div>
+                       <div class="col-xs-12" style="margin-left :90px;margin-top:15px;height: 180px;width: 85%; ">
+                            <div >
+                                <span >你认为学习这是很有必要么？</span>
+                                <span style="color: #808080;font-size: 12px;">小明  2015-01-01</span>
+                                <a style="padding-left: 150px;"><span >浏览次数（100）</span></a><a><span>回复数（10）</span></a><br/>
+                                <hr style="color: #000000;padding-top: 5px;"/>
+                            </div>
+                           <div >
+                               <span >你认为学习这是很有必要么？</span>
+                               <span style="color: #808080;font-size: 12px;">小明  2015-01-01</span>
+                               <a style="padding-left: 150px;"><span >浏览次数（100）</span></a><a><span>回复数（10）</span></a><br/>
+                               <hr style="color: #000000;padding-top: 5px;"/>
+                           </div>
+                           <div >
+                               <span >你认为学习这是很有必要么？</span>
+                               <span style="color: #808080;font-size: 12px;">小明  2015-01-01</span>
+                               <a style="padding-left: 150px;"><span >浏览次数（100）</span></a><a><span>回复数（10）</span></a><br/>
+                               <hr style="color: #000000;padding-top: 5px;"/>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-xs-2" >
+                    <div class="row">
+                        <div class="col-xs-12" style="text-align: center;">
+                            <img  src="classRoom/head.png" class="img-circle"style="width:50px;height: 50px; margin-top: -8px;"/><br/>
+                            <span >管理员</span><br/>
+                            <span >小明</span>
+                        </div>
+                        <div class="col-xs-12" style="text-align: center;padding-top: 10px;">
+                            <img  src="classRoom/head.png" class="img-circle"style="width:50px;height: 50px; margin-top: -8px;"/><br/>
+                            <span >群成员</span><br/>
+                            <span >小红</span>
+                        </div>
+                    </div>
+               </div>
+
+
+           </div>
+           <div class="row" style="padding-top : 15px;padding-bottom: 40px;display: none;" id="interactiveDetailContent" >
+               <div class="col-xs-2" style="width: 140px;padding-right: 0px;">
+                   <a style="color: #000000;text-decoration:none;"><span class="resSelectCont">&lt 返回 </span></a>|
+                   <img  src="classRoom/head.png" class="img-circle"style="width:50px;height: 52px; margin-top: -8px;"/>
+               </div>
+               <div class="col-xs-10" style="padding: 0px;">
+                   <a style="color: #5bc0de;text-decoration: none;font-size :20px;"> <span >大家觉得学习是否有必要？</span></a><br/>
+                   <span style="color: #808080;line-height: 25px;">小明  2015-01-20</span>
+               </div>
+               <div class="col-xs-12" style="padding-top: 15px;padding-left: 100px;">
+                   <span style="">请大家说一说学习是否有必要？</span><br/>
+                   <hr style="color: #000000;padding-top: 5px;"/>
+               </div>
+               <div class="col-xs-12" style="margin-left :90px;margin-top:15px;width: 85%; ">
+                   <img  src="classRoom/head.png" class="img-circle"style="width:50px;height: 52px; margin-top: -8px;"/>
+                   <span style="font-size: 15px;color: #000000;">小红的回答 ：</span>
+                   <div style="background-color: #dcdcdc;margin-left: 50px;">
+                        <span style="text-align: center;line-height: 50px;padding-left: 30px;">有必要</span>
+                   </div>
+                   <hr style="color: #000000;padding-top: 5px;"/>
+               </div>
+               <div class="col-xs-12" style="margin-left :90px; ">
+                   <span style="padding-top: 0px;">回答 ：</span><br/>
+                   <textarea style="height:200px;width: 500px;"></textarea><br/>
+                   <button style="background-color: #3b86bf;height: 40px;width: 90px;border: 0px;margin-top: 10px;margin-left: 30px;">发送</button>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+<!--低框部分-->
+<div style="width:100%;height: 90px;padding-top:50px;color:#000000;" class="col-xs-12 text-center">
+    <a href="index-feedback.html"><span style="color:#000000;">意见反馈</span></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="about-us.html" style="color:#000;"><span style="color:#000000;">关于我们</span></a>
+    <h5 style="margin-left:30px;">联系方式:010-00000001 help@mocc.com 王老师</h5>
+    <h5>
+        <span>京ICP备1304316</span>
+        <span style="margin-left:15px;">Copyright 2011 New Corporation, All Rights Reserved 2011 北京市课程中心版权所有</span>
+    </h5>
+</div>
+<!--<div>-->
+    <!--<left>-->
+        <!--<menu>-->
+            <!--list1-->
+            <!--list2-->
+            <!--list3-->
+        <!--</menu>-->
+    <!--</left>-->
+    <!--<right></right>-->
+<!--</div>-->
+<script type="application/ecmascript">
+    var currentMenuItem, currentContent
+window.addEventListener('load', function (evt) {
+    var config = [
+        {'menuId': 'publicSpace', 'contentId': 'publicSpaceContent', 'normalImage': 'classRoom/publicSpaceN.png', 'activeImage': 'classRoom/publicSpaceA.png'},
+        {'menuId': 'interest', 'contentId': 'interestContent', 'normalImage': 'classRoom/interestN.png', 'activeImage': 'classRoom/interestA.png'},
+        {'menuId': 'interactive', 'contentId': 'interactiveContent', 'normalImage': 'classRoom/interactiveN.png', 'activeImage': 'classRoom/interactiveA.png'},
+        {'menuId': 'newVote', 'contentId': 'voteContent'},
+        {'menuId': 'newGroup', 'contentId': 'groupContent'},
+        {'menuId': 'newQuestion', 'contentId': 'questionContent'},
+        {'menuId': 'publicSpaceDetail','contentId': 'publicSpaceDetailContent'},
+        {'menuId': 'interestDetail','contentId':'interestDetailContent'},
+        {'menuId':'interactiveDetail','contentId':'interactiveDetailContent'}
+    ]
+    config.forEach(function(data,index){
+        document.getElementById(data.menuId).addEventListener('click',function(){
+            if(data.normalImage!=null){
+                if (currentMenuItem) {
+                    currentMenuItem.style.backgroundColor = '#3b86bf'
+                    currentMenuItem.querySelector('img').src = currentMenuItem.getAttribute('data-normal-image')
+                    currentMenuItem.querySelector('span').style.color='#ffffff'
+                }
+            }
+
+            if (currentContent) {
+                currentContent.style.display = 'none'
+            }
+            if(data.normalImage!=null){
+                currentMenuItem = document.getElementById(data.menuId)
+                currentMenuItem.setAttribute('data-normal-image', data.normalImage)
+                currentMenuItem.style.backgroundColor = 'white'
+                currentMenuItem.querySelector('img').src = data.activeImage
+                currentMenuItem.querySelector('span').style.color='#54b9a7'
+            }
+            currentContent = document.getElementById(data.contentId)
+            currentContent.style.display='block'
+        })
+    })
+    document.getElementById(config[0].menuId).dispatchEvent(new Event('click'))
+
+    //document.getElementById('publicSpaceContent').style.display='block'
+
+//    document.getElementById('publicSpace').addEventListener('click',function(){
+//        document.getElementById('publicSpaceContent').style.display='block'
+//    })
+//    document.getElementById('interest').addEventListener('click',function(){
+//        document.getElementById('interestContent').style.display='block'
+//    })
+//    document.getElementById('interactive').addEventListener('click',function(){
+//        document.getElementById('interactiveContent').style.display='block'
+//    })
+//    for (var c in config) {
+//        var i = document.getElementById(c.menuId)
+//        i.addEventListener('click', function(e) {
+//            //i.addClass('s')
+//            document.getElementById(c.contentId).style.display='block'
+////            i.addClass('s')
+////            prevI.removeClass('s')
+////            prevI = i
+////            r = document.getElementById(c.contentId)
+////            var content = document.getElementById(c.contentId)
+////            r.innerHTML = ''
+////            r.appendChild(content)
+//        })
+//    }
+}, false)
+
+</script>
+<style>
+    .resSelectCont:hover {
+        color: dodgerblue;
+    }
+
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a :focus {
+        background-color: #5bc0de;
+    }
+</style>
+</body>
+</html>

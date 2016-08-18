@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+    <title>出错啦~~~</title>
+    <script language="javascript" type="text/javascript">
+        var i = 5;
+        var intervalid;
+        intervalid = setInterval("fun()", 1000);
+        function fun() {
+            if (i == 0) {
+                window.location.href = "index.html";
+                clearInterval(intervalid);
+            }
+            document.getElementById("mes").innerHTML = i;
+            i--;
+        }
+    </script>
+</head>
+<body>
+<div id="errorfrm">
+    <h3>出错啦~~~</h3>
+
+    <div id="error">
+        <img src="images/error.gif" mce_src="images/error.gif" alt=""/>
+
+        <p style="font-size: 20px;color: red;">系统出错，请去学校管理中进去！</p>
+
+        <p>将在 <span id="mes" style="color: red">5</span> 秒钟后返回首页！</p>
+    </div>
+</div>
+</body>
+</html>

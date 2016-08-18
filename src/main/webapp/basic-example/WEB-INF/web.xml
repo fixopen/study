@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>Centframe Enterprise Edition</display-name>
+    <!-- <distributable/> -->
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/config/spring/application-*.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>com.textbookpub.web.listener.AppContextListener</listener-class>
+    </listener>
+    <!-- 加载jetbrick-template配置 -->
+    <listener>
+        <listener-class>jetbrick.template.web.JetWebEngineLoader</listener-class>
+    </listener>
+    <context-param>
+        <param-name>jetbrick-template-config-location</param-name>
+        <param-value>/WEB-INF/config/jetbrick-template.properties</param-value>
+    </context-param>
+
+    <!-- 过滤器: Encoding -->
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>*.wms</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>*.whtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>*.jspx</url-pattern>
+    </filter-mapping>
+
+    <!-- 过滤器：HttpPrepareFilter -->
+    <filter>
+        <filter-name>appGuardianFilter</filter-name>
+        <filter-class>com.textbookpub.web.filter.AppGuardianFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>appGuardianFilter</filter-name>
+        <url-pattern>*.wms</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>appGuardianFilter</filter-name>
+        <url-pattern>*.whtml</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>appGuardianFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>appGuardianFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>appGuardianFilter</filter-name>
+        <url-pattern>*.jspx</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <filter-class>jetbrick.web.mvc.DispatcherFilter</filter-class>
+        <init-param>
+            <param-name>configLocation</param-name>
+            <param-value>/WEB-INF/config/jetbrick-webmvc.properties</param-value>
+        </init-param>
+    </filter>
+    <!--filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>*.whtml</url-pattern>
+    </filter-mapping-->
+    <filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>*.wms</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>jetbrick-webmvc</filter-name>
+        <url-pattern>*.whtml</url-pattern>
+    </filter-mapping>
+
+    <!-- CXF servlet -->
+    <!-- <servlet> <servlet-name>CXFServlet</servlet-name> <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+            <load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>CXFServlet</servlet-name>
+            <url-pattern>/ws/*</url-pattern> </servlet-mapping> -->
+    <!-- CXF servlet 结束 -->
+
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>com.textbookpub.web.servlet.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+        <!--
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.whtml</welcome-file>
+        <welcome-file>index.aspx</welcome-file>
+        -->
+    </welcome-file-list>
+</web-app>

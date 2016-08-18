@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../images/favicon.ico">
+    <title>北京中小学课程教材资源网管理平台</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+    <link href="../../css/backglobal.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+<body>
+<div id="header"></div>
+<ol class="breadcrumb">
+    <li><a href="../index.html">主页</a></li>
+    <li class="active"><a href="catalogue-manage.html">教材管理</a></li>
+</ol>
+<div class="container">
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-default" id='btnNew'>添加</button>
+    </div>
+    <div class="space-1"></div>
+    <div class='row'>
+        <div class='col-xs-3'>
+            <label>学科:</label>
+
+            <div>
+                <select class="form-control" id='querySubject'>
+                </select>
+            </div>
+        </div>
+        <div class='col-xs-3'>
+            <label>版本:</label>
+
+            <div>
+                <select class="form-control" id='queryVersion'>
+                </select>
+            </div>
+        </div>
+        <div class='col-xs-3'>
+            <label>年级:</label>
+            <div>
+                <select class="form-control" id='queryClassNum'>
+                </select>
+            </div>
+        </div>
+        <div class='col-xs-3'>
+            <label>学期:</label>
+
+            <div>
+                <select class="form-control" id='queryTermNum'>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class='col-xs-12 res-list'>
+            <ul id='book-container' style="padding:0px">
+            </ul>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-xs-offset-3 col-xs-8'>
+            <ul class="pagination" id='pagicontainer'></ul>
+        </div>
+    </div>
+</div>
+<div id="template">
+    <li class="book-tr">
+        <a href='#'>
+            <img src='../../images/file_zip.png' style='width:40px;height:40px'/><span>${caption}</span><br/>
+        </a>
+        <span><button class='btn btn-xs btn-rowedit' rowid='${id}'>编辑教材</button>
+        <button class='btn btn-xs btn-rowdelete' rowid='${id}'>删除</button>
+        <button class='btn btn-xs btn-rowcatalogue' rowid='${id}'>编辑目录</button></span><br/>
+    </li>
+</div>
+<script src="../../js/libs/jquery.min.js"></script>
+<script src="../../js/libs/bootstrap.min.js"></script>
+<script src="../../js/libs/jquery.easyui.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/util-resourceSearch.js"></script>
+<script src="../../js/back/catalogue-manage.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

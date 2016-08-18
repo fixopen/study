@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <title>北京市中小学课程教材资源网</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/non-responsive.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/global.css" rel="stylesheet">
+</head>
+<body>
+<div id="header" type="navResourseCenter"></div>
+<div class="container">
+    <div class="currentLocation BreadDischarge">
+        当前位置：
+        <a href="index.html">首页</a>
+        &gt;
+        <a href="resource-index.html">资源中心</a>
+        &gt; <strong><a href="#">资源查询</a></strong>
+    </div>
+</div>
+<div class="container">
+    <div class="condition-container">
+        <div class='conditionrow'>
+            <span style="font-size: 15px"><strong>学科:</strong></span>
+            <span id='subject-Container'></span>
+        </div>
+        <div class="space-1"></div>
+        <div class='conditionrow'>
+            <span style="font-size: 15px"><strong> 年级:</strong></span>
+            <span id='stage-Container'></span>
+        </div>
+        <div class="space-1"></div>
+        <div class='conditionrow'>
+            <span style="font-size: 15px"><strong>类型:</strong></span>
+            <span id='type-Container'></span>
+        </div>
+        <div class="space-1"></div>
+        <div class='conditionrow'>
+            <span style="font-size: 15px;"><strong>范围:</strong></span>
+            <span id='scope-Container'></span>
+        </div>
+        <div class="space-1"></div>
+        <div class='conditionrow'>
+            <span style="font-size: 15px;"><strong>版本:</strong></span>
+            <span id='version-Container'></span>
+        </div>
+        <br/>
+
+        <div>
+            <strong>已选条件:</strong>
+            <span id='selected-Container'></span>
+        </div>
+    </div>
+    <div class='space-1'></div>
+    <div class='res-thumbnails' id='resource-container'>
+    </div>
+    <div class="col-xs-12" style="text-align:center;">
+        <ul class="pagination pagination-lg" id='pagicontainer'>
+
+        </ul>
+    </div>
+    <!--copyright-->
+</div>
+<div id="footer"></div>
+<div id="template">
+    <!-- class='btn btn-default btn-xs'-->
+        <span class='condition-tpl'>
+            <a type='button' style="cursor:pointer;text-decoration:none;" id='${id}' name='condition'
+               catalog='${catalog}'>
+                <span class="resSelectCont" id='${id}' catalog='${catalog}'>${title}</span></a>
+        </span>
+        <span class='selected-tpl'>
+            <a type='button' class='btn btn-default btn-xs resselectcont' id='${id}' name='selected'
+               catalog='${catalog}'>
+                ${title}
+                <span class="glyphicon glyphicon-remove red"></span>
+            </a>
+        </span>
+
+    <div class="resource-tpl" style='padding-top:20px;margin-bottom:60px'>
+        <a href='${href}'>
+            <img src="${coverFile}" class="img-responsive" style='width:120px;height:160px'>
+
+            <div class="text">
+                <div class="inner">${ownerCaption}&nbsp;&nbsp;${subjectCaption}&nbsp;&nbsp;${typeCaption}
+                </div>
+            </div>
+            <div class="tags">
+                <span class="label-holder">
+                    <span class="label label-default">${caption}</span>
+                </span>
+                <span class="label-holder">
+                    <span class="label label-default">${gradeTermCaption}</span>
+                </span>
+            </div>
+        </a>
+    </div>
+    <ul>
+        <li class='firstpagili'><a href='${href}'>&laquo;</a></li>
+        <li class='pagili'><a href="${href}">${pn}</a></li>
+        <li class='lastpagili'><a href='${href}'>&raquo;</a></li>
+    </ul>
+</div>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/resource-search.js"></script>
+<style>
+    .condition-tpl, .selected-tpl {
+        padding: 0px 5px;
+    }
+
+    .conditionrow {
+        padding-top: 4px;
+    }
+
+    .resSelectCont:hover {
+        background-image: url(images/resSelectCont_04.png);
+        width: 70px;
+        height: 24px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+    }
+</style>
+</body>
+</html>
