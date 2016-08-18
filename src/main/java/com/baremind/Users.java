@@ -34,6 +34,7 @@ public class Users {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postUser(@CookieParam("sessionId") String sessionId, User user) {
         Response result = Response.status(401).build();
+        //如果不走下面的方法，上来就是401异常，直接返回这个异常
         if (JPAEntry.isLogining(sessionId)) {
             user.setId(IdGenerator.getNewId());
             EntityManager em = JPAEntry.getEntityManager();
