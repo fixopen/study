@@ -49,6 +49,24 @@ CREATE TABLE additionals (
 ALTER TABLE additionals OWNER TO fixopen;
 
 --
+-- Name: cards; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE cards (
+    id bigint NOT NULL,
+    user_id bigint,
+    no name DEFAULT ''::name NOT NULL,
+    password name DEFAULT ''::name NOT NULL,
+    active_time timestamp without time zone,
+    end_time timestamp without time zone,
+    duration interval,
+    subject bigint
+);
+
+
+ALTER TABLE cards OWNER TO fixopen;
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: fixopen
 --
 
@@ -138,6 +156,29 @@ CREATE TABLE properties (
 ALTER TABLE properties OWNER TO fixopen;
 
 --
+-- Name: schedulers; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE schedulers (
+    id bigint NOT NULL,
+    year integer NOT NULL,
+    week integer NOT NULL,
+    state integer DEFAULT 0 NOT NULL,
+    start_time time without time zone,
+    end_time time without time zone,
+    duration interval,
+    subject bigint,
+    grade integer,
+    title name,
+    description text,
+    teacher name,
+    teacher_description text
+);
+
+
+ALTER TABLE schedulers OWNER TO fixopen;
+
+--
 -- Name: sessions; Type: TABLE; Schema: public; Owner: fixopen
 --
 
@@ -178,6 +219,12 @@ CREATE TABLE users (
     head character varying(256) DEFAULT ''::character varying NOT NULL,
     email character varying(256),
     telephone character varying(256),
+    birthday timestamp without time zone,
+    sex integer DEFAULT 0 NOT NULL,
+    amount real DEFAULT 0.0 NOT NULL,
+    school name,
+    grade name,
+    class name,
     site character varying(256) DEFAULT ''::character varying NOT NULL,
     location character varying(256),
     description text,
@@ -305,6 +352,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 
 --
+-- Data for Name: cards; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
 -- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
@@ -341,6 +394,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 
 --
+-- Data for Name: schedulers; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
@@ -368,6 +427,14 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 -- Data for Name: wechat_users; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
+
+
+--
+-- Name: card__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY cards
+    ADD CONSTRAINT card__pk PRIMARY KEY (id);
 
 
 --
@@ -416,6 +483,14 @@ ALTER TABLE ONLY medias
 
 ALTER TABLE ONLY properties
     ADD CONSTRAINT property__pk PRIMARY KEY (id);
+
+
+--
+-- Name: scheduler__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY schedulers
+    ADD CONSTRAINT scheduler__pk PRIMARY KEY (id);
 
 
 --
@@ -477,34 +552,6 @@ CREATE UNIQUE INDEX property_name__idx ON properties USING btree (name);
 --
 
 CREATE INDEX tag_name__idx ON tags USING btree (name);
-
-
---
--- Name: user_email__idx; Type: INDEX; Schema: public; Owner: fixopen
---
-
-CREATE UNIQUE INDEX user_email__idx ON users USING btree (email);
-
-
---
--- Name: user_login_name__idx; Type: INDEX; Schema: public; Owner: fixopen
---
-
-CREATE UNIQUE INDEX user_login_name__idx ON users USING btree (login_name);
-
-
---
--- Name: user_name__idx; Type: INDEX; Schema: public; Owner: fixopen
---
-
-CREATE INDEX user_name__idx ON users USING btree (name);
-
-
---
--- Name: user_telephone__idx; Type: INDEX; Schema: public; Owner: fixopen
---
-
-CREATE UNIQUE INDEX user_telephone__idx ON users USING btree (telephone);
 
 
 --
