@@ -128,6 +128,24 @@ INHERITS (medias);
 ALTER TABLE images OWNER TO fixopen;
 
 --
+-- Name: knowledge_points; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE knowledge_points (
+    id bigint NOT NULL,
+    subject_id bigint,
+    volume_id bigint,
+    grade integer,
+    title name,
+    "order" integer,
+    store_path character varying(256),
+    video_url character varying(256)
+);
+
+
+ALTER TABLE knowledge_points OWNER TO fixopen;
+
+--
 -- Name: likes; Type: TABLE; Schema: public; Owner: fixopen
 --
 
@@ -141,6 +159,26 @@ CREATE TABLE likes (
 
 
 ALTER TABLE likes OWNER TO fixopen;
+
+--
+-- Name: problems; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE problems (
+    id bigint NOT NULL,
+    subject_id bigint,
+    volume_id bigint,
+    knowledge_point_id bigint,
+    title character varying,
+    options name[],
+    standard_answers integer[],
+    "order" integer,
+    store_path character varying(256),
+    video_url character varying(256)
+);
+
+
+ALTER TABLE problems OWNER TO fixopen;
 
 --
 -- Name: properties; Type: TABLE; Schema: public; Owner: fixopen
@@ -167,7 +205,7 @@ CREATE TABLE schedulers (
     start_time time without time zone,
     end_time time without time zone,
     duration interval,
-    subject bigint,
+    subject_id bigint,
     grade integer,
     title name,
     description text,
@@ -193,6 +231,18 @@ CREATE TABLE sessions (
 
 
 ALTER TABLE sessions OWNER TO fixopen;
+
+--
+-- Name: subjects; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE subjects (
+    id bigint NOT NULL,
+    name name
+);
+
+
+ALTER TABLE subjects OWNER TO fixopen;
 
 --
 -- Name: tags; Type: TABLE; Schema: public; Owner: fixopen
@@ -248,6 +298,20 @@ INHERITS (medias);
 
 
 ALTER TABLE videos OWNER TO fixopen;
+
+--
+-- Name: volumes; Type: TABLE; Schema: public; Owner: fixopen
+--
+
+CREATE TABLE volumes (
+    id bigint NOT NULL,
+    subject_id bigint,
+    grade integer,
+    title name
+);
+
+
+ALTER TABLE volumes OWNER TO fixopen;
 
 --
 -- Name: wechat_users; Type: TABLE; Schema: public; Owner: fixopen
@@ -376,6 +440,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 
 --
+-- Data for Name: knowledge_points; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
 -- Data for Name: likes; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
@@ -383,6 +453,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 --
 -- Data for Name: medias; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
+-- Data for Name: problems; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
 
@@ -406,6 +482,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 
 --
+-- Data for Name: subjects; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
@@ -419,6 +501,12 @@ ALTER TABLE ONLY videos ALTER COLUMN store_path SET DEFAULT ''::character varyin
 
 --
 -- Data for Name: videos; Type: TABLE DATA; Schema: public; Owner: fixopen
+--
+
+
+
+--
+-- Data for Name: volumes; Type: TABLE DATA; Schema: public; Owner: fixopen
 --
 
 
@@ -462,6 +550,14 @@ ALTER TABLE ONLY images
 
 
 --
+-- Name: knowledge_point__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY knowledge_points
+    ADD CONSTRAINT knowledge_point__pk PRIMARY KEY (id);
+
+
+--
 -- Name: like__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
 --
 
@@ -475,6 +571,14 @@ ALTER TABLE ONLY likes
 
 ALTER TABLE ONLY medias
     ADD CONSTRAINT media__pk PRIMARY KEY (id);
+
+
+--
+-- Name: problem__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY problems
+    ADD CONSTRAINT problem__pk PRIMARY KEY (id);
 
 
 --
@@ -502,6 +606,14 @@ ALTER TABLE ONLY sessions
 
 
 --
+-- Name: subject__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY subjects
+    ADD CONSTRAINT subject__pk PRIMARY KEY (id);
+
+
+--
 -- Name: tag__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
 --
 
@@ -523,6 +635,14 @@ ALTER TABLE ONLY users
 
 ALTER TABLE ONLY videos
     ADD CONSTRAINT video__pk PRIMARY KEY (id);
+
+
+--
+-- Name: volume__pk; Type: CONSTRAINT; Schema: public; Owner: fixopen
+--
+
+ALTER TABLE ONLY volumes
+    ADD CONSTRAINT volume__pk PRIMARY KEY (id);
 
 
 --
