@@ -1,6 +1,8 @@
 package com.baremind.data;
 
 
+import java.util.Date;
+
 import javax.persistence.*;
 /**
  * Created by lenovo on 2016/8/18.
@@ -21,14 +23,14 @@ public class Scheduler {
 	@Column(name = "state")
 	private int state;
 	
-	@Column(name = "state_time")
-	private int stateTime;
+	@Column(name = "start_time")
+	private Date startTime;
 	
 	@Column(name = "end_time")
-	private int endTime;
+	private Date endTime;
 	
 	@Column(name = "duration")
-	private String duration;
+	private Integer duration;
 	
 	@Column(name = "subject_id")
 	private Long subjectId;
@@ -80,27 +82,27 @@ public class Scheduler {
 		this.state = state;
 	}
 
-	public int getStateTime() {
-		return stateTime;
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setStateTime(int stateTime) {
-		this.stateTime = stateTime;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-	public int getEndTime() {
+	public Date getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(int endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 
-	public String getDuration() {
+	public Integer getDuration() {
 		return duration;
 	}
 
-	public void setDuration(String duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
 

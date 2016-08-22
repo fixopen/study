@@ -35,6 +35,9 @@ public class Card {
 	
 	@Column(name = "subject")
 	private Long subject;
+	
+	@Column(name = "amount")
+	private Double amount;
 
 	public Long getId() {
 		return id;
@@ -98,6 +101,14 @@ public class Card {
 
 	public void setSubject(Long subject) {
 		this.subject = subject;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 	
 	
