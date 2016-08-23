@@ -1,6 +1,6 @@
 window.addEventListener('load', function (evt) {
     var onlineFriends = [
-        <!--好友管理-->
+        //<!--好友管理-->
         {"photo": "images/headImg7.jpg",
             "friendName": "金宇心"
 
@@ -34,7 +34,7 @@ window.addEventListener('load', function (evt) {
 
 
     var friendMessage = [
-        <!--好友管理-->
+        //<!--好友管理-->
         {"photo": "images/headImg8.jpg",
             "friendName": "杜如娟",
             "href": "#",

@@ -30,7 +30,7 @@ public class Volumes {
 	@POST//添
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, Volume volume) {
+	 public Response createvolums(@CookieParam("sessionId") String sessionId, Volume volume) {
 	        Response result = Response.status(401).build();
 	        if (JPAEntry.isLogining(sessionId)) {
 	        	volume.setId(IdGenerator.getNewId());
@@ -47,7 +47,7 @@ public class Volumes {
 
 	@GET//根据条件查询
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+	public Response getVolums(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
 		 Response result = Response.status(401).build();
 	        if (JPAEntry.isLogining(sessionId)) {
 	            Map<String, Object> filterObject = null;
@@ -63,10 +63,10 @@ public class Volumes {
 	        return result;
 	}
 
-	@GET//根据条件查询
+	@GET//根据id查询
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
+	public Response getVolumesById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
 		 Response result = Response.status(401).build();
 	        if (JPAEntry.isLogining(sessionId)) {
 	            Map<String, Object> filterObject = new HashMap<>(1);
@@ -83,7 +83,7 @@ public class Volumes {
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Volume volume) {
+	public Response updateVolumes(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Volume volume) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
             Map<String, Object> filterObject = new HashMap<>(1);
@@ -93,15 +93,15 @@ public class Volumes {
             	 Volume existvolume = volumes.get(0);
             	String title = volume.getTitle();
             	if (title != null) {
-            		volume.setTitle(title);
+            		existvolume.setTitle(title);
             	}
             	int grade = volume.getGrade();
             	if (grade != 0) {
-            		volume.setGrade(grade);
+            		existvolume.setGrade(grade);
             	}
             	Long subjectId = volume.getSubjectId();
             	if(sessionId!=null){
-            		volume.setSubjectId(subjectId);
+            		existvolume.setSubjectId(subjectId);
             	}
             	
                 EntityManager em = JPAEntry.getEntityManager();

@@ -141,7 +141,7 @@
 
 
     var quesContent = [
-        <!--我的提问-->
+        //<!--我的提问-->
         {"titleContent": "我的提问内容1",
             "time": "2014-05-20"},
         {"titleContent": "我的提问内容2",
@@ -157,7 +157,7 @@
     }
 
     var noticeContent = [
-        <!--我的提问-->
+        //<!--我的提问-->
         {"titleContent": "通知内容1",
             "time": "2014-05-18"},
         {"titleContent": "通知内容2",
@@ -189,7 +189,7 @@
 
 
     var friendMessage = [
-        <!--好友管理-->
+        //<!--好友管理-->
         {"photo": "../images/friend.jpg",
             "friendName": "晓晓",
             "href": "#",
