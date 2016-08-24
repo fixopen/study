@@ -28,7 +28,7 @@
 			</td>
 			<td> <select id="volumeId"></select>
 			</td>
-			<td><input type="text" id="title" /> <select id="titleselect"></select>
+			<td><input type="text" id="title2" /> <select id="titleselect"></select>
 			</td>
 			<td><input type="text" id="storePath" /> <select id="storePathselect"></select>
 			</td>
@@ -41,68 +41,25 @@
 	<script type="text/javascript">
 
 let subjects = []//定义一个全局变量subject[]
-let knowledgePoints = []
 let KnowledgePointId = 0//定义一个全局变量currentID
 
 $(function(){
-	  //获取一个对象得到grade的值
-	  let getSubjectId = function() {
-		  let s = document.getElementById('subjectId')
-		  return s.value
-	  }
-	  //获取一个对象得到grade的值
 	  let getGrade = function() {
 		  let g = document.getElementById('grade')
 		  return g.value
 	  }
-	  //获取一个对象得到volumeId的值
-	  let getVolumeId = function() {
-		  let v = document.getElementById('volumeId')
-		  return v.value
-	  }
-	  //获取一个对象得到storePath的值
-	  let getStorePath = function() {
-		  let s = document.getElementById('storePath')
-		  return s.value
-	  }
-	  //获取一个对象得到videoUrl的值
-	  let getVideoUrl = function() {
-		  let d = document.getElementById('videoUrl')
-		  return d.value
-	  }
-	  //获取一个对象得到title的值
-	  let getTitle = function() {
-		  let t = document.getElementById('title')
-		  return t.value
-	  }
 	  
 	  let fillVolume = function() {
-		  $("title").val('')
-		  $("#titleselect").empty();
-		  $("storePath").val('')
-		  $("#storePathselect").empty();
-		  $("videoUrl").val('')
-		  $("#VideoUrlselect").empty();
-		  su = getSubjectId()
-		  g = getGrade() 
-		  v = getVolumeId()
-		  sp = getStorePath()
-		  d = getVideoUrl
-		  t = getTitle
-		  
-		  for (let i = 0; i < knowledgePoints.length; ++i) {
-			  if (knowledgePoints[i].id == su) {
+		  $("#volumeId").empty();
+		  s = $('#subjectId').val()
+		  g = getGrade() //$('#gradexx').val()
+		  for (let i = 0; i < subjects.length; ++i) {
+			  if (subjects[i].id == s) {
 				  switch (g) {
 				  case '20':
-					  for (let j = 0; j < knowledgePoints[i].low.length; ++j) {
-							$("#volumeId").append('<option value="' + knowledgePoints[i].low[j].id + '">' + knowledgePoints[i].low[j].title + '</option>')
+					  for (let j = 0; j < subjects[i].low.length; ++j) {
+							$("#volumeId").append('<option value="' + subjects[i].low[j].id + '">' + subjects[i].low[j].title + '</option>')
 					  }
-					  /*
-					  //subjects[i].low[j].volumeId[t].title==语文.低年级.上册.啦啦
-						for (let t = 0; t < subjects[i].low[j].volumeId[t].length; t++) {
-							$("#titleselect").append('<option value="' + subjects[i].low[j].volumeId[t].id + '">' + subjects[i].low[j].volumeId[t].title + '</option>')
-						}
-					  */
 					  break
 				  case '21':
 					  for (let j = 0; j < subjects[i].high.length; ++j) {
@@ -117,7 +74,7 @@ $(function(){
 		  }
 	  }
 	  
-	  /* $.ajax({
+	  $.ajax({
 		  type:"get",
 		  url:"api/subjects",
 		  dataType:"json",
@@ -153,49 +110,6 @@ $(function(){
 				}
 			  fillVolume()
 		  }
-	  }); */
-	  
-	  $.ajax({
-		  type:"get",
-		  url:"api/knowledgePoints",
-		  dataType:"json",
-		  async:false,
-		  success:function(a){
-			  knowledgePoints = a
-			  for (let i = 0; i < a.length; ++i) {
-				  filter = {
-						  subjectId: knowledgePoints[i].subjectId,
-						  grade: 20,
-						  volumeId: knowledgePoints[i].volumeId,
-						  title :knowledgePoints[i].title,
-						  storePath :knowledgePoints[i].storePath,
-						  videoUrl :knowledgePoints[i].videoUrl
-				  }
-				  
-				  $.ajax({
-					  type: "get",
-					  url: 'api/knowledgePoints?filter=' + JSON.stringify(filter),
-					  dataType: 'json',
-					  async: false,
-					  success:function(vs) {
-						  knowledgePoints[i].low = vs
-					  }
-				  })
-				  filter.grade = 21
-				  $.ajax({
-					  type: "get",
-					  url: 'api/knowledgePoints?filter=' + JSON.stringify(filter),
-					  dataType: 'json',
-					  async: false,
-					  success:function(vs) {
-						  knowledgePoints[i].high = vs
-					  }
-				  })
-				  
-					$("#subjectId").append('<option value="' + a[i].id + '">' + a[i].name + '</option>')
-				}
-			  fillVolume()
-		  }
 	  });
 	  
 	  /* $('#volumeId').on('change', function(e) {
@@ -219,7 +133,7 @@ $(function(){
 		  data.subjectId = $('#subjectId').val()
 		  data.grade = getGrade()
 		  data.volumeId = $('#volumeId').val()
-		  data.title = $('#title').val()
+		  data.title = $('#title2').val()
 		  data.storePath = $('#storePath').val()
 		  data.videoUrl = $('#videoUrl').val()
 	    	$.ajax({
@@ -260,7 +174,7 @@ $(function(){
 		  pd.subjectId = $('#subjectId').val()
 		  pd.grade = getGrade()
 		  pd.volumeId = $('#volumeId').val()
-		  pd.title = $('#title').val()
+		  pd.title = $('#title2').val()
 		  pd.storePath = $('#storePath').val()
 		  pd.videoUrl = $('#videoUrl').val()
 	    	$.ajax({
