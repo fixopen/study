@@ -8,7 +8,7 @@ window.addEventListener('load', function (e) {
     $.get('api/subjects', function(ss) {
         subjects = ss
         for (let i = 0; i < subjects.length; ++i) {
-            subject[i].title = subjects[i].name + '学习|三味学堂'
+            subjects[i].title = subjects[i].name + '学习|三味学堂'
             let filter = {
                 subjectId: subjects[i].id,
                 grade: 20
