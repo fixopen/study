@@ -1,237 +1,138 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>work bench</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>主页</title>
+    <link href="css/weui.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
-RequestLine:
-<div id="requestLine">
-    <label for="method">Method:</label>
-    <select id="method" name="method">
-        <option lable="GET" value="GET" selected>GET</option>
-        <option lable="POST" value="POST">POST</option>
-        <option lable="PUT" value="PUT">PUT</option>
-        <option lable="PATCH" value="PATCH">PATCH</option>
-        <option lable="DELETE" value="DELETE">DELETE</option>
-        <option lable="HEAD" value="HEAD" disabled>HEAD</option>
-        <option lable="OPTIONS" value="OPTIONS" disabled>OPTIONS</option>
-        <option lable="TRACE" value="TRACE" disabled>TRACE</option>
-        <option lable="CONNECT" value="CONNECT" disabled>CONNECT</option>
-    </select>
-    <label for="uri">URI:</label><input type="text" id="uri" name="uri" size="36"/><br/>
-    QueryString:
-    <div id="queryString">
-        Filter:
-        <input type="text" id="rawFilter" name="rawFilter"/>
-        <button id="convertFilter" name="convertFilter" value="=&gt;">=&gt;</button>
-        <input type="text" id="filter" name="filter"/>
-        <label for="offset">Offset:</label><input type="text" id="offset" name="offset" size="5"/>
-        <label for="count">Count:</label><input type="text" id="count" name="count" size="5"/>
-        OrderBy:
-        <input type="text" id="rawOrderBy" name="rawOrderBy"/>
-        <button id="convertOrderBy" name="convertOrderBy" value="=&gt;">=&gt;</button>
-        <input type="text" id="orderBy" name="orderBy"/>
+<div class="container">
+    <!--header-->
+    <div class="row index-header">
+        <div class="col-xs-1">
+            <a href="">&lt;</a>
+        </div>
+        <div class="col-xs-9" id="index-title"></div>
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-default btn-sm index-button" id="user">
+                <span class="glyphicon glyphicon-user"></span>
+            </button>
+        </div>
+    </div>
+    <!--time-->
+    <div class="row">
+        <div class="col-xs-12 index-times" id="index-time">
+        </div>
+    </div>
+    <!--section-->
+    <div class="row" id="index-section"></div>
+    <!--footer-->
+    <div class="row">
+        <div class="col-xs-12" id="index-footer" style="padding-left: 0px;padding-right: 0px;"></div>
     </div>
 </div>
-Headers:
-<div id="headers">
-    <span id="nameTitle1">Name:</span><select id="headerName1" name="headerName">
-    <option lable="Accept" value="Accept">Accept</option>
-    <option lable="Accept-Charset" value="Accept-Charset">Accept-Charset</option>
-    <option lable="Accept-Encoding" value="Accept-Encoding">Accept-Encoding</option>
-    <option lable="Accept-Language" value="Accept-Language">Accept-Language</option>
-    <option lable="Accept-Datetime" value="Accept-Datetime">Accept-Datetime</option>
-    <option lable="Authorization" value="Authorization">Authorization</option>
-    <option lable="Cache-Control" value="Cache-Control">Cache-Control</option>
-    <option lable="Connection" value="Connection">Connection</option>
-    <option lable="Cookie" value="Cookie">Cookie</option>
-    <option lable="Content-Length" value="Content-Length">Content-Length</option>
-    <option lable="Content-MD5" value="Content-MD5">Content-MD5</option>
-    <option lable="Content-Type" value="Content-Type">Content-Type</option>
-    <option lable="Date" value="Date">Date</option>
-    <option lable="Expect" value="Expect">Expect</option>
-    <option lable="From" value="From">From</option>
-    <option lable="Host" value="Host" selected>Host</option>
-    <option lable="If-Match" value="If-Match">If-Match</option>
-    <option lable="If-Modified-Since" value="If-Modified-Since">If-Modified-Since</option>
-    <option lable="If-None-Match" value="If-None-Match">If-None-Match</option>
-    <option lable="If-Range" value="If-Range">If-Range</option>
-    <option lable="If-Unmodified-Since" value="If-Unmodified-Since">If-Unmodified-Since</option>
-    <option lable="Max-Forwards" value="Max-Forwards">Max-Forwards</option>
-    <option lable="Origin" value="Origin">Origin</option>
-    <option lable="Pragma" value="Pragma">Pragma</option>
-    <option lable="Proxy-Authorization" value="Proxy-Authorization">Proxy-Authorization</option>
-    <option lable="Range" value="Range">Range</option>
-    <option lable="Referer" value="Referer">Referer</option>
-    <option lable="TE" value="TE">TE</option>
-    <option lable="Upgrade" value="Upgrade">Upgrade</option>
-    <option lable="User-Agent" value="User-Agent">User-Agent</option>
-    <option lable="Via" value="Via">Via</option>
-    <option lable="Warning" value="Warning">Warning</option>
-    <option lable="---" value="---">-------------</option>
-    <option lable="X-Requested-With" value="X-Requested-With">X-Requested-With</option>
-    <option lable="DNT" value="DNT">DNT</option>
-    <option lable="X-Forwarded-For" value="X-Forwarded-For">X-Forwarded-For</option>
-    <option lable="X-Forwarded-Proto" value="X-Forwarded-Proto">X-Forwarded-Proto</option>
-    <option lable="Front-End-Https" value="Front-End-Https">Front-End-Https</option>
-    <option lable="X-ATT-DeviceId" value="X-ATT-DeviceId">X-ATT-DeviceId</option>
-    <option lable="X-Wap-Profile" value="X-Wap-Profile">X-Wap-Profile</option>
-    <option lable="Proxy-Connection" value="Proxy-Connection">Proxy-Connection</option>
-    <option lable="x-token" value="x-token">x-token</option>
-</select><span id="valueTitle1">Value:</span><input type="text" id="headerValue1" name="headerValue"/>
-    <br id="headerBreak1"/>
-</div>
-<button id="appendHeader" name="appendHeader" value="appendHeader">appendHeader</button>
-<br/>
-Body:
-<textarea id="body" name="body" rows="8" cols="80"></textarea>
-<br/>
-<button id="sender" name="sender" value="sender">send</button>
-<br/>
-<!--
-<form method="post" action="/api/medias">
-    <input type="file" name="imageFile" />
-    <input type="submit" />
-</form>
--->
-<p><!--HTTP/1.1--> <span id="responseCode"></span> <span id="responseText"></span></p>
-<pre id="responseHeaders"></pre>
-<pre id="responseBody"></pre>
-<script type="text/javascript">
-    var doc = document
-    var convertFilter = doc.getElementById('convertFilter')
-    convertFilter.addEventListener('click', function (evt) {
-        var doc = document
-        var rawFilter = doc.getElementById('rawFilter')
-        var filter = doc.getElementById('filter')
-        if (rawFilter.value == '') {
-            filter.value = ''
-        } else {
-            filter.value = encodeURIComponent(rawFilter.value)
-        }
-    }, false)
-    var convertOrderBy = doc.getElementById('convertOrderBy')
-    convertOrderBy.addEventListener('click', function (evt) {
-        var doc = document
-        var rawOrderBy = doc.getElementById('rawOrderBy')
-        var orderBy = doc.getElementById('orderBy')
-        if (rawOrderBy.value == '') {
-            orderBy.value = ''
-        } else {
-            orderBy.value = encodeURIComponent(rawOrderBy.value)
-        }
-    }, false)
-
-    var currentHeaderIndex = 1;
-    var appendHeader = doc.getElementById('appendHeader')
-    appendHeader.addEventListener('click', function (evt) {
-        var doc = document
-        var chi = currentHeaderIndex
-        var headers = doc.getElementById('headers')
-        var nameTitle = doc.getElementById('nameTitle' + chi)
-        var headerName = doc.getElementById('headerName' + chi)
-        var valueTitle = doc.getElementById('valueTitle' + chi)
-        var headerValue = doc.getElementById('headerValue' + chi)
-        var headerBreak = doc.getElementById('headerBreak' + chi)
-        ++chi;
-        var newNameTitle = nameTitle.cloneNode(true)
-        newNameTitle.id = 'nameTitle' + chi
-        headers.appendChild(newNameTitle)
-        var newName = headerName.cloneNode(true)
-        newName.id = 'headerName' + chi
-        headers.appendChild(newName)
-        var newValueTitle = valueTitle.cloneNode(true)
-        newValueTitle.id = 'valueTitle' + chi
-        headers.appendChild(newValueTitle)
-        var newValue = headerValue.cloneNode(true)
-        newValue.id = 'headerValue' + chi
-        headers.appendChild(newValue)
-        var newBreak = headerBreak.cloneNode(true)
-        newBreak.id = 'headerBreak' + chi
-        headers.appendChild(newBreak)
-        currentHeaderIndex = chi
-    }, false)
-
-    var sender = doc.getElementById('sender')
-    sender.addEventListener('click', function (evt) {
-        var doc = document
-        var xhr = new XMLHttpRequest()
-        var method = doc.getElementById('method')
-        var uri = doc.getElementById('uri')
-        var filter = doc.getElementById('filter')
-        var offset = doc.getElementById('offset')
-        var count = doc.getElementById('count')
-        var orderBy = doc.getElementById('orderBy')
-        var queryString = ''
-        if (filter.value != '') {
-            queryString += 'filter=' + filter.value
-        }
-        if (offset.value != '') {
-            if (queryString != '') {
-                queryString += '&'
-            }
-            queryString += 'offset=' + offset.value
-        }
-        if (count.value != '') {
-            if (queryString != '') {
-                queryString += '&'
-            }
-            queryString += 'count=' + count.value
-        }
-        if (orderBy.value != '') {
-            if (queryString != '') {
-                queryString += '&'
-            }
-            queryString += 'orderBy=' + orderBy.value
-        }
-        if (queryString != '') {
-            queryString = '?' + queryString
-        }
-        var url = uri.value + queryString
-        xhr.open(method.value, url, false)
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                var doc = document
-                var responseCode = doc.getElementById('responseCode')
-                responseCode.innerHTML = xhr.status
-                var responseMessage = doc.getElementById('responseText')
-                responseMessage.innerHTML = xhr.statusText
-                var responseHeaders = doc.getElementById('responseHeaders')
-                responseHeaders.innerHTML = xhr.getAllResponseHeaders()
-                var responseBody = doc.getElementById('responseBody')
-                responseBody.innerHTML = xhr.responseText
-                //xhr.responseXML
-                //xhr.status
-                //xhr.statusText
-                //xhr.getResponseHeader()
-                //XMLHttpRequest(JSObject objParameters);
-                //void abort();
-                //DOMString getAllResponseHeaders();
-                //DOMString? getResponseHeader(DOMString header);
-                //void open(DOMString method, DOMString url, optional boolean async, optional DOMString? user, optional DOMString? password);
-                //void overrideMimeType(DOMString mime);
-                //void send();
-                //void send(ArrayBuffer data);
-                //void send(Blob data);
-                //void send(Document data);
-                //void send(DOMString? data);
-                //void send(FormData data);
-                //void setRequestHeader(DOMString header, DOMString value);
-            }
-        }
-        for (var i = 1; i < currentHeaderIndex + 1; ++i) {
-            var name = doc.getElementById('headerName' + i)
-            var value = doc.getElementById('headerValue' + i)
-            xhr.setRequestHeader(name.value, value.value)
-        }
-        var body = doc.getElementById('body')
-        var content = null
-        if (body.value != "") {
-            content = body.value
-        }
-        xhr.send(content)
-    }, false)
-</script>
+<!--templates-->
+<template id="title-template">
+    <span>${title}</span>
+</template>
+<template id="time-template">
+    <span class="index-time">${time}</span>
+</template>
+<template id="image-ad">
+    <div class="col-xs-12">
+    <p>${imgtitle}</p>
+    <img src="${imgsrc}" alt="${imgtitle}" />
+    </div>
+</template>
+<template id="subject-ad">
+    <div class="col-xs-12">
+    <img src="${imgsrc}" alt="${imgtitle}" class="pull-right"/>
+    <p class="pull-left">${imgtitle}</p>
+    </div>
+</template>
+<template id="section-template">
+    <ul class="media-list index-ul">
+        <li class="media index-li" id="img1">
+            <a href="#">
+                <img class="media-object index-img" src="${imgsrc}" alt="">
+            </a>
+            <div class="media-body index-div">
+                <h4 class="index-bc">${imgtitle}</h4>
+            </div>
+        </li>
+        <hr>
+        <li class="media" id="img2">
+            <a class="pull-right" href="#">
+                <img class="media-object" src="${imgsrc}" alt="">
+            </a>
+            <div class="media-body">
+                <h4>${imgtitle}</h4>
+            </div>
+        </li>
+        <hr>
+        <li class="media " id="img3">
+            <a class="pull-right" href="#">
+                <img class="media-object" src="${imgsrc}" alt="">
+            </a>
+            <div class="media-body">
+                <h4>${imgtitle}</h4>
+            </div>
+        </li>
+        <hr>
+        <li class="media" id="img4">
+            <a class="pull-right" href="#">
+                <img class="media-object" src="${imgsrc}" alt="">
+            </a>
+            <div class="media-body">
+                <h4>${imgtitle}</h4>
+            </div>
+        </li>
+    </ul>
+</template>
+<template id="footer-template">
+        <div class="btn-group " style="width: 100%">
+            <button type="button" class="btn btn-default" style="width: 16%">
+                <span>图标</span>
+            </button>
+            <button type="button" class="btn btn-default" style="width: 28%" id="liveLesson">直播课</button>
+            <div class="btn-group dropup " style="width: 28%">
+                <button type="button" class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown" style="width: 100%">
+                    学习
+                </button>
+                <ul class="dropdown-menu" role="menu" style="width:100%">
+                    <li><a href="#" style="text-align: center" id="chinese">语文</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" style="text-align: center" id="math">奥数</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" style="text-align: center" id="english">口语</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" style="text-align: center" id="youngClass">少年作家班</a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropup " style="width: 28%">
+                <button type="button" class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown" style="width: 100%">
+                    我的
+                </button>
+                <ul class="dropdown-menu" role="menu" style="width:100%">
+                    <li><a href="#" style="text-align: center" id="cardNumbe">添加卡号</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" style="text-align: center" id="accountNumbe">我的账号</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" style="text-align: center" id="myStudy">我的学习</a></li>
+                </ul>
+            </div>
+        </div>
+</template>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
