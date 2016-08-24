@@ -9,7 +9,7 @@ window.addEventListener('load', function (evt) {
 
 
     var myShare = [
-        <!--好友管理-->
+        //<!--好友管理-->
         {"sharePhoto": "images/headImg13.jpg",
             "myName": "佚名",
             "shareCounts": "68"
@@ -24,7 +24,7 @@ window.addEventListener('load', function (evt) {
 
 
     var classShare = [
-        <!--好友管理-->
+        //<!--好友管理-->
         {"photo": "images/headImg17.jpg",
             "classMateName": "小宇",
             "shareTitle": "给你们",

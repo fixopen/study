@@ -42,6 +42,9 @@ public class User {
 	@Column(name = "sex")
 	private int sex;
 	
+	@Column(name = "site")
+	private int site;
+	
 	@Column(name = "amount")
 	private String amount;
 	
@@ -68,6 +71,14 @@ public class User {
 	
 	@Column(name = "update_time")
 	private Date updateTime;
+
+	public int getSite() {
+		return site;
+	}
+
+	public void setSite(int site) {
+		this.site = site;
+	}
 
 	public Long getId() {
 		return id;

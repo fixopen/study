@@ -27,7 +27,7 @@ public class KnowledgePoint {
 	 	@Column(name = "title")
 	 	private String title;
 	 	
-	 	@Column(name = "order")
+	 	@Column(name = "\"order\"")
 	 	private int order;
 	 	
 	 	@Column(name = "store_path")

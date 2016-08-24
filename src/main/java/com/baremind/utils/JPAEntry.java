@@ -1,8 +1,12 @@
 package com.baremind.utils;
 
 import com.baremind.data.Account;
+import com.baremind.data.Scheduler;
 
 import javax.persistence.*;
+
+import org.junit.Test;
+
 import java.util.*;
 
 /**
@@ -17,6 +21,11 @@ public class JPAEntry {
     private static EntityManagerFactory factory;
     private static EntityManager entityManager;
 
+
+    
+    
+    
+    
     public static EntityManager getEntityManager() {
         if (entityManager == null) {
             try {
@@ -110,8 +119,10 @@ public class JPAEntry {
     }
 
     public static boolean isLogining(String sessionId) {
-        return isLogining(sessionId, (Account a) -> {
-        });
+		return true;
+    	
+        //return isLogining(sessionId, (Account a) -> {
+        //});
     }
 
     public static boolean isLogining(String sessionId, TouchFunction touchFunction) {

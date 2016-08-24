@@ -19,7 +19,7 @@ public class Additional {
     private String tableName;
 
     @Column(name = "object_id")
-    private String objectId;
+    private Long objectId;
 
     @Column(name = "name")
     private String name;
@@ -43,11 +43,11 @@ public class Additional {
 		this.tableName = tableName;
 	}
 
-	public String getObjectId() {
+	public Long getObjectId() {
 		return objectId;
 	}
 
-	public void setObjectId(String objectId) {
+	public void setObjectId(Long objectId) {
 		this.objectId = objectId;
 	}
 
