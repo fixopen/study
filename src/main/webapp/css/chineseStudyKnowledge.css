@@ -1,0 +1,15 @@
+.chineseStudyKnowledge-header{
+    background-color: #eeeeee;
+}
+.action-count{
+    display: inline-block;
+    margin-left: 5px;
+    color: #dddddd;
+}
+.action-c {
+    display: inline-block;
+    margin: 10px auto;
+}
+.action-cs {
+    text-align: center;
+}

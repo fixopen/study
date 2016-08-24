@@ -1,0 +1,15 @@
+.chineseAction-header{
+    background-color: #eeeeee;
+}
+.action-count{
+    display: inline-block;
+    margin-left: 5px;
+    color: #999999;
+}
+.action-c {
+    display: inline-block;
+    margin: 10px auto;
+}
+.action-cs {
+    text-align: center;
+}

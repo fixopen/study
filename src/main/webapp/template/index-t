@@ -1,0 +1,69 @@
+<template id="title-template">
+    <span>${title}</span>
+</template>
+<template id="time-template">
+     <span cclass="index-time">${time}</span>
+</template>
+<template id="section-template">
+    <ul class="media-list index-ul">
+                <li class="media index-li">
+                    <a href="#">
+                        <img class="media-object index-img" src="${imgsrc}" alt="">
+                    </a>
+                    <div class="media-body index-div">
+                        <h4 class="index-bc">${imgtitle}</h4>
+                    </div>
+                </li>
+                <hr >
+                <li class="media ">
+                    <a class="pull-right" href="#">
+                        <img class="media-object" src="${imgsrc}" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 >${imgtitle}</h4>
+                    </div>
+                </li>
+                <hr>
+            </ul>
+</template>
+<template id="footer-template">
+        <div class="col-xs-12">
+                    <div class="btn-group " style="width: 100%">
+                    <button type="button" class="btn btn-default" style="width: 10%" >
+                        <span>图标</span>
+                    </button>
+                    <button type="button" class="btn btn-default"  style="width: 30%">直播课</button>
+                    <div class="btn-group dropup " style="width: 30%" >
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" style="width: 100%">
+                            学习
+                        </button>
+                        <ul class="dropdown-menu" role="menu" style="width:100%">
+                            <li><a href="#" style="text-align: center">语文</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="text-align: center">奥数</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="text-align: center">口语</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="text-align: center">少年作家班</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="btn-group dropup "  style="width: 30%">
+                        <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" style="width: 100%">
+                           我的
+                        </button>
+                        <ul class="dropdown-menu" role="menu" style="width:100%">
+                            <li><a href="#" style="text-align: center">添加卡号</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="text-align: center">我的账号</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="text-align: center">我的学习</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+
+</template>

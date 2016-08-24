@@ -1,0 +1,15 @@
+.action-header{
+    background-color: #eeeeee;
+}
+.action-secah {
+    display: inline-block;
+    margin: 10px auto;
+}
+.action-secahs {
+    text-align: center;
+}
+.action-count{
+    display: inline-block;
+    margin-left: 5px;
+    color: #dddddd;
+}
