@@ -25,105 +25,101 @@ import com.baremind.utils.IdGenerator;
 import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 @Path("devices")
 public class Devices {
-	@POST // 添
+	@POST//添
 	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, Device device) {
+	        Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	        		device.setId(IdGenerator.getNewId());
+	                EntityManager em = JPAEntry.getEntityManager();
+	                em.getTransaction().begin();
+	                em.persist(device);
+                    em.getTransaction().commit();
+                    result = Response.ok(device).build();
+	            } else {
+	                result = Response.status(404).build();
+	            }
+	        return result;
+	    }
+
+	@GET//根据条件查询
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createAdditionals(@CookieParam("sessionId") String sessionId, Device device) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			device.setId(IdGenerator.getNewId());
-			EntityManager em = JPAEntry.getEntityManager();
-			em.getTransaction().begin();
-			em.persist(device);
-			em.getTransaction().commit();
-			result = Response.ok(device).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
+	public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+		 Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	            Map<String, Object> filterObject = null;
+	            if (filter != "") {
+		              String rawFilter = URLDecoder.decode(filter);
+		              filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {}.getType());
+		          }
+	            List<Device> device =  JPAEntry.getList(Device.class, filterObject);
+	            result = Response.ok(new Gson().toJson(device)).build();
+	        } else {
+                result = Response.status(404).build();
+            }
+	        return result;
 	}
 
-	@GET // 根据条件查询
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionals(@CookieParam("sessionId") String sessionId,
-			@QueryParam("filter") @DefaultValue("") String filter) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = null;
-			if (filter != "") {
-				String rawFilter = URLDecoder.decode(filter);
-				filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
-				}.getType());
-			}
-			List<Device> device = JPAEntry.getList(Device.class, filterObject);
-			result = Response.ok(new Gson().toJson(device)).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
-	}
-
-	@GET // 根据条件查询
+	@GET//根据条件查询
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = new HashMap<>(1);
-			filterObject.put("id", id);
-			List<Device> devices = JPAEntry.getList(Device.class, filterObject);
-			result = Response.ok(new Gson().toJson(devices)).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
+		 Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	            Map<String, Object> filterObject = new HashMap<>(1);
+	            filterObject.put("id", id);
+	            List<Device> devices =  JPAEntry.getList(Device.class, filterObject);
+	            result = Response.ok(new Gson().toJson(devices)).build();
+	        } else {
+                result = Response.status(404).build();
+            }
+	        return result;
 	}
-
-	@PUT // 根据id修改
+	
+	@PUT//根据id修改
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id,
-			Device device) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = new HashMap<>(1);
-			filterObject.put("id", id);
-			List<Device> devices = JPAEntry.getList(Device.class, filterObject);
-			if (devices.size() == 1) {
-				Device existdevice = devices.get(0);
-
-				String platform = device.getPlatform();
-				if (platform != null) {
-					existdevice.setPlatform(platform);
-				}
-
-				Long userId = device.getUserId();
-				if (userId != null) {
-					existdevice.setUserId(userId);
-				}
-
-				String platformIdentity = device.getPlatformIdentity();
-				if (platformIdentity != null) {
-					existdevice.setPlatformIdentity(platformIdentity);
-				}
-
-				String platformNotificationToken = device.getPlatformNotificationToken();
-				if (platformNotificationToken != null) {
-					existdevice.setPlatformNotificationToken(platformNotificationToken);
-				}
-				EntityManager em = JPAEntry.getEntityManager();
-				em.getTransaction().begin();
-				em.merge(existdevice);
-				em.getTransaction().commit();
-				result = Response.ok(existdevice).build();
-			} else {
-				result = Response.status(404).build();
-			}
-		}
-		return result;
+	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Device device) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = new HashMap<>(1);
+            filterObject.put("id", id);
+            List<Device> devices = JPAEntry.getList(Device.class, filterObject);
+            if (devices.size() == 1) {
+            	Device existdevice = devices.get(0);
+            	
+            	String platform = device.getPlatform();
+            	if (platform != null) {
+            		existdevice.setPlatform(platform);
+            	}
+            	
+            	Long userId = device.getUserId();
+            	if(userId!=null){
+            		existdevice.setUserId(userId);
+            	}
+            	
+            	String platformIdentity = device.getPlatformIdentity();
+                if(platformIdentity!=null){
+                	existdevice.setPlatformIdentity(platformIdentity);
+                }
+                
+                String platformNotificationToken = device.getPlatformNotificationToken();
+            	if(platformNotificationToken!=null){
+            		existdevice.setPlatformNotificationToken(platformNotificationToken);
+            	}
+                EntityManager em = JPAEntry.getEntityManager();
+                em.getTransaction().begin();
+                em.merge(existdevice);
+                em.getTransaction().commit();
+                result = Response.ok(existdevice).build();
+            } else {
+                result = Response.status(404).build();
+            }
+        }
+        return result;
 	}
 }

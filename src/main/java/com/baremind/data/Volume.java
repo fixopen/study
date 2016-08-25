@@ -9,20 +9,20 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name = "volumes")
+@Table(name="volumes")
 public class Volume {
 	@Id
-	@Column(name = "id")
+    @Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "subject_id")
 	private Long subjectId;
-
+ 	
 	@Column(name = "grade")
 	private int grade;
-
-	@Column(name = "title")
-	private String title;
+ 	
+ 	@Column(name = "title")
+ 	private String title;
 
 	public Long getId() {
 		return id;
@@ -55,5 +55,6 @@ public class Volume {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+ 	
+ 	
 }

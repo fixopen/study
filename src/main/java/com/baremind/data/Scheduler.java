@@ -1,52 +1,52 @@
 package com.baremind.data;
 
+
 import java.util.Date;
 
 import javax.persistence.*;
-
 /**
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name = "schedulers")
+@Table(name="schedulers")
 public class Scheduler {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "year")
 	private int year;
-
+	
 	@Column(name = "week")
 	private int week;
-
+	
 	@Column(name = "state")
 	private int state;
-
+	
 	@Column(name = "start_time")
 	private Date startTime;
-
+	
 	@Column(name = "end_time")
 	private Date endTime;
-
+	
 	@Column(name = "duration")
 	private Integer duration;
-
+	
 	@Column(name = "subject_id")
 	private Long subjectId;
-
+	
 	@Column(name = "grade")
 	private int grade;
-
+	
 	@Column(name = "title")
 	private String title;
-
+	
 	@Column(name = "description")
 	private String description;
-
+	
 	@Column(name = "teacher")
 	private String teacher;
-
+	
 	@Column(name = "teacher_description")
 	private String teacherDescription;
 
@@ -153,5 +153,6 @@ public class Scheduler {
 	public void setTeacherDescription(String teacherDescription) {
 		this.teacherDescription = teacherDescription;
 	}
-
+	
+	
 }

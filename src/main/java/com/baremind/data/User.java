@@ -2,72 +2,73 @@ package com.baremind.data;
 
 import java.util.Date;
 
+
 import javax.persistence.*;
 
 /**
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "users")
+@Table(name="users")
 public class User {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "login_name")
 	private String LoginName;
-
+	
 	@Column(name = "password")
 	private String password;
-
+	
 	@Column(name = "is_administrator")
 	private Boolean isAdministrator;
-
+	
 	@Column(name = "name")
 	private String name;
-
+	
 	@Column(name = "head")
 	private String head;
-
+	
 	@Column(name = "email")
 	private String email;
-
+	
 	@Column(name = "telephone")
 	private String telephone;
-
+	
 	@Column(name = "birthday")
 	private Date birthday;
-
+	
 	@Column(name = "sex")
 	private int sex;
-
+	
 	@Column(name = "site")
 	private int site;
-
+	
 	@Column(name = "amount")
 	private String amount;
-
+	
 	@Column(name = "school")
 	private String school;
-
+	
 	@Column(name = "grade")
 	private String grade;
-
+	
 	@Column(name = "class")
 	private String classname;
-
+	
 	@Column(name = "location")
 	private String location;
-
+	
 	@Column(name = "description")
 	private String description;
-
+	
 	@Column(name = "timezone")
 	private String timezone;
-
+	
 	@Column(name = "create_time")
 	private Date createTime;
-
+	
 	@Column(name = "update_time")
 	private Date updateTime;
 
@@ -231,4 +232,5 @@ public class User {
 		this.grade = grade;
 	}
 
+	
 }

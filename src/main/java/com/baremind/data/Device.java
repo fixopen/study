@@ -9,21 +9,21 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "devices")
+@Table(name="devices")
 public class Device {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "user_id")
 	private Long userId;
-
+	
 	@Column(name = "platform")
 	private String platform;
-
+	
 	@Column(name = "platform_identity")
 	private String platformIdentity;
-
+	
 	@Column(name = "platform_notification_token")
 	private String platformNotificationToken;
 
@@ -66,5 +66,6 @@ public class Device {
 	public void setPlatformNotificationToken(String platformNotificationToken) {
 		this.platformNotificationToken = platformNotificationToken;
 	}
-
+	
+	
 }

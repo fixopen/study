@@ -9,23 +9,23 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "additionals")
+@Table(name="additionals")
 public class Additional {
-	@Id
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "table_name")
-	private String tableName;
+    @Column(name = "table_name")
+    private String tableName;
 
-	@Column(name = "object_id")
-	private Long objectId;
+    @Column(name = "object_id")
+    private Long objectId;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "value")
-	private String value;
+    @Column(name = "value")
+    private String value;
 
 	public Long getId() {
 		return id;
@@ -66,5 +66,6 @@ public class Additional {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
 
 }

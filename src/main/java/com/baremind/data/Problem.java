@@ -9,38 +9,38 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name = "problems")
+@Table(name="problems")
 public class Problem {
 	@Id
-	@Column(name = "id")
+    @Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "subject_id")
 	private Long subjectId;
-
-	@Column(name = "volume_id")
-	private Long volumeId;
-
+ 	
+ 	@Column(name = "volume_id")
+ 	private Long volumeId;
+	
 	@Column(name = "knowledge_point_id")
 	private Long knowledgePointId;
-
+	
 	@Column(name = "title")
 	private String title;
-
+	
 	@Column(name = "options ")
-	private String[] options;
-
+	private String[] options ;
+	
 	@Column(name = "standard_answers")
 	private int[] standardAnswers;
-
+	
 	@Column(name = "order")
 	private int order;
-
-	@Column(name = "store_path")
-	private String storePath;
-
-	@Column(name = "video_url")
-	private String videoUrl;
+ 	
+ 	@Column(name = "store_path")
+ 	private String storePath;
+ 	
+ 	@Column(name = "video_url")
+ 	private String videoUrl;
 
 	public Long getId() {
 		return id;
