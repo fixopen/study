@@ -71,7 +71,7 @@ $(function(){
 		  success:function(a){
 			  subjects = a
 			  for (let i = 0; i < a.length; ++i) {
-				  filter = {
+				  let filter = {
 						  subjectId: subjects[i].id,
 						  grade: 20
 				  }

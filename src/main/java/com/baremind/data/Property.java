@@ -9,15 +9,15 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="properties")
+@Table(name = "properties")
 public class Property {
 	@Id
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "value")
 	private String value;
 
@@ -44,6 +44,5 @@ public class Property {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
-	
+
 }

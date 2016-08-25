@@ -9,12 +9,12 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="tags")
+@Table(name = "tags")
 public class Tag {
 	@Id
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
 
@@ -33,6 +33,5 @@ public class Tag {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }

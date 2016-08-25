@@ -16,7 +16,7 @@ public class Account {
 
 	public void setLastOpereationTime(Date now) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

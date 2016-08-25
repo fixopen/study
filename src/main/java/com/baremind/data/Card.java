@@ -1,6 +1,5 @@
 package com.baremind.data;
 
-
 import java.util.Date;
 
 import javax.persistence.*;
@@ -9,33 +8,33 @@ import javax.persistence.*;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name="cards")
+@Table(name = "cards")
 public class Card {
 	@Id
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "user_id")
 	private Long UserId;
-	
+
 	@Column(name = "no")
 	private String no;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "active_time")
 	private Date activeTime;
-	
+
 	@Column(name = "end_time")
 	private Date endTime;
-	
+
 	@Column(name = "duration")
 	private String duration;
-	
+
 	@Column(name = "subject")
 	private Long subject;
-	
+
 	@Column(name = "amount")
 	private Double amount;
 
@@ -110,6 +109,5 @@ public class Card {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	
-	
+
 }
