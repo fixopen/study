@@ -1,32 +1,15 @@
 package com.baremind;
 
-import java.net.URLDecoder;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.EntityManager;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.CookieParam;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.baremind.data.Scheduler;
 import com.baremind.utils.IdGenerator;
 import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+
+import javax.persistence.EntityManager;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.*;
 
 //GET /api/schedulers/this-week
 //GET /api/schedulers/34
@@ -93,7 +76,8 @@ public class Schedulers {
 	 * 
 	 * @Path("{id}")
 	 * 
-	 * @Produces(MediaType.APPLICATION_JSON) public Response
+	 * @Produces(MediaType.APPLICATION_JSON)
+	 * public Response
 	 * getWeekScheduler(@CookieParam("sessionId") String
 	 * sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
 	 * Response result = Response.status(401).build(); if
