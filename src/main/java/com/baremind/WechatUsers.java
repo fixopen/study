@@ -6,8 +6,11 @@ import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import javax.json.Json;
 import javax.persistence.EntityManager;
 import javax.ws.rs.*;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URLDecoder;
@@ -15,21 +18,38 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.baremind.data.Session;
-import com.baremind.data.WechatUser;
-import com.baremind.utils.IdGenerator;
-import com.baremind.utils.JPAEntry;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-@Path("weachatUsers")
+@Path("wechat-users")
 public class WechatUsers {
-    private void getWechatServerIpList() {
+	static String hostname = "https://api.weixin.qq.com";
+	static String accesstoken = "";
+
+	public static class GenericResult {
+		public int code;
+		public String message;
+	}
+
+    private GenericResult getWechatServerIpList() {
         //GET https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=ACCESS_TOKEN
         //{"ip_list":["127.0.0.1","127.0.0.1"]}
+		GenericResult result = new GenericResult();
+		Client client = ClientBuilder.newClient();
+		Response response = client.target(hostname)
+			.path("/cgi-bin/getcallbackip")
+			.queryParam("access_token", accesstoken)
+			.request().get();
+		String responseBody = response.readEntity(String.class);
+		if (responseBody.contains("\n")) {
+			String[] lines = responseBody.split("\n");
+			if (lines.length == 2) {
+				String[] timeCode = lines[0].split(",");
+				result.code = Integer.parseInt(timeCode[0]);
+				result.message = timeCode[1];
+			}
+		}
+		return result;
     }
 
-    private void createCustomMenu() {
+    private GenericResult createCustomMenu(Json menu) {
         //POST https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
         /*
         参数 	是否必须 	说明
@@ -155,6 +175,15 @@ public class WechatUsers {
         */
         //{"errcode":0,"errmsg":"ok"}
         //{"errcode":40018,"errmsg":"invalid button name size"}
+		Client client = ClientBuilder.newClient();
+//		Response response = client.target(hostname)
+//			.path("/cgi-bin/menu/create")
+//			.queryParam("access_token", accesstoken)
+//			.request("text/plain").post(menu);
+//		String responseBody = response.readEntity(String.class);
+//		GenericResult r = null;
+//      return r;
+        return null;
     }
 
 	@POST // 添
