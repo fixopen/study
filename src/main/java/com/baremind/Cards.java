@@ -1,33 +1,132 @@
 package com.baremind;
 
+import com.baremind.data.Card;
+import com.baremind.utils.IdGenerator;
+import com.baremind.utils.JPAEntry;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.*;
 import java.net.URLDecoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.CookieParam;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import com.baremind.data.Card;
-import com.baremind.utils.IdGenerator;
-import com.baremind.utils.JPAEntry;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 @Path("cards")
 public class Cards {
-	@POST//添
+    @POST //import
+    @Consumes(MediaType.APPLICATION_OCTET_STREAM)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response importCardsViaBareContent(@CookieParam("sessionId") String sessionId, byte[] contents) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            String uploadedFileLocation = "tempFilename.csv";
+            writeToFile(contents, uploadedFileLocation);
+            parseAndInsert(uploadedFileLocation);
+            result = Response.status(200).build();
+        }
+        return result;
+    }
+
+    @POST //import
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response importCardsViaFormData(@CookieParam("sessionId") String sessionId, @FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            String uploadedFileLocation = "d://uploaded/" + fileDetail.getFileName();
+            writeToFile(uploadedInputStream, uploadedFileLocation);
+            parseAndInsert(uploadedFileLocation);
+            result = Response.status(200).build();
+        }
+        return result;
+    }
+
+    @POST //import
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response importCardsViaText(@CookieParam("sessionId") String sessionId, byte[] contents) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            String uploadedFileLocation = "tempFilename.csv";
+            writeToFile(contents, uploadedFileLocation);
+            parseAndInsert(uploadedFileLocation);
+            result = Response.status(200).build();
+        }
+        return result;
+    }
+
+    @POST //import
+    @Consumes("text/csv")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response importCardsViaCsv(@CookieParam("sessionId") String sessionId, byte[] contents) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            String uploadedFileLocation = "tempFilename.csv";
+            writeToFile(contents, uploadedFileLocation);
+            parseAndInsert(uploadedFileLocation);
+            result = Response.status(200).build();
+        }
+        return result;
+    }
+
+    // save uploaded file to new location
+    private void writeToFile(byte[] data, String uploadedFileLocation) {
+        try {
+            OutputStream out = new FileOutputStream(new File(uploadedFileLocation));
+            out.write(data);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // save uploaded file to new location
+    private void writeToFile(InputStream uploadedInputStream, String uploadedFileLocation) {
+        try {
+            //OutputStream out = new FileOutputStream(new File(uploadedFileLocation));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            OutputStream out = new FileOutputStream(new File(uploadedFileLocation));
+            while ((read = uploadedInputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parseAndInsert(String csvFilename) {
+        try {
+            EntityManager em = JPAEntry.getEntityManager();
+            em.getTransaction().begin();
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFilename)));
+            String record;
+            while ((record = br.readLine()) != null) {
+                String[] fields = record.split(",");
+                String command = "INSERT INTO cards (no, password) VALUES ('" + fields[0] + "', '" + fields[1] + "')";
+                Query q = em.createNamedQuery(command);
+                q.executeUpdate();
+            }
+            em.getTransaction().commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+	@POST // 添
+// origin/master
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	 public Response createCards(@CookieParam("sessionId") String sessionId, Card card) {

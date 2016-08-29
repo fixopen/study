@@ -230,17 +230,17 @@
 				   
 			   }
 			
-			$('.append').click(function(e){
+		/* 	$('.append').click(function(e){
 				let st = document.getElementById('scheduler-template')
 	   	  		let nr = st.content.children[0].cloneNode(true)
 	   	  		let container = document.getElementById(weekes[dayIndex])
 	   	  		container.appendChild(nr)		
-			})
+			}) */
 			
 			$('#append').on('click', function(e){
 				let st = document.getElementById('scheduler-template')
 	   	  		let nr = st.content.children[0].cloneNode(true)
-	   	  		let container = document.getElementById('sunday')
+	   	  		let container = document.getElementById('Sunday')
 	   	  		container.appendChild(nr)
 			})
 			
