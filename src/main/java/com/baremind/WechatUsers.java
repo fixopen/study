@@ -16,18 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Path("wechat-users")
-public class WechatUsers {
-    private String baseUri = "https://api.weixin.qq.com/cgi-bin/";
-	private String getAccessToken() {
-        String result = null;
-		//GET https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
-        //{"access_token":"ACCESS_TOKEN","expires_in":7200}
-        //{"errcode":40013,"errmsg":"invalid appid"}
-        return result;
-	}
-
-<<<<<<< HEAD
 import com.baremind.data.Session;
 import com.baremind.data.WechatUser;
 import com.baremind.utils.IdGenerator;
@@ -36,8 +24,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 @Path("weachatUsers")
 public class WechatUsers {
-	@POST//添
-=======
     private void getWechatServerIpList() {
         //GET https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=ACCESS_TOKEN
         //{"ip_list":["127.0.0.1","127.0.0.1"]}
@@ -172,7 +158,7 @@ public class WechatUsers {
     }
 
 	@POST // 添
->>>>>>> origin/master
+// origin/master
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, WechatUser wechatUser) {
