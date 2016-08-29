@@ -9,95 +9,96 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name = "knowledge_points")
+@Table(name="knowledge_points")
 public class KnowledgePoint {
-	@Id
-	@Column(name = "id")
-	private Long id;
+	 	@Id
+	    @Column(name = "id")
+	 	private Long id;
+	 	
+	 	@Column(name = "subject_id")
+	 	private Long subjectId;
+	 	
+	 	@Column(name = "volume_id")
+	 	private Long volumeId;
+	 	
+	 	@Column(name = "grade")
+	 	private int grade;
+	 	
+	 	@Column(name = "title")
+	 	private String title;
+	 	
+	 	@Column(name = "\"order\"")
+	 	private int order;
+	 	
+	 	@Column(name = "store_path")
+	 	private String storePath;
+	 	
+	 	@Column(name = "video_url")
+	 	private String videoUrl;
 
-	@Column(name = "subject_id")
-	private Long subjectId;
+		public Long getId() {
+			return id;
+		}
 
-	@Column(name = "volume_id")
-	private Long volumeId;
+		public void setId(Long id) {
+			this.id = id;
+		}
 
-	@Column(name = "grade")
-	private int grade;
+		public Long getSubjectId() {
+			return subjectId;
+		}
 
-	@Column(name = "title")
-	private String title;
+		public void setSubjectId(Long subjectId) {
+			this.subjectId = subjectId;
+		}
 
-	@Column(name = "\"order\"")
-	private int order;
+		public Long getVolumeId() {
+			return volumeId;
+		}
 
-	@Column(name = "store_path")
-	private String storePath;
+		public void setVolumeId(Long volumeId) {
+			this.volumeId = volumeId;
+		}
 
-	@Column(name = "video_url")
-	private String videoUrl;
+		public int getGrade() {
+			return grade;
+		}
 
-	public Long getId() {
-		return id;
-	}
+		public void setGrade(int grade) {
+			this.grade = grade;
+		}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+		public String getTitle() {
+			return title;
+		}
 
-	public Long getSubjectId() {
-		return subjectId;
-	}
+		public void setTitle(String title) {
+			this.title = title;
+		}
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
-	}
+		public int getOrder() {
+			return order;
+		}
 
-	public Long getVolumeId() {
-		return volumeId;
-	}
+		public void setOrder(int order) {
+			this.order = order;
+		}
 
-	public void setVolumeId(Long volumeId) {
-		this.volumeId = volumeId;
-	}
+		public String getStorePath() {
+			return storePath;
+		}
 
-	public int getGrade() {
-		return grade;
-	}
+		public void setStorePath(String storePath) {
+			this.storePath = storePath;
+		}
 
-	public void setGrade(int grade) {
-		this.grade = grade;
-	}
+		public String getVideoUrl() {
+			return videoUrl;
+		}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public int getOrder() {
-		return order;
-	}
-
-	public void setOrder(int order) {
-		this.order = order;
-	}
-
-	public String getStorePath() {
-		return storePath;
-	}
-
-	public void setStorePath(String storePath) {
-		this.storePath = storePath;
-	}
-
-	public String getVideoUrl() {
-		return videoUrl;
-	}
-
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
-	}
-
+		public void setVideoUrl(String videoUrl) {
+			this.videoUrl = videoUrl;
+		}
+	 	
+	 	
 }

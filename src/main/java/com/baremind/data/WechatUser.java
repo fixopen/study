@@ -11,54 +11,54 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "wechat_users")
+@Table(name="wechat_users")
 public class WechatUser {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "user_id")
 	private Long userId;
-
+	
 	@Column(name = "token")
 	private String token;
-
+	
 	@Column(name = "refresh_token")
 	private String refreshToken;
-
+	
 	@Column(name = "expiry")
 	private Date expiry;
-
+	
 	@Column(name = "ref_id")
 	private String refId;
-
+	
 	@Column(name = "open_id")
 	private String openId;
-
+	
 	@Column(name = "union_id")
 	private String unionId;
-
+	
 	@Column(name = "nickname")
 	private String nickname;
-
+	
 	@Column(name = "sex")
 	private Long sex;
-
+	
 	@Column(name = "city")
 	private String city;
-
+	
 	@Column(name = "province")
 	private String province;
-
+	
 	@Column(name = "country")
 	private String country;
-
+	
 	@Column(name = "head")
 	private String head;
-
+	
 	@Column(name = "privilege")
 	private String[] privilege;
-
+	
 	@Column(name = "info")
 	private String info;
 
@@ -189,5 +189,6 @@ public class WechatUser {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-
+	
+	
 }

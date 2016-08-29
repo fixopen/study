@@ -29,108 +29,105 @@ import com.google.gson.reflect.TypeToken;
 
 @Path("medias")
 public class Medias {
-	@POST // 添
+	@POST//添
 	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, Media media) {
+	        Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	        	media.setId(IdGenerator.getNewId());
+	                EntityManager em = JPAEntry.getEntityManager();
+	                em.getTransaction().begin();
+	                em.persist(media);
+                    em.getTransaction().commit();
+                    result = Response.ok(media).build();
+	            } else {
+	                result = Response.status(404).build();
+	            }
+	        return result;
+	    }
+
+	@GET//根据条件查询
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createAdditionals(@CookieParam("sessionId") String sessionId, Media media) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			media.setId(IdGenerator.getNewId());
-			EntityManager em = JPAEntry.getEntityManager();
-			em.getTransaction().begin();
-			em.persist(media);
-			em.getTransaction().commit();
-			result = Response.ok(media).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
+	public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+		 Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	            Map<String, Object> filterObject = null;
+	            if (filter != "") {
+		              String rawFilter = URLDecoder.decode(filter);
+		              filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {}.getType());
+		          }
+	            List<Media> medias =  JPAEntry.getList(Media.class, filterObject);
+	            result = Response.ok(new Gson().toJson(medias)).build();
+	        } else {
+                result = Response.status(404).build();
+            }
+	        return result;
 	}
 
-	@GET // 根据条件查询
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionals(@CookieParam("sessionId") String sessionId,
-			@QueryParam("filter") @DefaultValue("") String filter) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = null;
-			if (filter != "") {
-				String rawFilter = URLDecoder.decode(filter);
-				filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
-				}.getType());
-			}
-			List<Media> medias = JPAEntry.getList(Media.class, filterObject);
-			result = Response.ok(new Gson().toJson(medias)).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
-	}
-
-	@GET // 根据条件查询
+	@GET//根据条件查询
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = new HashMap<>(1);
-			filterObject.put("id", id);
-			List<Media> medias = JPAEntry.getList(Media.class, filterObject);
-			result = Response.ok(new Gson().toJson(medias)).build();
-		} else {
-			result = Response.status(404).build();
-		}
-		return result;
+		 Response result = Response.status(401).build();
+	        if (JPAEntry.isLogining(sessionId)) {
+	            Map<String, Object> filterObject = new HashMap<>(1);
+	            filterObject.put("id", id);
+	            List<Media> medias =  JPAEntry.getList(Media.class, filterObject);
+	            result = Response.ok(new Gson().toJson(medias)).build();
+	        } else {
+                result = Response.status(404).build();
+            }
+	        return result;
 	}
-
-	@PUT // 根据id修改
+	
+	@PUT//根据id修改
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id,
-			Media media) {
-		Response result = Response.status(401).build();
-		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = new HashMap<>(1);
-			filterObject.put("id", id);
-			List<Media> medias = JPAEntry.getList(Media.class, filterObject);
-			if (medias.size() == 1) {
-				Media existmedia = medias.get(0);
-
-				String ext = media.getExt();
-				if (ext != null) {
-					existmedia.setExt(ext);
-				}
-
-				String mimeType = media.getMimeType();
-				if (mimeType != null) {
-					existmedia.setMimeType(mimeType);
-				}
-
-				String name = media.getName();
-				if (name != null) {
-					existmedia.setName(name);
-				}
-
-				Long size = media.getSize();
-				if (size != null) {
-					existmedia.setSize(size);
-				}
-
-				String storePath = media.getStorePath();
-				if (storePath != null) {
-					existmedia.setStorePath(storePath);
-				}
-
-				EntityManager em = JPAEntry.getEntityManager();
-				em.getTransaction().begin();
-				em.merge(existmedia);
-				em.getTransaction().commit();
-				result = Response.ok(existmedia).build();
-			} else {
-				result = Response.status(404).build();
-			}
-		}
-		return result;
+	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Media media) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = new HashMap<>(1);
+            filterObject.put("id", id);
+            List<Media> medias = JPAEntry.getList(Media.class, filterObject);
+            if (medias.size() == 1) {
+            	 Media existmedia = medias.get(0);
+            	 
+            	String ext = media.getExt();
+            	if (ext != null) {
+            		existmedia.setExt(ext);
+            	}
+            	
+            	String mimeType = media.getMimeType();
+            	if (mimeType != null) {
+            		existmedia.setMimeType(mimeType);
+            	}
+            	
+            	String name = media.getName();
+            	if (name != null) {
+            		existmedia.setName(name);
+            	}
+            	
+            	Long size = media.getSize();
+            	if (size != null) {
+            		existmedia.setSize(size);
+            	}
+            	
+            	String storePath = media.getStorePath();
+            	if (storePath != null) {
+            		existmedia.setStorePath(storePath);
+            	}
+            	
+                EntityManager em = JPAEntry.getEntityManager();
+                em.getTransaction().begin();
+                em.merge(existmedia);
+                em.getTransaction().commit();
+                result = Response.ok(existmedia).build();
+            } else {
+                result = Response.status(404).build();
+            }
+        }
+        return result;
 	}
 }

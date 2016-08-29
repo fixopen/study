@@ -11,24 +11,24 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "sessions")
+@Table(name="sessions")
 public class Session {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "user_id")
 	private Long userId;
-
+	
 	@Column(name = "device_id")
 	private Long deviceId;
-
+	
 	@Column(name = "identity")
 	private String identity;
-
+	
 	@Column(name = "last_operation_time")
 	private Date lastOperationTime;
-
+	
 	@Column(name = "ip")
 	private String ip;
 
@@ -79,5 +79,6 @@ public class Session {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-
+	
+	
 }

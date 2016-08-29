@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 /**
  * Created by lenovo on 2016/8/17.
  */
@@ -17,25 +16,25 @@ public class Comment {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "client_id")
 	private String clientId;
-
+	
 	@Column(name = "user_id")
 	private Long userId;
-
+	
 	@Column(name = "object_type")
 	private String objectType;
-
+	
 	@Column(name = "object_id")
 	private Long objectId;
-
+	
 	@Column(name = "content")
 	private String content;
-
+	
 	@Column(name = "create_time")
 	private Date createTime;
-
+	
 	@Column(name = "update_time")
 	private Date updateTime;
 
@@ -102,5 +101,6 @@ public class Comment {
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
-
+	
+	
 }

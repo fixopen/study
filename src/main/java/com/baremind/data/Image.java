@@ -9,27 +9,27 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name = "images")
+@Table(name="images")
 public class Image {
 	@Id
 	@Column(name = "id")
 	private Long id;
-
+	
 	@Column(name = "mime_type")
 	private String mimeType;
-
+	
 	@Column(name = "size")
 	private Long size;
-
+	
 	@Column(name = "name")
 	private String name;
-
+	
 	@Column(name = "ext")
 	private String ext;
-
+	
 	@Column(name = "store_path")
 	private String storePath;
-
+	
 	@Column(name = "main_color")
 	private Integer mainColor;
 
@@ -88,5 +88,6 @@ public class Image {
 	public void setMainColor(Integer mainColor) {
 		this.mainColor = mainColor;
 	}
-
+	
+	
 }
