@@ -20,6 +20,16 @@ import java.util.Map;
 
 @Path("users")
 public class Users {
+    static String hostname = "http://222.73.117.158";
+    static String username = "jiekou-clcs-13";
+    static String password = "THYnk464hu";
+
+    public static class SendMessageResult {
+        public String time;
+        public String code;
+        public String messageId;
+    }
+
     static void queryBalance() {
         //http://IP:PORT/msg/QueryBalance?account=a&pswd=p
         /*
@@ -34,8 +44,12 @@ public class Users {
         */
     }
 
-	static void sendMessage(String telephoneNumber, String validInfo) {
+	public static SendMessageResult sendMessage(String telephoneNumber, String validInfo) {
+        //platform: http://222.73.117.158/msg/index.jsp
+		//username: jiekou-clcs-13
+        //password: THYnk464hu
         //http://222.73.117.158:80/msg/HttpBatchSendSM?account=a&pswd=p&mobile=m&msg=m&needstatus=true
+
         //resptime,respstatus
         //msgid
         /*respstatus
@@ -62,14 +76,33 @@ public class Users {
         120 测试内容不是白名单
         */
 
+        SendMessageResult result = new SendMessageResult();
         // Default instance of client
         Client client = ClientBuilder.newClient();
 //        // Additional configuration of default client
 //        client.property("MyProperty", "MyValue")
 //            .register(MyProvider.class)
 //            .register(MyFeature.class);
-        Response res = client.target("http://222.73.117.158:80/msg/HttpBatchSendSM?account=a&pswd=p&mobile=m&msg=m&needstatus=true")
+        // + "HttpBatchSendSM?account=" + username + "&pswd=" + password + "&mobile=" + telephoneNumber + "&msg=" + validInfo + "&needstatus=true"
+        Response response = client.target(hostname)
+            .path("/msg/HttpBatchSendSM")
+            .queryParam("account", username)
+            .queryParam("pswd", password)
+            .queryParam("mobile", telephoneNumber)
+            .queryParam("msg", validInfo)
+            .queryParam("needstatus", true)
             .request("text/plain").get();
+        String responseBody = response.readEntity(String.class);
+        if (responseBody.contains("\n")) {
+            String[] lines = responseBody.split("\n");
+            if (lines.length == 2) {
+                String[] timeCode = lines[0].split(",");
+                result.time = timeCode[0];
+                result.code = timeCode[1];
+            }
+            result.messageId = lines[1];
+        }
+        return result;
     }
 
     @GET
