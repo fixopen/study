@@ -1,9 +1,8 @@
 package com.baremind.utils;
 
-import com.baremind.data.Account;
+import com.baremind.data.User;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ import java.util.Map;
  */
 public class JPAEntry {
     public interface TouchFunction {
-        void touch(Account a);
+        void touch(User a);
     }
 
     private static final String PERSISTENCE_UNIT_NAME = "supportData";
@@ -78,41 +77,6 @@ public class JPAEntry {
         return q.getResultList();
     }
 
-    public static Account getAccount(String sessionId) {
-        Account result = null;
-        List<Account> accounts = getList(Account.class, "sessionId", sessionId);
-        int count = accounts.size();
-        switch (count) {
-            case 1: //ok
-                result = accounts.get(0);
-                break;
-        }
-        return result;
-    }
-
-    public static boolean isLogining(Account a) {
-        return isLogining(a, (Account account) -> {
-        });
-    }
-
-    public static boolean isLogining(Account account, TouchFunction touchFunction) {
-        boolean result = false;
-        if (account.getActive() == 1) {
-            Date now = new Date();
-            Date lastOperationTime = account.getLastOpereationTime();
-            if (now.getTime() - lastOperationTime.getTime() < 30 * 60 * 1000) {
-                EntityManager em = getEntityManager();
-                em.getTransaction().begin();
-                account.setLastOpereationTime(now);
-                touchFunction.touch(account);
-                em.merge(account);
-                em.getTransaction().commit();
-                result = true;
-            }
-        }
-        return result;
-    }
-
     public static boolean isLogining(String sessionId) {
         return true;
 
@@ -122,14 +86,10 @@ public class JPAEntry {
 
     public static boolean isLogining(String sessionId, TouchFunction touchFunction) {
         boolean result = false;
-        Account account = getAccount(sessionId);
-        if (account != null) {
-            result = isLogining(account, touchFunction);
-        }
+//        User account = getUser(sessionId);
+//        if (account != null) {
+//            result = isLogining(account, touchFunction);
+//        }
         return result;
-    }
-
-    public static boolean hasKickOtherPermission(String sessionId) {
-        return false;
     }
 }

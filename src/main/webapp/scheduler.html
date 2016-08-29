@@ -220,22 +220,6 @@
         year.value = yw.year
         week.value = yw.week
 
-        //js获取日期
-        function time() {
-            //获取年数
-            var now = new Date();
-            var year = now.getFullYear();
-            document.getElementById("year").value = now.getFullYear();
-            //获取周数
-            var time, week, checkDate = new Date(new Date());
-            checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
-            time = checkDate.getTime();
-            checkDate.setMonth(0);
-            checkDate.setDate(1);
-            week = Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
-            document.getElementById("week").value = week;
-        }
-
         $('.append').click(function (e) {
             dayIndex = parseInt(e.currentTarget.dataset.index)
             let st = document.getElementById('scheduler-template')
@@ -272,13 +256,13 @@
 
                 let startTimeArray = startTimeValue.split(":")
                 //alert(startTimeArray)
-                let endTimeArray = endTimeValue.split(":")
-                //alert(endTimeArray)
-
                 let startDate = new Date(year, month, day, startTimeArray[0], startTimeArray[1])
-                let endDate = new Date(year, month, day, endTimeArray[0], endTimeArray[1])
                 //let startDate = moment([year, month, day, startTimeArray[0], startTimeArray[1]])
                 //alert(startDate)
+
+                let endTimeArray = endTimeValue.split(":")
+                //alert(endTimeArray)
+                let endDate = new Date(year, month, day, endTimeArray[0], endTimeArray[1])
                 //let endDate = moment([year, month, day, endTimeArray[0], endTimeArray[1]])
                 //alert(endDate)
 
@@ -335,91 +319,6 @@
                 }
             }
         })
-
-        $('#Sunday').on('click', function (e) {
-            let button = e.target
-            if (button.tagName == 'BUTTON') {
-                let m = moment().year(year.value).week(week.value).day(days[dayIndex])
-                let month = m.month()
-                let day = m.date()
-
-                let row = button.parentNode.parentNode
-                let startTime = row.querySelector('.startTime')
-                let endTime = row.querySelector('.endTime')
-                let duration = row.querySelector('.duration')
-
-                //alert(0)
-                var startTimeValue = startTime.value.trim();
-                var endTimeValue = endTime.value.trim();
-                if (startTimeValue == "" || endTimeValue == "") {
-                    alert("时间不能为空");
-                    return;
-                }
-                var reg = /^((20|21|22|23|[0-1]\d)\:[0-5][0-9])$/;
-                if (!reg.test(startTimeValue) || !reg.test(endTimeValue)) {
-                    alert("您输入的时间格式不正确!");
-                    return;
-                }
-                var startTimeArray = startTimeValue.split(":");
-                //alert(startTimeArray)
-                var endTimeArray = endTimeValue.split(":");
-                //alert(endTimeArray)
-                //var startDate = new Date(year, month, day, startTimeArray[0], startTimeArray[1]);
-                // var endDate = new Date(year, month, day, endTimeArray[0], endTimeArray[1]);
-                var startDate = moment([year, month, day, startTimeArray[0], startTimeArray[1]]);
-                //alert(startDate)
-                var endDate = moment([year, month, day, endTimeArray[0], endTimeArray[1]]);
-                //alert(endDate)
-                if (startDate >= endDate) {
-                    alert('开始时间不能大于结束时间');
-                    return;
-                }
-                let durationValue = +endDate - +startDate
-                alert(durationValue)
-                //let durationValue = endDate.diff(startDate)
-                durationValue = durationValue / 1000
-                duration.value = durationValue + 's'
-                let scheduler = {
-                    day: days[dayIndex],
-                    year: year.value,
-                    week: week.value,
-                    startTime: startTimeValue,
-                    endTime: endTimeValue,
-                    duration: durationValue,
-                    description: row.querySelector('.description').value,
-                    subjectId: row.querySelector('.subjectId').value,
-                    grade: row.querySelector('.grade').value,
-                    teacher: row.querySelector('.teacher').value,
-                    teacherDescription: row.querySelector('.teacherdescription').value,
-                    state: row.querySelector('.state').value,
-                    title: row.querySelector('.title').value
-                }
-                let id = button.dataset.id
-                if (id == 0) {
-                    $.ajax({
-                        type: "post",
-                        url: "api/schedulers",
-                        data: JSON.stringify(scheduler),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function (schedulerItem) {
-                            button.dataset.id = schedulerItem.id
-                        }
-                    })
-                } else {
-                    $.ajax({
-                        type: "put",
-                        url: "api/schedulers/" + id,
-                        data: JSON.stringify(scheduler),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function (schedulerItem) {
-                            //do nothing
-                        }
-                    })
-                }
-            }
-        });
     })
 </script>
 </body>

@@ -1,6 +1,5 @@
 package com.baremind.algorithm;
 
-import com.baremind.data.Account;
 import com.baremind.data.Device;
 
 import java.io.File;

@@ -11,63 +11,63 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="likes")
+@Table(name = "likes")
 public class Like {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "user_id")
-	private Long userId;
-	
-	@Column(name = "object_type")
-	private String objectType;
-	
-	@Column(name = "object_id")
-	private Long ObjectId;
-	
-	@Column(name = "create_time")
-	private Date createTime;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "user_id")
+    private Long userId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "object_type")
+    private String objectType;
 
-	public Long getUserId() {
-		return userId;
-	}
+    @Column(name = "object_id")
+    private Long ObjectId;
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    @Column(name = "create_time")
+    private Date createTime;
 
-	public String getObjectType() {
-		return objectType;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setObjectType(String objectType) {
-		this.objectType = objectType;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getObjectId() {
-		return ObjectId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setObjectId(Long objectId) {
-		ObjectId = objectId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public String getObjectType() {
+        return objectType;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-	
-	
+    public void setObjectType(String objectType) {
+        this.objectType = objectType;
+    }
+
+    public Long getObjectId() {
+        return ObjectId;
+    }
+
+    public void setObjectId(Long objectId) {
+        ObjectId = objectId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+
 }

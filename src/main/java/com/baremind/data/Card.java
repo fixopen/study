@@ -9,107 +9,107 @@ import javax.persistence.*;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name="cards")
+@Table(name = "cards")
 public class Card {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "user_id")
-	private Long UserId;
-	
-	@Column(name = "no")
-	private String no;
-	
-	@Column(name = "password")
-	private String password;
-	
-	@Column(name = "active_time")
-	private Date activeTime;
-	
-	@Column(name = "end_time")
-	private Date endTime;
-	
-	@Column(name = "duration")
-	private String duration;
-	
-	@Column(name = "subject")
-	private Long subject;
-	
-	@Column(name = "amount")
-	private Double amount;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "user_id")
+    private Long UserId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "no")
+    private String no;
 
-	public Long getUserId() {
-		return UserId;
-	}
+    @Column(name = "password")
+    private String password;
 
-	public void setUserId(Long userId) {
-		UserId = userId;
-	}
+    @Column(name = "active_time")
+    private Date activeTime;
 
-	public String getNo() {
-		return no;
-	}
+    @Column(name = "end_time")
+    private Date endTime;
 
-	public void setNo(String no) {
-		this.no = no;
-	}
+    @Column(name = "duration")
+    private String duration;
 
-	public String getPassword() {
-		return password;
-	}
+    @Column(name = "subject")
+    private Long subject;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @Column(name = "amount")
+    private Double amount;
 
-	public Date getActiveTime() {
-		return activeTime;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setActiveTime(Date activeTime) {
-		this.activeTime = activeTime;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Date getEndTime() {
-		return endTime;
-	}
+    public Long getUserId() {
+        return UserId;
+    }
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+    public void setUserId(Long userId) {
+        UserId = userId;
+    }
 
-	public String getDuration() {
-		return duration;
-	}
+    public String getNo() {
+        return no;
+    }
 
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
+    public void setNo(String no) {
+        this.no = no;
+    }
 
-	public Long getSubject() {
-		return subject;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setSubject(Long subject) {
-		this.subject = subject;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Double getAmount() {
-		return amount;
-	}
+    public Date getActiveTime() {
+        return activeTime;
+    }
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-	
-	
+    public void setActiveTime(Date activeTime) {
+        this.activeTime = activeTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public Long getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Long subject) {
+        this.subject = subject;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+
 }

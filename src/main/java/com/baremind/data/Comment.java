@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 /**
  * Created by lenovo on 2016/8/17.
  */
@@ -13,94 +14,94 @@ import javax.persistence.Table;
 @Table(name = "comments")
 public class Comment {
 
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "client_id")
-	private String clientId;
-	
-	@Column(name = "user_id")
-	private Long userId;
-	
-	@Column(name = "object_type")
-	private String objectType;
-	
-	@Column(name = "object_id")
-	private Long objectId;
-	
-	@Column(name = "content")
-	private String content;
-	
-	@Column(name = "create_time")
-	private Date createTime;
-	
-	@Column(name = "update_time")
-	private Date updateTime;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "client_id")
+    private String clientId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "user_id")
+    private Long userId;
 
-	public String getClientId() {
-		return clientId;
-	}
+    @Column(name = "object_type")
+    private String objectType;
 
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
-	}
+    @Column(name = "object_id")
+    private Long objectId;
 
-	public Long getUserId() {
-		return userId;
-	}
+    @Column(name = "content")
+    private String content;
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    @Column(name = "create_time")
+    private Date createTime;
 
-	public String getObjectType() {
-		return objectType;
-	}
+    @Column(name = "update_time")
+    private Date updateTime;
 
-	public void setObjectType(String objectType) {
-		this.objectType = objectType;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getObjectId() {
-		return objectId;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setObjectId(Long objectId) {
-		this.objectId = objectId;
-	}
+    public String getClientId() {
+        return clientId;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public String getObjectType() {
+        return objectType;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setObjectType(String objectType) {
+        this.objectType = objectType;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-	
-	
+    public Long getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(Long objectId) {
+        this.objectId = objectId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+
 }

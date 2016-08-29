@@ -29,110 +29,111 @@ import com.google.gson.reflect.TypeToken;
 @Path("problems")
 public class Problems {
 
-	@POST//添
-	@Consumes(MediaType.APPLICATION_JSON)
+    @POST//添
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, 	Problem problem) {
-	        Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	        	problem.setId(IdGenerator.getNewId());
-	                EntityManager em = JPAEntry.getEntityManager();
-	                em.getTransaction().begin();
-	                em.persist(problem);
-                    em.getTransaction().commit();
-                    result = Response.ok(problem).build();
-	            } else {
-	                result = Response.status(404).build();
-	            }
-	        return result;
-	    }
+    public Response createAdditionals(@CookieParam("sessionId") String sessionId, Problem problem) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            problem.setId(IdGenerator.getNewId());
+            EntityManager em = JPAEntry.getEntityManager();
+            em.getTransaction().begin();
+            em.persist(problem);
+            em.getTransaction().commit();
+            result = Response.ok(problem).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
 
-	@GET//根据条件查询
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
-		 Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	            Map<String, Object> filterObject = null;
-	            if (filter != "") {
-		              String rawFilter = URLDecoder.decode(filter);
-		              filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {}.getType());
-		          }
-	            List<Problem> problems =  JPAEntry.getList(Problem.class, filterObject);
-	            result = Response.ok(new Gson().toJson(problems)).build();
-	        } else {
-                result = Response.status(404).build();
+    @GET//根据条件查询
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = null;
+            if (filter != "") {
+                String rawFilter = URLDecoder.decode(filter);
+                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
+                }.getType());
             }
-	        return result;
-	}
+            List<Problem> problems = JPAEntry.getList(Problem.class, filterObject);
+            result = Response.ok(new Gson().toJson(problems)).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
 
-	@GET//根据条件查询
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
-		 Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	            Map<String, Object> filterObject = new HashMap<>(1);
-	            filterObject.put("id", id);
-	            List<Problem> problems =  JPAEntry.getList(Problem.class, filterObject);
-	            result = Response.ok(new Gson().toJson(problems)).build();
-	        } else {
-                result = Response.status(404).build();
-            }
-	        return result;
-	}
-	
-	@PUT//根据id修改
-	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Problem problem) {
+    @GET//根据条件查询
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = new HashMap<>(1);
+            filterObject.put("id", id);
+            List<Problem> problems = JPAEntry.getList(Problem.class, filterObject);
+            result = Response.ok(new Gson().toJson(problems)).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
+
+    @PUT//根据id修改
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Problem problem) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
             Map<String, Object> filterObject = new HashMap<>(1);
             filterObject.put("id", id);
             List<Problem> problems = JPAEntry.getList(Problem.class, filterObject);
             if (problems.size() == 1) {
-            	Problem existproblem = problems.get(0);
-            	
-            	String storePath = problem.getStorePath();
-            	if (storePath != null) {
-            		existproblem.setStorePath(storePath);
-            	}
-            	String title = problem.getTitle();
-            	if (title != null) {
-            		existproblem.setTitle(title);
-            	}
-            	Long knowledgePointId = problem.getKnowledgePointId();
-            	if (knowledgePointId != null) {
-            		existproblem.setKnowledgePointId(knowledgePointId);
-            	}
-            	String[] options = problem.getOptions();
-            	if (options != null) {
-            		existproblem.setOptions(options);
-            	}
-            	int order = problem.getOrder();
-            	if (order != 0) {
-            		existproblem.setOrder(order);
-            	}
-            	
-            	int[] standardAnswers = problem.getStandardAnswers();
-            	if (standardAnswers != null) {
-            		existproblem.setStandardAnswers(standardAnswers);
-            	}
-            	
-            	Long subjectId = problem.getSubjectId();
-            	if (subjectId != null) {
-            		existproblem.setSubjectId(subjectId);
-            	}
-            	
-            	String videoUrl = problem.getVideoUrl();
-            	if (videoUrl != null) {
-            		existproblem.setVideoUrl(videoUrl);
-            	}
-            	Long volumeId = problem.getVolumeId();
-            	if (volumeId != null) {
-            		existproblem.setVolumeId(volumeId);
-            	}
+                Problem existproblem = problems.get(0);
+
+                String storePath = problem.getStorePath();
+                if (storePath != null) {
+                    existproblem.setStorePath(storePath);
+                }
+                String title = problem.getTitle();
+                if (title != null) {
+                    existproblem.setTitle(title);
+                }
+                Long knowledgePointId = problem.getKnowledgePointId();
+                if (knowledgePointId != null) {
+                    existproblem.setKnowledgePointId(knowledgePointId);
+                }
+                String[] options = problem.getOptions();
+                if (options != null) {
+                    existproblem.setOptions(options);
+                }
+                int order = problem.getOrder();
+                if (order != 0) {
+                    existproblem.setOrder(order);
+                }
+
+                int[] standardAnswers = problem.getStandardAnswers();
+                if (standardAnswers != null) {
+                    existproblem.setStandardAnswers(standardAnswers);
+                }
+
+                Long subjectId = problem.getSubjectId();
+                if (subjectId != null) {
+                    existproblem.setSubjectId(subjectId);
+                }
+
+                String videoUrl = problem.getVideoUrl();
+                if (videoUrl != null) {
+                    existproblem.setVideoUrl(videoUrl);
+                }
+                Long volumeId = problem.getVolumeId();
+                if (volumeId != null) {
+                    existproblem.setVolumeId(volumeId);
+                }
                 EntityManager em = JPAEntry.getEntityManager();
                 em.getTransaction().begin();
                 em.merge(existproblem);
@@ -143,5 +144,5 @@ public class Problems {
             }
         }
         return result;
-	}
+    }
 }

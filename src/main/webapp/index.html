@@ -46,14 +46,14 @@
 </template>
 <template id="image-ad">
     <div class="col-xs-12">
-    <p>${imgtitle}</p>
-    <img src="${imgsrc}" alt="${imgtitle}" />
+        <p>${imgtitle}</p>
+        <img src="${imgsrc}" alt="${imgtitle}"/>
     </div>
 </template>
 <template id="subject-ad">
     <div class="col-xs-12">
-    <img src="${imgsrc}" alt="${imgtitle}" class="pull-right"/>
-    <p class="pull-left">${imgtitle}</p>
+        <img src="${imgsrc}" alt="${imgtitle}" class="pull-right"/>
+        <p class="pull-left">${imgtitle}</p>
     </div>
 </template>
 <template id="section-template">
@@ -96,40 +96,40 @@
     </ul>
 </template>
 <template id="footer-template">
-        <div class="btn-group " style="width: 100%">
-            <button type="button" class="btn btn-default" style="width: 16%">
-                <span>图标</span>
+    <div class="btn-group " style="width: 100%">
+        <button type="button" class="btn btn-default" style="width: 16%">
+            <span>图标</span>
+        </button>
+        <button type="button" class="btn btn-default" style="width: 28%" id="liveLesson">直播课</button>
+        <div class="btn-group dropup " style="width: 28%">
+            <button type="button" class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown" style="width: 100%">
+                学习
             </button>
-            <button type="button" class="btn btn-default" style="width: 28%" id="liveLesson">直播课</button>
-            <div class="btn-group dropup " style="width: 28%">
-                <button type="button" class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown" style="width: 100%">
-                    学习
-                </button>
-                <ul class="dropdown-menu" role="menu" style="width:100%">
-                    <li><a href="#" style="text-align: center" id="chinese">语文</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" style="text-align: center" id="math">奥数</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" style="text-align: center" id="english">口语</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" style="text-align: center" id="youngClass">少年作家班</a></li>
-                </ul>
-            </div>
-            <div class="btn-group dropup " style="width: 28%">
-                <button type="button" class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown" style="width: 100%">
-                    我的
-                </button>
-                <ul class="dropdown-menu" role="menu" style="width:100%">
-                    <li><a href="#" style="text-align: center" id="cardNumbe">添加卡号</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" style="text-align: center" id="accountNumbe">我的账号</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" style="text-align: center" id="myStudy">我的学习</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu" role="menu" style="width:100%">
+                <li><a href="#" style="text-align: center" id="chinese">语文</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-align: center" id="math">奥数</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-align: center" id="english">口语</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-align: center" id="youngClass">少年作家班</a></li>
+            </ul>
         </div>
+        <div class="btn-group dropup " style="width: 28%">
+            <button type="button" class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown" style="width: 100%">
+                我的
+            </button>
+            <ul class="dropdown-menu" role="menu" style="width:100%">
+                <li><a href="#" style="text-align: center" id="cardNumbe">添加卡号</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-align: center" id="accountNumbe">我的账号</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="text-align: center" id="myStudy">我的学习</a></li>
+            </ul>
+        </div>
+    </div>
 </template>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

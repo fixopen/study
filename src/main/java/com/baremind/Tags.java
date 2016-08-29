@@ -28,74 +28,75 @@ import com.google.gson.reflect.TypeToken;
 
 @Path("tags")
 public class Tags {
-	@POST//添
-	@Consumes(MediaType.APPLICATION_JSON)
+    @POST//添
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	 public Response createAdditionals(@CookieParam("sessionId") String sessionId, Tag tag) {
-	        Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	        	tag.setId(IdGenerator.getNewId());
-	                EntityManager em = JPAEntry.getEntityManager();
-	                em.getTransaction().begin();
-	                em.persist(tag);
-                    em.getTransaction().commit();
-                    result = Response.ok(tag).build();
-	            } else {
-	                result = Response.status(404).build();
-	            }
-	        return result;
-	    }
+    public Response createAdditionals(@CookieParam("sessionId") String sessionId, Tag tag) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            tag.setId(IdGenerator.getNewId());
+            EntityManager em = JPAEntry.getEntityManager();
+            em.getTransaction().begin();
+            em.persist(tag);
+            em.getTransaction().commit();
+            result = Response.ok(tag).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
 
-	@GET//根据条件查询
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
-		 Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	            Map<String, Object> filterObject = null;
-	            if (filter != "") {
-		              String rawFilter = URLDecoder.decode(filter);
-		              filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {}.getType());
-		          }
-	            List<Tag> tags =  JPAEntry.getList(Tag.class, filterObject);
-	            result = Response.ok(new Gson().toJson(tags)).build();
-	        } else {
-                result = Response.status(404).build();
+    @GET//根据条件查询
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = null;
+            if (filter != "") {
+                String rawFilter = URLDecoder.decode(filter);
+                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
+                }.getType());
             }
-	        return result;
-	}
+            List<Tag> tags = JPAEntry.getList(Tag.class, filterObject);
+            result = Response.ok(new Gson().toJson(tags)).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
 
-	@GET//根据条件查询
-	@Path("{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
-		 Response result = Response.status(401).build();
-	        if (JPAEntry.isLogining(sessionId)) {
-	            Map<String, Object> filterObject = new HashMap<>(1);
-	            filterObject.put("id", id);
-	            List<Tag> tags =  JPAEntry.getList(Tag.class, filterObject);
-	            result = Response.ok(new Gson().toJson(tags)).build();
-	        } else {
-                result = Response.status(404).build();
-            }
-	        return result;
-	}
-	
-	@PUT//根据id修改
-	@Path("{id}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Tag tag) {
+    @GET//根据条件查询
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
             Map<String, Object> filterObject = new HashMap<>(1);
             filterObject.put("id", id);
-            List< Tag> tags = JPAEntry.getList( Tag.class, filterObject);
+            List<Tag> tags = JPAEntry.getList(Tag.class, filterObject);
+            result = Response.ok(new Gson().toJson(tags)).build();
+        } else {
+            result = Response.status(404).build();
+        }
+        return result;
+    }
+
+    @PUT//根据id修改
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, Tag tag) {
+        Response result = Response.status(401).build();
+        if (JPAEntry.isLogining(sessionId)) {
+            Map<String, Object> filterObject = new HashMap<>(1);
+            filterObject.put("id", id);
+            List<Tag> tags = JPAEntry.getList(Tag.class, filterObject);
             if (tags.size() == 1) {
-            	 Tag existtag = tags.get(0);
-            	String name = tag.getName();
-            	if (name != null) {
-            		existtag.setName(name);
-            	}
+                Tag existtag = tags.get(0);
+                String name = tag.getName();
+                if (name != null) {
+                    existtag.setName(name);
+                }
                 EntityManager em = JPAEntry.getEntityManager();
                 em.getTransaction().begin();
                 em.merge(existtag);
@@ -106,5 +107,5 @@ public class Tags {
             }
         }
         return result;
-	}
+    }
 }

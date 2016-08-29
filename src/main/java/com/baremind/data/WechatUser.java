@@ -11,184 +11,184 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="wechat_users")
+@Table(name = "wechat_users")
 public class WechatUser {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "user_id")
-	private Long userId;
-	
-	@Column(name = "token")
-	private String token;
-	
-	@Column(name = "refresh_token")
-	private String refreshToken;
-	
-	@Column(name = "expiry")
-	private Date expiry;
-	
-	@Column(name = "ref_id")
-	private String refId;
-	
-	@Column(name = "open_id")
-	private String openId;
-	
-	@Column(name = "union_id")
-	private String unionId;
-	
-	@Column(name = "nickname")
-	private String nickname;
-	
-	@Column(name = "sex")
-	private Long sex;
-	
-	@Column(name = "city")
-	private String city;
-	
-	@Column(name = "province")
-	private String province;
-	
-	@Column(name = "country")
-	private String country;
-	
-	@Column(name = "head")
-	private String head;
-	
-	@Column(name = "privilege")
-	private String[] privilege;
-	
-	@Column(name = "info")
-	private String info;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "user_id")
+    private Long userId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "token")
+    private String token;
 
-	public Long getUserId() {
-		return userId;
-	}
+    @Column(name = "refresh_token")
+    private String refreshToken;
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    @Column(name = "expiry")
+    private Date expiry;
 
-	public String getToken() {
-		return token;
-	}
+    @Column(name = "ref_id")
+    private String refId;
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    @Column(name = "open_id")
+    private String openId;
 
-	public String getRefreshToken() {
-		return refreshToken;
-	}
+    @Column(name = "union_id")
+    private String unionId;
 
-	public void setRefreshToken(String refreshToken) {
-		this.refreshToken = refreshToken;
-	}
+    @Column(name = "nickname")
+    private String nickname;
 
-	public Date getExpiry() {
-		return expiry;
-	}
+    @Column(name = "sex")
+    private Long sex;
 
-	public void setExpiry(Date expiry) {
-		this.expiry = expiry;
-	}
+    @Column(name = "city")
+    private String city;
 
-	public String getRefId() {
-		return refId;
-	}
+    @Column(name = "province")
+    private String province;
 
-	public void setRefId(String refId) {
-		this.refId = refId;
-	}
+    @Column(name = "country")
+    private String country;
 
-	public String getOpenId() {
-		return openId;
-	}
+    @Column(name = "head")
+    private String head;
 
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
+    @Column(name = "privilege")
+    private String[] privilege;
 
-	public String getUnionId() {
-		return unionId;
-	}
+    @Column(name = "info")
+    private String info;
 
-	public void setUnionId(String unionId) {
-		this.unionId = unionId;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getNickname() {
-		return nickname;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public Long getSex() {
-		return sex;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setSex(Long sex) {
-		this.sex = sex;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getRefreshToken() {
+        return refreshToken;
+    }
 
-	public String getProvince() {
-		return province;
-	}
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
 
-	public void setProvince(String province) {
-		this.province = province;
-	}
+    public Date getExpiry() {
+        return expiry;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setExpiry(Date expiry) {
+        this.expiry = expiry;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getRefId() {
+        return refId;
+    }
 
-	public String getHead() {
-		return head;
-	}
+    public void setRefId(String refId) {
+        this.refId = refId;
+    }
 
-	public void setHead(String head) {
-		this.head = head;
-	}
+    public String getOpenId() {
+        return openId;
+    }
 
-	public String[] getPrivilege() {
-		return privilege;
-	}
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 
-	public void setPrivilege(String[] privilege) {
-		this.privilege = privilege;
-	}
+    public String getUnionId() {
+        return unionId;
+    }
 
-	public String getInfo() {
-		return info;
-	}
+    public void setUnionId(String unionId) {
+        this.unionId = unionId;
+    }
 
-	public void setInfo(String info) {
-		this.info = info;
-	}
-	
-	
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Long getSex() {
+        return sex;
+    }
+
+    public void setSex(Long sex) {
+        this.sex = sex;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public String[] getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(String[] privilege) {
+        this.privilege = privilege;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+
 }

@@ -9,30 +9,30 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="tags")
+@Table(name = "tags")
 public class Tag {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "name")
-	private String name;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }

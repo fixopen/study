@@ -14,5 +14,4 @@ public class Config {
     public String ZIP_TEMPORARY;
 
 
-
 }

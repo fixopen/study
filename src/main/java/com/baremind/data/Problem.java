@@ -9,117 +9,117 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/18.
  */
 @Entity
-@Table(name="problems")
+@Table(name = "problems")
 public class Problem {
-	@Id
+    @Id
     @Column(name = "id")
-	private Long id;
-	
-	@Column(name = "subject_id")
-	private Long subjectId;
- 	
- 	@Column(name = "volume_id")
- 	private Long volumeId;
-	
-	@Column(name = "knowledge_point_id")
-	private Long knowledgePointId;
-	
-	@Column(name = "title")
-	private String title;
-	
-	@Column(name = "options ")
-	private String[] options ;
-	
-	@Column(name = "standard_answers")
-	private int[] standardAnswers;
-	
-	@Column(name = "order")
-	private int order;
- 	
- 	@Column(name = "store_path")
- 	private String storePath;
- 	
- 	@Column(name = "video_url")
- 	private String videoUrl;
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "subject_id")
+    private Long subjectId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "volume_id")
+    private Long volumeId;
 
-	public Long getSubjectId() {
-		return subjectId;
-	}
+    @Column(name = "knowledge_point_id")
+    private Long knowledgePointId;
 
-	public void setSubjectId(Long subjectId) {
-		this.subjectId = subjectId;
-	}
+    @Column(name = "title")
+    private String title;
 
-	public Long getVolumeId() {
-		return volumeId;
-	}
+    @Column(name = "options ")
+    private String[] options;
 
-	public void setVolumeId(Long volumeId) {
-		this.volumeId = volumeId;
-	}
+    @Column(name = "standard_answers")
+    private int[] standardAnswers;
 
-	public Long getKnowledgePointId() {
-		return knowledgePointId;
-	}
+    @Column(name = "order")
+    private int order;
 
-	public void setKnowledgePointId(Long knowledgePointId) {
-		this.knowledgePointId = knowledgePointId;
-	}
+    @Column(name = "store_path")
+    private String storePath;
 
-	public String getTitle() {
-		return title;
-	}
+    @Column(name = "video_url")
+    private String videoUrl;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String[] getOptions() {
-		return options;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setOptions(String[] options) {
-		this.options = options;
-	}
+    public Long getSubjectId() {
+        return subjectId;
+    }
 
-	public int[] getStandardAnswers() {
-		return standardAnswers;
-	}
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
+    }
 
-	public void setStandardAnswers(int[] standardAnswers) {
-		this.standardAnswers = standardAnswers;
-	}
+    public Long getVolumeId() {
+        return volumeId;
+    }
 
-	public int getOrder() {
-		return order;
-	}
+    public void setVolumeId(Long volumeId) {
+        this.volumeId = volumeId;
+    }
 
-	public void setOrder(int order) {
-		this.order = order;
-	}
+    public Long getKnowledgePointId() {
+        return knowledgePointId;
+    }
 
-	public String getStorePath() {
-		return storePath;
-	}
+    public void setKnowledgePointId(Long knowledgePointId) {
+        this.knowledgePointId = knowledgePointId;
+    }
 
-	public void setStorePath(String storePath) {
-		this.storePath = storePath;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getVideoUrl() {
-		return videoUrl;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setVideoUrl(String videoUrl) {
-		this.videoUrl = videoUrl;
-	}
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
+    }
+
+    public int[] getStandardAnswers() {
+        return standardAnswers;
+    }
+
+    public void setStandardAnswers(int[] standardAnswers) {
+        this.standardAnswers = standardAnswers;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getStorePath() {
+        return storePath;
+    }
+
+    public void setStorePath(String storePath) {
+        this.storePath = storePath;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
 
 }
