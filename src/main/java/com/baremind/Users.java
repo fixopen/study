@@ -79,10 +79,6 @@ public class Users {
         SendMessageResult result = new SendMessageResult();
         // Default instance of client
         Client client = ClientBuilder.newClient();
-//        // Additional configuration of default client
-//        client.property("MyProperty", "MyValue")
-//            .register(MyProvider.class)
-//            .register(MyFeature.class);
         // + "HttpBatchSendSM?account=" + username + "&pswd=" + password + "&mobile=" + telephoneNumber + "&msg=" + validInfo + "&needstatus=true"
         Response response = client.target(hostname)
             .path("/msg/HttpBatchSendSM")
