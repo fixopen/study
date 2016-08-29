@@ -168,6 +168,11 @@ public class Schedulers {
             		existScheduler.setState(state);
             	}
             	
+            	int day = scheduler.getDay();
+            	if(day!=0){
+            		existScheduler.setDay(day);
+            	}
+            	
             	Long subjectId = scheduler.getSubjectId();
             	if(subjectId!=null){
             		existScheduler.setSubjectId(subjectId);

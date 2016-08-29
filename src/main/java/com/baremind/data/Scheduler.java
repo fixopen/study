@@ -14,6 +14,9 @@ public class Scheduler {
 	@Column(name = "id")
 	private Long id;
 	
+	@Column(name = "day")
+	private int day;
+	
 	@Column(name = "year")
 	private int year;
 	
@@ -153,6 +156,15 @@ public class Scheduler {
 	public void setTeacherDescription(String teacherDescription) {
 		this.teacherDescription = teacherDescription;
 	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
 	
 	
 }
