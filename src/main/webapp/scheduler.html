@@ -7,31 +7,45 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/moment.js"></script>
 <body>
-	<template id="scheduler-template">
-	<tr>
-		<td><input class="startTime" type="time"></td>
-		<td><input class="endTime" type="time"></td>
-		<td><input type="text" class="title"></td>
-		<td><select class="subjectId">
-				<option value="1">语文</option>
-				<option value="2">奥数</option>
-				<option value="3">口语</option>
-		</select></td>
-		<td><input type="text" class="duration"></td>
-		<td><textarea class="description"></textarea></td>
-		<td><input type="text" class="grade"></td>
-		<td><input type="text" class="teacher"></td>
-		<td><textarea class="teacherdescription"></textarea></td>
-		<td><select class="state">
-				<option value="0">未直播</option>
-				<option value="1">直播中</option>
-				<option value="2">直播后</option>
-		</select></td>
-		<td>
-			<button class="submit" data-id="0">确定</button>
-		</td>
-	</tr>
-	</template>
+<template id="scheduler-template">
+		<tr>
+			<td>
+				<input class="startTime" type="time" >
+			</td>
+			<td>
+ 				<input class="endTime"  type="time"  >
+			</td>
+			<td><input type="text" class="title"></td>
+			<td>
+				<select class="subjectId">
+					<option value="1">语文</option>
+					<option value="2">奥数</option>
+					<option value="3">口语</option>
+				</select>
+			</td>
+			<td>
+				<input type="text"  class="duration">
+			</td>
+			<td>
+				<textarea class="description"></textarea>
+			</td>
+			<td><input type="text" class="grade"></td>
+			<td><input type="text" class="teacher"></td>
+			<td>
+				<textarea class="teacherdescription"></textarea>
+			</td>
+			<td>
+				<select class="state">
+					<option value="0">未直播</option>
+					<option value="1">直播中</option>
+					<option value="2">直播后</option>
+				</select>
+			</td>
+			<td>
+			   <button class="submit" data-id="0">确定</button>
+			</td>			
+		</tr>
+</template>
 	<table border="1">
 		<tr>
 			<th>年</th>
@@ -59,14 +73,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
-				<button id="append" class="append">添加</button>
+			<th>
+			操作
+				<button class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Sunday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期一</h2>
 		<tr>
@@ -80,14 +95,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
-				<button class="append">添加</button>
+			<th>
+			操作
+				<button  class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Monday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期二</h2>
 		<tr>
@@ -101,14 +117,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
+			<th>
+			操作
 				<button class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Tuesday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期三</h2>
 		<tr>
@@ -122,14 +139,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
+			<th>
+			操作
 				<button class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Wednesday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期四</h2>
 		<tr>
@@ -143,14 +161,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
+			<th>
+			操作
 				<button class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Thursday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期五</h2>
 		<tr>
@@ -164,14 +183,15 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
+			<th>
+			操作
 				<button class="append">添加</button>
 			</th>
 		</tr>
 		<tbody id="Friday">
 		</tbody>
 	</table>
-	<!--  /////////////////////////////////////////////  -->
+<!--  /////////////////////////////////////////////  -->
 	<table border="1">
 		<h2>星期六</h2>
 		<tr>
@@ -185,7 +205,8 @@
 			<th>老师名称</th>
 			<th>老师描述</th>
 			<th>状态</th>
-			<th>操作
+			<th>
+			操作
 				<button class="append">添加</button>
 			</th>
 		</tr>
@@ -200,7 +221,7 @@
 			
 			let appendIndex = append
 			
-			let sundayIndex = sunday
+			/* let sundayIndex = Sunday */
 			
 			let year = document.getElementById("year")
 			let week = document.getElementById("week")
@@ -230,19 +251,19 @@
 				   
 			   }
 			
-		/* 	$('.append').click(function(e){
-				let st = document.getElementById('scheduler-template')
-	   	  		let nr = st.content.children[0].cloneNode(true)
-	   	  		let container = document.getElementById(weekes[dayIndex])
-	   	  		container.appendChild(nr)		
-			}) */
-			
 			$('#append').on('click', function(e){
 				let st = document.getElementById('scheduler-template')
 	   	  		let nr = st.content.children[0].cloneNode(true)
-	   	  		let container = document.getElementById('Sunday')
+	   	  		let container = document.getElementById(weekes[dayIndex])
 	   	  		container.appendChild(nr)
 			})
+			
+			 $('.append').on('click', function(e){
+				let st = document.getElementById('scheduler-template')
+	   	  		let nr = st.content.children[0].cloneNode(true)
+	   	  		let container = document.getElementById('Sunday')
+	   	  		container.appendChild(nr)		
+			}) 
 			
 			
 				$('#Sunday').on('click', function(e){
