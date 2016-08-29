@@ -18,13 +18,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.baremind.data.Session;
-import com.baremind.data.WechatUser;
-import com.baremind.utils.IdGenerator;
-import com.baremind.utils.JPAEntry;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 @Path("wechat-users")
 public class WechatUsers {
 	static String hostname = "https://api.weixin.qq.com";
@@ -49,7 +42,7 @@ public class WechatUsers {
 			String[] lines = responseBody.split("\n");
 			if (lines.length == 2) {
 				String[] timeCode = lines[0].split(",");
-				result.code = timeCode[0];
+				result.code = Integer.parseInt(timeCode[0]);
 				result.message = timeCode[1];
 			}
 		}
@@ -183,13 +176,14 @@ public class WechatUsers {
         //{"errcode":0,"errmsg":"ok"}
         //{"errcode":40018,"errmsg":"invalid button name size"}
 		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-			.path("/cgi-bin/menu/create")
-			.queryParam("access_token", accesstoken)
-			.request("text/plain").post(menu);
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-        return r;
+//		Response response = client.target(hostname)
+//			.path("/cgi-bin/menu/create")
+//			.queryParam("access_token", accesstoken)
+//			.request("text/plain").post(menu);
+//		String responseBody = response.readEntity(String.class);
+//		GenericResult r = null;
+//      return r;
+        return null;
     }
 
 	@POST // 添

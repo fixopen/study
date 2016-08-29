@@ -36,10 +36,8 @@ public class Schedulers {
             Map<String, Object> filterObject = new HashMap<>(2);
             filterObject.put("year", year);
             filterObject.put("week", weekNo);
-            List<Scheduler> schedulers = (List) JPAEntry.getList(Scheduler.class, filterObject);
+            List<Scheduler> schedulers = JPAEntry.getList(Scheduler.class, filterObject);
             result = Response.ok(new Gson().toJson(schedulers)).build();
-        } else {
-            result = Response.status(404).build();
         }
         return result;
 	}
@@ -56,29 +54,26 @@ public class Schedulers {
             Map<String, Object> filterObject = new HashMap<>(2);
             filterObject.put("year", year);
             filterObject.put("week", week);
-            List<Scheduler> schedulers = (List) JPAEntry.getList(Scheduler.class, filterObject);
+            List<Scheduler> schedulers = JPAEntry.getList(Scheduler.class, filterObject);
             result = Response.ok(new Gson().toJson(schedulers)).build();
-        } else {
-            result = Response.status(404).build();
         }
         return result;
 	}
+
 	@GET//根据id查询课表
-	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getWeekScheduler(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
 		Response result = Response.status(401).build();
 		if (JPAEntry.isLogining(sessionId)) {
-			Map<String, Object> filterObject = null;
+            Map<String, Object> filterObject = null;
             if (filter != "") {
                 String rawFilter = URLDecoder.decode(filter);
-                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {}.getType());
+                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
+                }.getType());
             }
-			List<Scheduler> schedulers =  JPAEntry.getList(Scheduler.class, filterObject);
-			result = Response.ok(new Gson().toJson(schedulers)).build();
-		} else {
-			result = Response.status(404).build();
-		}
+            List<Scheduler> schedulers = JPAEntry.getList(Scheduler.class, filterObject);
+            result = Response.ok(new Gson().toJson(schedulers)).build();
+        }
 		return result;
 	}
 

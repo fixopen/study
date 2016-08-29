@@ -1,13 +1,12 @@
 package com.baremind.utils;
 
 import com.baremind.data.Account;
-import com.baremind.data.Scheduler;
 
 import javax.persistence.*;
-
-import org.junit.Test;
-
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fixopen on 18/8/15.
@@ -22,10 +21,6 @@ public class JPAEntry {
     private static EntityManager entityManager;
 
 
-    
-    
-    
-    
     public static EntityManager getEntityManager() {
         if (entityManager == null) {
             try {
@@ -50,8 +45,8 @@ public class JPAEntry {
             //do noting
         } catch (NonUniqueResultException e) {
             List<T> t = em.createQuery(jpql, type)
-                    .setParameter("variable", fieldValue)
-                    .getResultList();
+                .setParameter("variable", fieldValue)
+                .getResultList();
             result = t.get(0);
         }
         return result;
@@ -119,8 +114,8 @@ public class JPAEntry {
     }
 
     public static boolean isLogining(String sessionId) {
-		return true;
-    	
+        return true;
+
         //return isLogining(sessionId, (Account a) -> {
         //});
     }

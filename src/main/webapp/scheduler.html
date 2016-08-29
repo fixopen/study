@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>排课</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
 </head>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/moment.js"></script>
 <body>
 <template id="scheduler-template">
     <tr>
@@ -32,6 +32,7 @@
         </td>
     </tr>
 </template>
+
 <table border="1">
     <tr>
         <th>年</th>
@@ -46,8 +47,10 @@
         </td>
     </tr>
 </table>
+
 <table border="1">
-    <h2>星期日</h2>
+    <caption>星期日</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -60,15 +63,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button id="append" class="append">添加</button>
+            <button id="append" class="append" data-index="0">添加</button>
         </th>
     </tr>
-    <tbody id="Sunday">
-    </tbody>
+    </thead>
+    <tbody id="Sunday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期一</h2>
+    <caption>星期一</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -81,15 +85,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="1">添加</button>
         </th>
     </tr>
-    <tbody id="Monday">
-    </tbody>
+    </thead>
+    <tbody id="Monday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期二</h2>
+    <caption>星期二</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -102,15 +107,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="2">添加</button>
         </th>
     </tr>
-    <tbody id="Tuesday">
-    </tbody>
+    </thead>
+    <tbody id="Tuesday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期三</h2>
+    <caption>星期三</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -123,15 +129,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="3">添加</button>
         </th>
     </tr>
-    <tbody id="Wednesday">
-    </tbody>
+    </thead>
+    <tbody id="Wednesday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期四</h2>
+    <caption>星期四</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -144,15 +151,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="4">添加</button>
         </th>
     </tr>
-    <tbody id="Thursday">
-    </tbody>
+    </thead>
+    <tbody id="Thursday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期五</h2>
+    <caption>星期五</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -165,15 +173,16 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="5">添加</button>
         </th>
     </tr>
-    <tbody id="Friday">
-    </tbody>
+    </thead>
+    <tbody id="Friday" class="scheduler-list"></tbody>
 </table>
-<!--  /////////////////////////////////////////////  -->
+
 <table border="1">
-    <h2>星期六</h2>
+    <caption>星期六</caption>
+    <thead>
     <tr>
         <th>开始时间</th>
         <th>结束时间</th>
@@ -186,16 +195,17 @@
         <th>老师描述</th>
         <th>状态</th>
         <th>操作
-            <button class="append">添加</button>
+            <button class="append" data-index="6">添加</button>
         </th>
     </tr>
-    <tbody id="Saturday">
-    </tbody>
+    </thead>
+    <tbody id="Saturday" class="scheduler-list"></tbody>
 </table>
+
 <script language="javascript" type="text/javascript">
     $(function () {
         const days = [0, 1, 2, 3, 4, 5, 6]
-        const weeks = [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+        const weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         let dayIndex = 0
 
         let year = document.getElementById("year")
@@ -224,23 +234,107 @@
             checkDate.setDate(1);
             week = Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
             document.getElementById("week").value = week;
-
         }
 
         $('.append').click(function (e) {
+            dayIndex = parseInt(e.currentTarget.dataset.index)
             let st = document.getElementById('scheduler-template')
             let nr = st.content.children[0].cloneNode(true)
             let container = document.getElementById(weeks[dayIndex])
             container.appendChild(nr)
         })
 
-        $('#append').on('click', function (e) {
-            let st = document.getElementById('scheduler-template')
-            let nr = st.content.children[0].cloneNode(true)
-            let container = document.getElementById('Sunday')
-            container.appendChild(nr)
-        })
+        $('.scheduler-list').on('click', function (e) {
+            let button = e.target
+            if (button.tagName == 'BUTTON') {
+                let m = moment().year(year.value).week(week.value).day(days[dayIndex])
+                let month = m.month()
+                let day = m.date()
 
+                let row = button.parentNode.parentNode
+                let startTime = row.querySelector('.startTime')
+                let endTime = row.querySelector('.endTime')
+                let duration = row.querySelector('.duration')
+
+                var startTimeValue = startTime.value.trim()
+                var endTimeValue = endTime.value.trim()
+
+                if (startTimeValue == "" || endTimeValue == "") {
+                    alert("时间不能为空")
+                    return
+                }
+
+                var reg = /^((20|21|22|23|[0-1]\d)\:[0-5][0-9])$/
+                if (!reg.test(startTimeValue) || !reg.test(endTimeValue)) {
+                    alert("您输入的时间格式不正确!")
+                    return
+                }
+
+                let startTimeArray = startTimeValue.split(":")
+                //alert(startTimeArray)
+                let endTimeArray = endTimeValue.split(":")
+                //alert(endTimeArray)
+
+                let startDate = new Date(year, month, day, startTimeArray[0], startTimeArray[1])
+                let endDate = new Date(year, month, day, endTimeArray[0], endTimeArray[1])
+                //let startDate = moment([year, month, day, startTimeArray[0], startTimeArray[1]])
+                //alert(startDate)
+                //let endDate = moment([year, month, day, endTimeArray[0], endTimeArray[1]])
+                //alert(endDate)
+
+                if (startDate >= endDate) {
+                    alert('开始时间不能大于结束时间')
+                    return
+                }
+
+                let durationValue = +endDate - +startDate
+                alert(durationValue)
+                //let durationValue = endDate.diff(startDate)
+                durationValue = durationValue / 1000
+                duration.value = durationValue + 's'
+
+                let scheduler = {
+                    day: days[dayIndex],
+                    year: year.value,
+                    week: week.value,
+                    startTime: startTimeValue,
+                    endTime: endTimeValue,
+                    duration: durationValue,
+                    description: row.querySelector('.description').value,
+                    subjectId: row.querySelector('.subjectId').value,
+                    grade: row.querySelector('.grade').value,
+                    teacher: row.querySelector('.teacher').value,
+                    teacherDescription: row.querySelector('.teacherdescription').value,
+                    state: row.querySelector('.state').value,
+                    title: row.querySelector('.title').value
+                }
+                alert(JSON.stringify(scheduler))
+                let id = button.dataset.id
+                if (id == 0) {
+                    $.ajax({
+                        type: "post",
+                        url: "api/schedulers",
+                        data: JSON.stringify(scheduler),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (schedulerItem) {
+                            button.dataset.id = schedulerItem.id
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        type: "put",
+                        url: "api/schedulers/" + id,
+                        data: JSON.stringify(scheduler),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (schedulerItem) {
+                            //do nothing
+                        }
+                    })
+                }
+            }
+        })
 
         $('#Sunday').on('click', function (e) {
             let button = e.target
@@ -267,17 +361,15 @@
                     return;
                 }
                 var startTimeArray = startTimeValue.split(":");
-                alert(startTimeArray)
+                //alert(startTimeArray)
                 var endTimeArray = endTimeValue.split(":");
-                alert(endTimeArray)
+                //alert(endTimeArray)
                 //var startDate = new Date(year, month, day, startTimeArray[0], startTimeArray[1]);
-
                 // var endDate = new Date(year, month, day, endTimeArray[0], endTimeArray[1]);
-
                 var startDate = moment([year, month, day, startTimeArray[0], startTimeArray[1]]);
-                alert(startDate)
+                //alert(startDate)
                 var endDate = moment([year, month, day, endTimeArray[0], endTimeArray[1]]);
-                alert(endDate)
+                //alert(endDate)
                 if (startDate >= endDate) {
                     alert('开始时间不能大于结束时间');
                     return;
@@ -286,8 +378,7 @@
                 alert(durationValue)
                 //let durationValue = endDate.diff(startDate)
                 durationValue = durationValue / 1000
-                duration.value = durationValue
-                //+ 's'
+                duration.value = durationValue + 's'
                 let scheduler = {
                     day: days[dayIndex],
                     year: year.value,
@@ -311,9 +402,8 @@
                         data: JSON.stringify(scheduler),
                         dataType: "json",
                         contentType: "application/json",
-                        success: function (falg) {
-                            //alert(falg)
-                            button.dataset.id = falg.id
+                        success: function (schedulerItem) {
+                            button.dataset.id = schedulerItem.id
                         }
                     })
                 } else {
@@ -323,7 +413,8 @@
                         data: JSON.stringify(scheduler),
                         dataType: "json",
                         contentType: "application/json",
-                        success: function (falg) {
+                        success: function (schedulerItem) {
+                            //do nothing
                         }
                     })
                 }

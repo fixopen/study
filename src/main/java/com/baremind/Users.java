@@ -24,12 +24,6 @@ public class Users {
     static String username = "jiekou-clcs-13";
     static String password = "THYnk464hu";
 
-    public static class SendMessageResult {
-        public String time;
-        public String code;
-        public String messageId;
-    }
-
     static void queryBalance() {
         //http://IP:PORT/msg/QueryBalance?account=a&pswd=p
         /*
@@ -44,7 +38,13 @@ public class Users {
         */
     }
 
-	public static SendMessageResult sendMessage(String telephoneNumber, String validInfo) {
+    public static class SendMessageResult {
+        public String time;
+        public String code;
+        public String messageId;
+    }
+
+    public static SendMessageResult sendMessage(String telephoneNumber, String validInfo) {
         //platform: http://222.73.117.158/msg/index.jsp
 		//username: jiekou-clcs-13
         //password: THYnk464hu
@@ -101,9 +101,18 @@ public class Users {
         return result;
     }
 
+    public static class SmsState {
+        public String receiver;
+        public String password;
+        public String messageId;
+        public String reportTime;
+        public String mobile;
+        public String status;
+    }
+
     @GET
     @Path("smsStateNotification")
-    public void smsStateNotification() {
+    public SmsState smsStateNotification() {
         //http://pushUrl?receiver=admin&pswd=12345&msgid=12345&reportTime=1012241002&mobile=13900210021&status=DELIVRD
         /*
         DELIVRD 短消息转发成功
@@ -116,12 +125,23 @@ public class Users {
         REJECT 审核驳回
         其他 网关内部状态
         */
+        return null;
+    }
+
+    public static class SmsReceiverState {
+        public String receiver;
+        public String password;
+        public String message;
+        public String moTime;
+        public String mobile;
+        public String destinationCode;
     }
 
     @GET
     @Path("smsReceiver")
-    public void smsReceiver() {
+    public SmsReceiverState smsReceiver() {
         //http://pushMoUrl?receiver=admin&pswd=12345&moTime=1208212205&mobile=13800210021&msg=hello&destcode=10657109012345
+        return null;
     }
 
 	@POST // 添
