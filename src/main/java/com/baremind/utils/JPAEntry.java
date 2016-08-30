@@ -1,20 +1,18 @@
 package com.baremind.utils;
 
-import com.baremind.data.User;
+import com.baremind.data.Session;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Created by fixopen on 18/8/15.
  */
 public class JPAEntry {
-    public interface TouchFunction {
-        void touch(User a);
-    }
-
     private static final String PERSISTENCE_UNIT_NAME = "supportData";
     private static EntityManagerFactory factory;
     private static EntityManager entityManager;
@@ -91,18 +89,22 @@ public class JPAEntry {
     }
 
     public static boolean isLogining(String sessionId) {
-        return true;
-
-        //return isLogining(sessionId, (Account a) -> {
-        //});
+        return isLogining(sessionId, a -> {
+            a.setLastOperationTime(new Date());
+            genericPut(a);
+        });
     }
 
-    public static boolean isLogining(String sessionId, TouchFunction touchFunction) {
+    public static boolean isLogining(String sessionId, Consumer<Session> touchFunction) {
         boolean result = false;
-//        User account = getUser(sessionId);
-//        if (account != null) {
-//            result = isLogining(account, touchFunction);
-//        }
+        Session s = getObject(Session.class, "identity", sessionId);
+        if (s != null) {
+            result = true;
+            touchFunction.accept(s);
+        }
+        //@@
+        result = true;
+        //@@
         return result;
     }
 }

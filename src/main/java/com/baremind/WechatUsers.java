@@ -33,256 +33,259 @@ public class WechatUsers {
     static String hostname = "https://api.weixin.qq.com";
     static String accesstoken = "";
 
-	public static class GenericResult {
-		public int code;
-		public String message;
-		public int menuid;
-	}
+    public static class GenericResult {
+        public int code;
+        public String message;
+        public int menuid;
+    }
 
-	//自定义菜单查询接口
-	private GenericResult getWechatServerIpList() {
-		//https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN	//{"ip_list":["127.0.0.1","127.0.0.1"]}
-		GenericResult result = new GenericResult();
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/get")
-				.queryParam("access_token", accesstoken)
-				.request().get();
-		String responseBody = response.readEntity(String.class);
-		if (responseBody.contains("\n")) {
-			String[] lines = responseBody.split("\n");
-			if (lines.length == 2) {
-				String[] timeCode = lines[0].split(",");
-				result.code = Integer.parseInt(timeCode[0]);
-				result.message = timeCode[1];
-			}
-		}
-		return result;
-	}
+    //自定义菜单查询接口
+    private GenericResult getWechatServerIpList() {
+        //https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN	//{"ip_list":["127.0.0.1","127.0.0.1"]}
+        GenericResult result = new GenericResult();
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/get")
+            .queryParam("access_token", accesstoken)
+            .request().get();
+        String responseBody = response.readEntity(String.class);
+        if (responseBody.contains("\n")) {
+            String[] lines = responseBody.split("\n");
+            if (lines.length == 2) {
+                String[] timeCode = lines[0].split(",");
+                result.code = Integer.parseInt(timeCode[0]);
+                result.message = timeCode[1];
+            }
+        }
+        return result;
+    }
 
-	//自定义菜单创建接口
-	private GenericResult createCustomMenu(Entity<?> menu) {
-		//POST https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN       
-		//{"errcode":0,"errmsg":"ok"}
-		//{"errcode":40018,"errmsg":"invalid button name size"}
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/menu/create")
-				.queryParam("access_token", accesstoken)
-				.request().post(menu);
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-		return null;
-	}
+    //自定义菜单创建接口
+    private GenericResult createCustomMenu(Entity<?> menu) {
+        //POST https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+        //{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/menu/create")
+            .queryParam("access_token", accesstoken)
+            .request().post(menu);
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
 
-	//自定义菜单删除接口
-	private GenericResult deleteCustomMenu() {
-		//https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN   
-		//{"errcode":0,"errmsg":"ok"}
-		//{"errcode":40018,"errmsg":"invalid button name size"}
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/menu/delete")
-				.queryParam("access_token", accesstoken)
-				.request().get();
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-		return null;
-	}
+    //自定义菜单删除接口
+    private GenericResult deleteCustomMenu() {
+        //https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN
+        //{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/menu/delete")
+            .queryParam("access_token", accesstoken)
+            .request().get();
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
 
-	//创建个性化菜单
-	private GenericResult cretePersonalityMenu(Entity<?> menu) {
-		// https://api.weixin.qq.com/cgi-bin/menu/addconditional?access_token=ACCESS_TOKEN
+    //创建个性化菜单
+    private GenericResult cretePersonalityMenu(Entity<?> menu) {
+        // https://api.weixin.qq.com/cgi-bin/menu/addconditional?access_token=ACCESS_TOKEN
 
-		//{"errcode":0,"errmsg":"ok"}
-		//{"errcode":40018,"errmsg":"invalid button name size"}
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/menu/addconditional")
-				.queryParam("access_token", accesstoken)
-				.request().post(menu);
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-		return null;
-	}
+        //{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/menu/addconditional")
+            .queryParam("access_token", accesstoken)
+            .request().post(menu);
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
 
-	//删除个性化菜单
-	private GenericResult deletePersonalityMenu(Entity<?> menu) {
-		// https://api.weixin.qq.com/cgi-bin/menu/delconditional?access_token=ACCESS_TOKEN
-		//{"errcode":0,"errmsg":"ok"}
-		//{"errcode":40018,"errmsg":"invalid button name size"}
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/menu/delconditional")
-				.queryParam("access_token", accesstoken)
-				.request().post(menu);
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-		return null;
-	}
-	
-	//点击菜单拉取消息时的事件推送
-	@POST // 
-	@Consumes(MediaType.APPLICATION_XML) 
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response clickMenu(@CookieParam("sessionId") String sessionId, ClickEvent clickEvent) {
-		//没有处理，记得要做处理
-		return null;
-	}
-	
-	//点击菜单跳转链接时的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response clickLinkMenu(@CookieParam("sessionId") String sessionId, ClickLink clickLink) {
-			//没有处理，记得要做处理
-			return null;
-		}
+    //删除个性化菜单
+    private GenericResult deletePersonalityMenu(Entity<?> menu) {
+        // https://api.weixin.qq.com/cgi-bin/menu/delconditional?access_token=ACCESS_TOKEN
+        //{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/menu/delconditional")
+            .queryParam("access_token", accesstoken)
+            .request().post(menu);
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
 
-	//扫码推事件的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response scancodePush(@CookieParam("sessionId") String sessionId, ScancodePush scancodePush) {
-			//没有处理，记得要做处理
-			return null;
-		}
-		
-	//扫码推事件且弹出“消息接收中”提示框的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response scancode_waitmsg(@CookieParam("sessionId") String sessionId, ScancodePush scancodePush) {
-			//没有处理，记得要做处理
-			return null;
-		}
-		
-	//弹出系统拍照发图的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response pic_sysphoto(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
-			//没有处理，记得要做处理
-			return null;
-		}
-		
-	//弹出拍照或者相册发图的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response pic_photo_or_album(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
-			//没有处理，记得要做处理
-			return null;
-		}
-				
-	//：弹出微信相册发图器的事件推送
-		@POST // 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response pic_weixin(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
-			//没有处理，记得要做处理
-			return null;
-		}
-				
-	// 弹出地理位置选择器的事件推送
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response location_select(@CookieParam("sessionId") String sessionId, LocationSelect locationSelect) {
-			//没有处理，记得要做处理
-			return null;
-		}
-			
+    //点击菜单拉取消息时的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response clickMenu(@CookieParam("sessionId") String sessionId, ClickEvent clickEvent) {
+        //没有处理，记得要做处理
+        return null;
+    }
 
-	//测试个性化菜单匹配结果
-	private GenericResult testPersonalityMenu(Entity<?> menu) {
-		//https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=ACCESS_TOKEN
-		//{"errcode":0,"errmsg":"ok"}
-		//{"errcode":40018,"errmsg":"invalid button name size"}
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(hostname)
-				.path("/cgi-bin/menu/trymatch")
-				.queryParam("access_token", accesstoken)
-				.request().post(menu);
-		String responseBody = response.readEntity(String.class);
-		GenericResult r = null;
-		return null;
-	}
-	
-	//获取自定义菜单配置接口
-		private GenericResult testPersonalityMenu() {
-			//https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN//{"errcode":0,"errmsg":"ok"}
-			//{"errcode":40018,"errmsg":"invalid button name size"}
-			Client client = ClientBuilder.newClient();
-			Response response = client.target(hostname)
-					.path("/cgi-bin/get_current_selfmenu_info")
-					.queryParam("access_token", accesstoken)
-					.request().get();
-			String responseBody = response.readEntity(String.class);
-			GenericResult r = null;
-			return null;
-		}
-		
-	// 接受消息 ：文本消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response textmessage(@CookieParam("sessionId") String sessionId, TextMessage textMessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
-	// 接受消息 ：图片消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response prcturemessage(@CookieParam("sessionId") String sessionId, PictureMessage pictureMessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
+    //点击菜单跳转链接时的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response clickLinkMenu(@CookieParam("sessionId") String sessionId, ClickLink clickLink) {
+        //没有处理，记得要做处理
+        return null;
+    }
 
-	// 接受消息 ：语音消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response voiceMeessage(@CookieParam("sessionId") String sessionId, VoiceMeessage voiceMeessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
-		
-	// 接受消息 ：视频消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response videoMessage(@CookieParam("sessionId") String sessionId, VideoMessage videoMessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
+    //扫码推事件的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response scancodePush(@CookieParam("sessionId") String sessionId, ScancodePush scancodePush) {
+        //没有处理，记得要做处理
+        return null;
+    }
 
-				
-	// 接受消息 ：小视频消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, VoiceMeessage voiceMeessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
-	// 接受消息 ：地理位置消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, LocationInformation locationInformation) {
-			//没有处理，记得要做处理
-			return null;
-		}
-	// 接受消息 ：链接消息
-		@POST 
-		@Consumes(MediaType.APPLICATION_XML) 
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, LinkMessage linkMessage) {
-			//没有处理，记得要做处理
-			return null;
-		}
+    //扫码推事件且弹出“消息接收中”提示框的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response scancode_waitmsg(@CookieParam("sessionId") String sessionId, ScancodePush scancodePush) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    //弹出系统拍照发图的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response pic_sysphoto(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    //弹出拍照或者相册发图的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response pic_photo_or_album(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    //：弹出微信相册发图器的事件推送
+    @POST //
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response pic_weixin(@CookieParam("sessionId") String sessionId, PicSysphoto picSysphoto) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 弹出地理位置选择器的事件推送
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response location_select(@CookieParam("sessionId") String sessionId, LocationSelect locationSelect) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+
+    //测试个性化菜单匹配结果
+    private GenericResult testPersonalityMenu(Entity<?> menu) {
+        //https://api.weixin.qq.com/cgi-bin/menu/trymatch?access_token=ACCESS_TOKEN
+        //{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/menu/trymatch")
+            .queryParam("access_token", accesstoken)
+            .request().post(menu);
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
+
+    //获取自定义菜单配置接口
+    private GenericResult testPersonalityMenu() {
+        //https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN//{"errcode":0,"errmsg":"ok"}
+        //{"errcode":40018,"errmsg":"invalid button name size"}
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/get_current_selfmenu_info")
+            .queryParam("access_token", accesstoken)
+            .request().get();
+        String responseBody = response.readEntity(String.class);
+        GenericResult r = null;
+        return null;
+    }
+
+    // 接受消息 ：文本消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response textmessage(@CookieParam("sessionId") String sessionId, TextMessage textMessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 接受消息 ：图片消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response prcturemessage(@CookieParam("sessionId") String sessionId, PictureMessage pictureMessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 接受消息 ：语音消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response voiceMeessage(@CookieParam("sessionId") String sessionId, VoiceMeessage voiceMeessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 接受消息 ：视频消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response videoMessage(@CookieParam("sessionId") String sessionId, VideoMessage videoMessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+
+    // 接受消息 ：小视频消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, VoiceMeessage voiceMeessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 接受消息 ：地理位置消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, LocationInformation locationInformation) {
+        //没有处理，记得要做处理
+        return null;
+    }
+
+    // 接受消息 ：链接消息
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response smallvoiceMeessage(@CookieParam("sessionId") String sessionId, LinkMessage linkMessage) {
+        //没有处理，记得要做处理
+        return null;
+    }
 
 
     private GenericResult createCustomMenu(Json menu) {
