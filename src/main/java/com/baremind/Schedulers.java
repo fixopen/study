@@ -1,17 +1,14 @@
 package com.baremind;
 
 import com.baremind.data.Scheduler;
+import com.baremind.utils.CharacterEncodingFilter;
 import com.baremind.utils.IdGenerator;
 import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import javax.persistence.EntityManager;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import java.net.URLDecoder;
 import java.util.*;
 
 //GET /api/schedulers/this-week
@@ -20,7 +17,7 @@ import java.util.*;
 
 @Path("schedulers")
 public class Schedulers {
-    @GET//查询课表
+    @GET //查询(获取本周)课表
     @Path("this-week")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getThisWeekScheduler(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
@@ -40,7 +37,7 @@ public class Schedulers {
         return result;
     }
 
-    @GET//根据周查询课表
+    @GET //根据周查询课表
     @Path("{week}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getWeekScheduler(@CookieParam("sessionId") String sessionId, @PathParam("week") Integer week) {
@@ -58,17 +55,12 @@ public class Schedulers {
         return result;
     }
 
-    @GET//根据id查询课表
+    @GET //根据id查询课表
     @Produces(MediaType.APPLICATION_JSON)
     public Response getWeekScheduler(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
-            Map<String, Object> filterObject = null;
-            if (filter != "") {
-                String rawFilter = URLDecoder.decode(filter);
-                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
-                }.getType());
-            }
+            Map<String, Object> filterObject = CharacterEncodingFilter.getFilters(filter);
             List<Scheduler> schedulers = JPAEntry.getList(Scheduler.class, filterObject);
             result = Response.ok(new Gson().toJson(schedulers)).build();
         }
@@ -76,37 +68,29 @@ public class Schedulers {
     }
 
 
-    @POST//添加课表
+    @POST //添加课表
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createScheduler(@CookieParam("sessionId") String sessionId, Scheduler scheduler) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
             scheduler.setId(IdGenerator.getNewId());
-            EntityManager em = JPAEntry.getEntityManager();
-            em.getTransaction().begin();
-            em.persist(scheduler);
-            em.getTransaction().commit();
+            JPAEntry.genericPost(scheduler);
             result = Response.ok(scheduler).build();
-        } else {
-            result = Response.status(404).build();
         }
         return result;
     }
 
-    @PUT//修改课表
+    @PUT //修改课表
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateScheduler(@CookieParam("sessionId") String sessionId, @PathParam("id") Integer id, Scheduler scheduler) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
-            Map<String, Object> filterObject = new HashMap<>(1);
-            filterObject.put("id", id);
-            List<Scheduler> schedulers = JPAEntry.getList(Scheduler.class, filterObject);
-            if (schedulers.size() == 1) {
-                Scheduler existScheduler = schedulers.get(0);
-
+            result = Response.status(404).build();
+            Scheduler existScheduler = JPAEntry.getObject(Scheduler.class, "id", id);
+            if (existScheduler != null) {
                 String description = scheduler.getDescription();
                 if (description != null) {
                     existScheduler.setDescription(description);
@@ -172,13 +156,8 @@ public class Schedulers {
                     existScheduler.setYear(year);
                 }
 
-                EntityManager em = JPAEntry.getEntityManager();
-                em.getTransaction().begin();
-                em.merge(existScheduler);
-                em.getTransaction().commit();
+                JPAEntry.genericPut(existScheduler);
                 result = Response.ok(existScheduler).build();
-            } else {
-                result = Response.status(404).build();
             }
         }
         return result;

@@ -19,7 +19,6 @@ public class JPAEntry {
     private static EntityManagerFactory factory;
     private static EntityManager entityManager;
 
-
     public static EntityManager getEntityManager() {
         if (entityManager == null) {
             try {
@@ -75,6 +74,20 @@ public class JPAEntry {
             }
         }
         return q.getResultList();
+    }
+
+    public static void genericPost(Object o) {
+        EntityManager em = JPAEntry.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(o);
+        em.getTransaction().commit();
+    }
+
+    public static void genericPut(Object o) {
+        EntityManager em = JPAEntry.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(o);
+        em.getTransaction().commit();
     }
 
     public static boolean isLogining(String sessionId) {

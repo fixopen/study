@@ -1,20 +1,17 @@
 package com.baremind;
 
 import com.baremind.data.User;
+import com.baremind.utils.CharacterEncodingFilter;
 import com.baremind.utils.IdGenerator;
 import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import javax.persistence.EntityManager;
 import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URLDecoder;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -144,73 +141,59 @@ public class Users {
         return null;
     }
 
-    @POST // 添
-    //origin/master
+    @POST //添
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createAdditionals(@CookieParam("sessionId") String sessionId, User user) {
+    public Response createUser(@CookieParam("sessionId") String sessionId, User user) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
             user.setId(IdGenerator.getNewId());
-            EntityManager em = JPAEntry.getEntityManager();
-            em.getTransaction().begin();
-            em.persist(user);
-            em.getTransaction().commit();
+            JPAEntry.genericPost(user);
             result = Response.ok(user).build();
-        } else {
-            result = Response.status(404).build();
         }
         return result;
     }
 
-    @GET//根据条件查询
+    @GET //根据条件查询
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAdditionals(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
+    public Response getUsers(@CookieParam("sessionId") String sessionId, @QueryParam("filter") @DefaultValue("") String filter) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
-            Map<String, Object> filterObject = null;
-            if (filter != "") {
-                String rawFilter = URLDecoder.decode(filter);
-                filterObject = new Gson().fromJson(rawFilter, new TypeToken<Map<String, Object>>() {
-                }.getType());
-            }
-            List<User> users = JPAEntry.getList(User.class, filterObject);
-            result = Response.ok(new Gson().toJson(users)).build();
-        } else {
             result = Response.status(404).build();
+            Map<String, Object> filterObject = CharacterEncodingFilter.getFilters(filter);
+            List<User> users = JPAEntry.getList(User.class, filterObject);
+            if (!users.isEmpty()) {
+                result = Response.ok(new Gson().toJson(users)).build();
+            }
         }
         return result;
     }
 
-    @GET//根据条件查询
+    @GET //根据id查询
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAdditionalById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
+    public Response getUserById(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
-            Map<String, Object> filterObject = new HashMap<>(1);
-            filterObject.put("id", id);
-            List<User> users = JPAEntry.getList(User.class, filterObject);
-            result = Response.ok(new Gson().toJson(users)).build();
-        } else {
             result = Response.status(404).build();
+            User user = JPAEntry.getObject(User.class, "id", id);
+            if (user != null) {
+                result = Response.ok(new Gson().toJson(user)).build();
+            }
         }
         return result;
     }
 
-    @PUT//根据id修改
+    @PUT //根据id修改
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateAdditionals(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, User user) {
+    public Response updateUser(@CookieParam("sessionId") String sessionId, @PathParam("id") Long id, User user) {
         Response result = Response.status(401).build();
         if (JPAEntry.isLogining(sessionId)) {
-            Map<String, Object> filterObject = new HashMap<>(1);
-            filterObject.put("id", id);
-            List<User> users = JPAEntry.getList(User.class, filterObject);
-            if (users.size() == 1) {
-                User existuser = users.get(0);
-
+            result = Response.status(404).build();
+            User existuser = JPAEntry.getObject(User.class, "id", id);
+            if (existuser != null) {
                 String amount = user.getAmount();
                 if (amount != null) {
                     existuser.setAmount(amount);
@@ -287,13 +270,8 @@ public class Users {
                 if (site != 0) {
                     existuser.getSite();
                 }
-                EntityManager em = JPAEntry.getEntityManager();
-                em.getTransaction().begin();
-                em.merge(existuser);
-                em.getTransaction().commit();
+                JPAEntry.genericPut(existuser);
                 result = Response.ok(existuser).build();
-            } else {
-                result = Response.status(404).build();
             }
         }
         return result;
