@@ -9,63 +9,63 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="devices")
+@Table(name = "devices")
 public class Device {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "user_id")
-	private Long userId;
-	
-	@Column(name = "platform")
-	private String platform;
-	
-	@Column(name = "platform_identity")
-	private String platformIdentity;
-	
-	@Column(name = "platform_notification_token")
-	private String platformNotificationToken;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "user_id")
+    private Long userId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "platform")
+    private String platform;
 
-	public Long getUserId() {
-		return userId;
-	}
+    @Column(name = "platform_identity")
+    private String platformIdentity;
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    @Column(name = "platform_notification_token")
+    private String platformNotificationToken;
 
-	public String getPlatform() {
-		return platform;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPlatform(String platform) {
-		this.platform = platform;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getPlatformIdentity() {
-		return platformIdentity;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setPlatformIdentity(String platformIdentity) {
-		this.platformIdentity = platformIdentity;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public String getPlatformNotificationToken() {
-		return platformNotificationToken;
-	}
+    public String getPlatform() {
+        return platform;
+    }
 
-	public void setPlatformNotificationToken(String platformNotificationToken) {
-		this.platformNotificationToken = platformNotificationToken;
-	}
-	
-	
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getPlatformIdentity() {
+        return platformIdentity;
+    }
+
+    public void setPlatformIdentity(String platformIdentity) {
+        this.platformIdentity = platformIdentity;
+    }
+
+    public String getPlatformNotificationToken() {
+        return platformNotificationToken;
+    }
+
+    public void setPlatformNotificationToken(String platformNotificationToken) {
+        this.platformNotificationToken = platformNotificationToken;
+    }
+
+
 }

@@ -9,96 +9,96 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="videos")
+@Table(name = "videos")
 public class Video {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "mime_type")
-	private String mimeType;
-	
-	@Column(name = "size")
-	private Long size;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "ext")
-	private String ext;
-	
-	@Column(name = "store_path")
-	private String storePath;
-	
-	@Column(name = "duration")
-	private int duration;
-	
-	@Column(name = "bit_rate")
-	private Double bitRate;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "mime_type")
+    private String mimeType;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "size")
+    private Long size;
 
-	public String getMimeType() {
-		return mimeType;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
-	}
+    @Column(name = "ext")
+    private String ext;
 
-	public Long getSize() {
-		return size;
-	}
+    @Column(name = "store_path")
+    private String storePath;
 
-	public void setSize(Long size) {
-		this.size = size;
-	}
+    @Column(name = "duration")
+    private int duration;
 
-	public String getName() {
-		return name;
-	}
+    @Column(name = "bit_rate")
+    private Double bitRate;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getExt() {
-		return ext;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setExt(String ext) {
-		this.ext = ext;
-	}
+    public String getMimeType() {
+        return mimeType;
+    }
 
-	public String getStorePath() {
-		return storePath;
-	}
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
 
-	public void setStorePath(String storePath) {
-		this.storePath = storePath;
-	}
+    public Long getSize() {
+        return size;
+    }
 
-	public int getDuration() {
-		return duration;
-	}
+    public void setSize(Long size) {
+        this.size = size;
+    }
 
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Double getBitRate() {
-		return bitRate;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setBitRate(Double bitRate) {
-		this.bitRate = bitRate;
-	}
+    public String getExt() {
+        return ext;
+    }
 
-	
+    public void setExt(String ext) {
+        this.ext = ext;
+    }
+
+    public String getStorePath() {
+        return storePath;
+    }
+
+    public void setStorePath(String storePath) {
+        this.storePath = storePath;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Double getBitRate() {
+        return bitRate;
+    }
+
+    public void setBitRate(Double bitRate) {
+        this.bitRate = bitRate;
+    }
+
+
 }

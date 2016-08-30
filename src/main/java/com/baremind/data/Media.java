@@ -9,74 +9,74 @@ import javax.persistence.Table;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="medias")
+@Table(name = "medias")
 public class Media {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "mime_type")
-	private String mimeType;
-	
-	@Column(name = "size")
-	private Long size;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "ext")
-	private String ext;
-	
-	@Column(name = "store_path")
-	private String storePath;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "mime_type")
+    private String mimeType;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "size")
+    private Long size;
 
-	public String getMimeType() {
-		return mimeType;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
-	}
+    @Column(name = "ext")
+    private String ext;
 
-	public Long getSize() {
-		return size;
-	}
+    @Column(name = "store_path")
+    private String storePath;
 
-	public void setSize(Long size) {
-		this.size = size;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getMimeType() {
+        return mimeType;
+    }
 
-	public String getExt() {
-		return ext;
-	}
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
 
-	public void setExt(String ext) {
-		this.ext = ext;
-	}
+    public Long getSize() {
+        return size;
+    }
 
-	public String getStorePath() {
-		return storePath;
-	}
+    public void setSize(Long size) {
+        this.size = size;
+    }
 
-	public void setStorePath(String storePath) {
-		this.storePath = storePath;
-	}
-	
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
+    }
+
+    public String getStorePath() {
+        return storePath;
+    }
+
+    public void setStorePath(String storePath) {
+        this.storePath = storePath;
+    }
+
+
 }

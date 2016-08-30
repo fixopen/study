@@ -1,7 +1,7 @@
 package com.baremind.algorithm;
 
-import com.baremind.data.Account;
 import com.baremind.data.Device;
+import com.baremind.data.User;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import java.util.Arrays;
  * Created by fixopen on 3/6/15.
  */
 public class CertificateManager {
-    public Certificate getCertificate(Account user, Device device) {
+    public Certificate getCertificate(User user, Device device) {
         Certificate result = null;
         //find by local-cache
         return result;

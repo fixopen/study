@@ -9,228 +9,228 @@ import javax.persistence.*;
  * Created by lenovo on 2016/8/17.
  */
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "login_name")
-	private String LoginName;
-	
-	@Column(name = "password")
-	private String password;
-	
-	@Column(name = "is_administrator")
-	private Boolean isAdministrator;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "head")
-	private String head;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "telephone")
-	private String telephone;
-	
-	@Column(name = "birthday")
-	private Date birthday;
-	
-	@Column(name = "sex")
-	private int sex;
-	
-	@Column(name = "site")
-	private int site;
-	
-	@Column(name = "amount")
-	private String amount;
-	
-	@Column(name = "school")
-	private String school;
-	
-	@Column(name = "grade")
-	private String grade;
-	
-	@Column(name = "class")
-	private String classname;
-	
-	@Column(name = "location")
-	private String location;
-	
-	@Column(name = "description")
-	private String description;
-	
-	@Column(name = "timezone")
-	private String timezone;
-	
-	@Column(name = "create_time")
-	private Date createTime;
-	
-	@Column(name = "update_time")
-	private Date updateTime;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	public int getSite() {
-		return site;
-	}
+    @Column(name = "login_name")
+    private String LoginName;
 
-	public void setSite(int site) {
-		this.site = site;
-	}
+    @Column(name = "password")
+    private String password;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "is_administrator")
+    private Boolean isAdministrator;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public String getLoginName() {
-		return LoginName;
-	}
+    @Column(name = "head")
+    private String head;
 
-	public void setLoginName(String loginName) {
-		LoginName = loginName;
-	}
+    @Column(name = "email")
+    private String email;
 
-	public String getPassword() {
-		return password;
-	}
+    @Column(name = "telephone")
+    private String telephone;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @Column(name = "birthday")
+    private Date birthday;
 
-	public Boolean getIsAdministrator() {
-		return isAdministrator;
-	}
+    @Column(name = "sex")
+    private int sex;
 
-	public void setIsAdministrator(Boolean isAdministrator) {
-		this.isAdministrator = isAdministrator;
-	}
+    @Column(name = "site")
+    private int site;
 
-	public String getName() {
-		return name;
-	}
+    @Column(name = "amount")
+    private String amount;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "school")
+    private String school;
 
-	public String getHead() {
-		return head;
-	}
+    @Column(name = "grade")
+    private String grade;
 
-	public void setHead(String head) {
-		this.head = head;
-	}
+    @Column(name = "class")
+    private String classname;
 
-	public String getEmail() {
-		return email;
-	}
+    @Column(name = "location")
+    private String location;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Column(name = "description")
+    private String description;
 
-	public String getTelephone() {
-		return telephone;
-	}
+    @Column(name = "timezone")
+    private String timezone;
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+    @Column(name = "create_time")
+    private Date createTime;
 
-	public String getClassname() {
-		return classname;
-	}
+    @Column(name = "update_time")
+    private Date updateTime;
 
-	public void setClassname(String classname) {
-		this.classname = classname;
-	}
+    public int getSite() {
+        return site;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public void setSite(int site) {
+        this.site = site;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getLoginName() {
+        return LoginName;
+    }
 
-	public String getTimezone() {
-		return timezone;
-	}
+    public void setLoginName(String loginName) {
+        LoginName = loginName;
+    }
 
-	public void setTimezone(String timezone) {
-		this.timezone = timezone;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public Boolean getIsAdministrator() {
+        return isAdministrator;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setIsAdministrator(Boolean isAdministrator) {
+        this.isAdministrator = isAdministrator;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Date getBirthday() {
-		return birthday;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+    public String getHead() {
+        return head;
+    }
 
-	public int getSex() {
-		return sex;
-	}
+    public void setHead(String head) {
+        this.head = head;
+    }
 
-	public void setSex(int sex) {
-		this.sex = sex;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getAmount() {
-		return amount;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setAmount(String amount) {
-		this.amount = amount;
-	}
+    public String getTelephone() {
+        return telephone;
+    }
 
-	public String getSchool() {
-		return school;
-	}
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
-	public void setSchool(String school) {
-		this.school = school;
-	}
+    public String getClassname() {
+        return classname;
+    }
 
-	public String getGrade() {
-		return grade;
-	}
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
 
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+
 }

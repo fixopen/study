@@ -12,52 +12,52 @@
     <link href="css/mathAction.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!--header-->
-        <div class="row action-header">
-            <div class="col-xs-1">
-                    <a href="">&lt;</a>
-            </div>
-            <div class="col-xs-9" id="actionMath-title"></div>
-            <div class="col-xs-2">
-                <a href="#" id="">...</a>
-            </div>
+<div class="container">
+    <!--header-->
+    <div class="row action-header">
+        <div class="col-xs-1">
+            <a href="">&lt;</a>
         </div>
-        <!--class-->
-        <div class="row">
-            <div class="col-xs-12">
-                <h3 style="text-align: center">奥数</h3>
-            </div>
-        </div>
-        <!--seach-->
-        <div class="row">
-            <div class="col-xs-12 action-secahs">
-                <div class="action-secah">
-                    <input type="search" style="height: 32px">
-                    <button type="button" class="btn btn-default">搜索</button>
-                </div>
-            </div>
-        </div>
-        <!--sort-->
-        <div class="row">
-            <div class="col-xs-12">
-                    <span>排序:</span>
-                    <button type="button" class="btn btn-default">正序</button>
-                    <button type="button" class="btn btn-default">倒序</button>
-                    <hr>
-            </div>
-        </div>
-        <!--section-->
-        <div class="row">
-            <div class="col-xs-12" id="actionMath-section"></div>
+        <div class="col-xs-9" id="actionMath-title"></div>
+        <div class="col-xs-2">
+            <a href="#" id="">...</a>
         </div>
     </div>
-    <!--templates-->
-    <template id="title-template">
-        <span>${title}</span>
-    </template>
-    <template id="section-template">
-        <div class="row">
+    <!--class-->
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 style="text-align: center">奥数</h3>
+        </div>
+    </div>
+    <!--seach-->
+    <div class="row">
+        <div class="col-xs-12 action-secahs">
+            <div class="action-secah">
+                <input type="search" style="height: 32px">
+                <button type="button" class="btn btn-default">搜索</button>
+            </div>
+        </div>
+    </div>
+    <!--sort-->
+    <div class="row">
+        <div class="col-xs-12">
+            <span>排序:</span>
+            <button type="button" class="btn btn-default">正序</button>
+            <button type="button" class="btn btn-default">倒序</button>
+            <hr>
+        </div>
+    </div>
+    <!--section-->
+    <div class="row">
+        <div class="col-xs-12" id="actionMath-section"></div>
+    </div>
+</div>
+<!--templates-->
+<template id="title-template">
+    <span>${title}</span>
+</template>
+<template id="section-template">
+    <div class="row">
         <div class="col-xs-6">
             <img src="${imgsrc}" alt="">
         </div>
@@ -81,14 +81,12 @@
                 </div>
             </div>
         </div>
-        </div>
-    </template>
+    </div>
+</template>
 
 
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/mathAction.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/mathAction.js"></script>
 </body>
 </html>
