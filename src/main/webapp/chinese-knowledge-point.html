@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinese Knowledge Point</title>
+</head>
+<body>
+<h1 id="title">${title}</h1>
+<section>
+    <h2>选文赏析</h2>
+    <ul id="origin"></ul>
+</section>
+<section id="content"></section>
+<section id="video"></section>
+<section>
+    <h2>闯关练习</h2>
+    <dl>
+        <dt><span>单选题</span>${title}</dt>
+        <dd>
+            <ol>
+                <li>${option}</li>
+                <!-- ... -->
+            </ol>
+        </dd>
+        <dt><span>多选题</span>${title}</dt>
+        <dd>
+            <ol>
+                <li>${option}</li>
+                <!-- ... -->
+            </ol>
+        </dd>
+        <!-- ... -->
+    </dl>
+</section>
+<section>
+    <span>阅读</span><span>${read-count}</span>
+    <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
+    <span>previous</span><span>next</span>
+</section>
+<section>
+    <span>写留言<img src="pen.jpg" alt="写留言"/></span>
+    <article>
+        <img src="${avator}" alt=""/>
+        <span>${name}</span>
+        <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
+        <section>${content}</section>
+        <time>${time}</time>
+    </article>
+    <!-- ... -->
+</section>
+<template id="title-template">
+    <div>${title}</div>
+</template>
+<template id="origin-template">
+    <article>
+        <section>${content}</section>
+        <address>${source}</address>
+    </article>
+    <!-- ... -->
+</template>
+<template id="content-text-template">
+    <p>${content}</p>
+    <!-- ... -->
+</template>
+<template id="content-image-template">
+    <img src="${src}" alt="${alt}"/>
+    <!-- ... -->
+</template>
+<template id="video-template">
+    <video src="${video}">
+        <img src="${video-cover}" alt="${video-cover-alt}"/>
+    </video>
+</template>
+<script>
+    $(function () {
+        let data = {
+            origins: []
+        }
+
+        let doc = document
+
+        let getTemplate = function (templateId) {
+            let result
+            let template = doc.getElementById(templateId)
+            if (template) {
+                result = template.children[0]
+            }
+            return result
+        }
+
+        let bind = function (element, data) {
+            element.innerHTML = element.innerHTML.replace('%7B', '{').replace('%7D', '}').replace(/\$\{(\w+)\}/g, function (all, variable) {
+                let result = ''
+                if (variable) {
+                    result = data[variable]
+                }
+                return result
+            })
+        }
+
+        let proc = function (option) {
+            let template = getTemplate(option.templateId)
+            if (template) {
+                let element = template.cloneNode(true)
+                bind(element, option.data)
+                let container = doc.getElementById(option.containerId)
+                if (container) {
+                    container.appendChild(element)
+                }
+            }
+        }
+
+        let procArray = function (option) {
+            let container = doc.getElementById(option.containerId)
+            if (container) {
+                let template = getTemplate(option.templateId)
+                if (template) {
+                    for (let i = 0; i < option.data.length; ++i) {
+                        let element = template.cloneNode(true)
+                        bind(element, option.data[i])
+                        container.appendChild(element)
+                    }
+                }
+            }
+        }
+
+        let procAlterArray = function (option) {
+            let container = doc.getElementById(option.containerId)
+            if (container) {
+                let templates = []
+                for (let i = 0; i < option.alterTemplates.length; ++i) {
+                    let template = getTemplate(option.alterTemplates[i].templateId)
+                    if (template) {
+                        templates.push({type: option.alterTemplates[i].type, template: template})
+                    }
+                }
+                for (let i = 0; i < option.data.length; ++i) {
+                    for (let j = 0; j < templates.length; ++j) {
+                        if (option.data[i].type == templates[j].type) {
+                            let element = templates[j].cloneNode(true)
+                            bind(element, option.data[i])
+                            container.appendChild(element)
+                            break
+                        }
+                    }
+                }
+            }
+        }
+
+        proc({
+            templateId: 'title-template',
+            data: data,
+            containerId: 'title'
+        })
+
+        procArray({
+            templateId: 'origin-template',
+            data: data.origins,
+            containerId: 'origin'
+        })
+
+        procAlterArray({
+            data: data.contents,
+            containerId: 'content',
+            alterTemplates: [
+                {type: 'text', templateId: 'content-text-template'},
+                {type: 'image', templateId: 'content-image-template'}
+            ]
+        })
+
+        proc({
+            templateId: 'video-template',
+            data: data,
+            containerId: 'video'
+        })
+    })
+</script>
+</body>
+</html>
