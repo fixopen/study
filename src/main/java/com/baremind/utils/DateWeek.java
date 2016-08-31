@@ -4,13 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateWeek {
-    public static void main(String[] args) {
-        Calendar ca = Calendar.getInstance();//创建一个日期实例
-        ca.setTime(new Date());//实例化一个日期
-        System.out.println(ca.get(Calendar.DAY_OF_YEAR));//获取是第多少天
-        System.out.println(ca.get(Calendar.WEEK_OF_YEAR));//获取是第几周
-        System.out.println(ca.get(Calendar.FEBRUARY));//获取是年
-    }
 }
 
 
