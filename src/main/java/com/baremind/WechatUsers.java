@@ -39,24 +39,29 @@ public class WechatUsers {
         public int menuid;
     }
 
+    public static class IPList {
+        private String[] ip_list;
+
+        public String[] getIp_list() {
+            return ip_list;
+        }
+
+        public void setIp_list(String[] ip_list) {
+            this.ip_list = ip_list;
+        }
+    }
+
     //自定义菜单查询接口
     private GenericResult getWechatServerIpList() {
-        //https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN	//{"ip_list":["127.0.0.1","127.0.0.1"]}
+        //https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN
+        //{"ip_list":["127.0.0.1","127.0.0.1"]}
         GenericResult result = new GenericResult();
         Client client = ClientBuilder.newClient();
         Response response = client.target(hostname)
             .path("/cgi-bin/get")
             .queryParam("access_token", accesstoken)
             .request().get();
-        String responseBody = response.readEntity(String.class);
-        if (responseBody.contains("\n")) {
-            String[] lines = responseBody.split("\n");
-            if (lines.length == 2) {
-                String[] timeCode = lines[0].split(",");
-                result.code = Integer.parseInt(timeCode[0]);
-                result.message = timeCode[1];
-            }
-        }
+        IPList ipList = response.readEntity(IPList.class);
         return result;
     }
 

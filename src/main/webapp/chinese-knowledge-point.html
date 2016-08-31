@@ -5,7 +5,7 @@
     <title>Chinese Knowledge Point</title>
 </head>
 <body>
-<h1 id="title">${title}</h1>
+<section id="title"></section>
 <section>
     <h2>选文赏析</h2>
     <ul id="origin"></ul>
@@ -14,42 +14,15 @@
 <section id="video"></section>
 <section>
     <h2>闯关练习</h2>
-    <dl>
-        <dt><span>单选题</span>${title}</dt>
-        <dd>
-            <ol>
-                <li>${option}</li>
-                <!-- ... -->
-            </ol>
-        </dd>
-        <dt><span>多选题</span>${title}</dt>
-        <dd>
-            <ol>
-                <li>${option}</li>
-                <!-- ... -->
-            </ol>
-        </dd>
-        <!-- ... -->
-    </dl>
+    <dl id="problems"></dl>
 </section>
-<section>
-    <span>阅读</span><span>${read-count}</span>
-    <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
-    <span>previous</span><span>next</span>
-</section>
+<section id="interaction"></section>
 <section>
     <span>写留言<img src="pen.jpg" alt="写留言"/></span>
-    <article>
-        <img src="${avator}" alt=""/>
-        <span>${name}</span>
-        <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
-        <section>${content}</section>
-        <time>${time}</time>
-    </article>
-    <!-- ... -->
+    <section id="comments"></section>
 </section>
 <template id="title-template">
-    <div>${title}</div>
+    <h1>${title}</h1>
 </template>
 <template id="origin-template">
     <article>
@@ -70,6 +43,51 @@
     <video src="${video}">
         <img src="${video-cover}" alt="${video-cover-alt}"/>
     </video>
+</template>
+<template id="problem-template">
+    <div>
+        <dt><span>${type}</span>${title}</dt>
+        <dd>
+            <ol>
+                <li>${optionA}</li>
+                <li>${optionB}</li>
+                <li>${optionC}</li>
+                <li>${optionD}</li>
+            </ol>
+        </dd>
+    </div>
+    <dt><span>单选题</span>${title}</dt>
+    <dd>
+        <ol>
+            <li>${option}</li>
+            <!-- ... -->
+        </ol>
+    </dd>
+    <dt><span>多选题</span>${title}</dt>
+    <dd>
+        <ol>
+            <li>${option}</li>
+            <!-- ... -->
+        </ol>
+    </dd>
+    <!-- ... -->
+</template>
+<template id="interaction-template">
+    <div>
+    <span>阅读</span><span>${read-count}</span>
+    <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
+    <a href="${previous}">previous</a><a href="${next}">next</a>
+    </div>
+</template>
+<template id="comment-template">
+    <article>
+        <img src="${avator}" alt=""/>
+        <span>${name}</span>
+        <span><img src="like.jpg" alt="like"/></span><span>${like-count}</span>
+        <section>${content}</section>
+        <time>${time}</time>
+    </article>
+    <!-- ... -->
 </template>
 <script>
     $(function () {
@@ -172,6 +190,18 @@
             templateId: 'video-template',
             data: data,
             containerId: 'video'
+        })
+
+        procArray({
+            templateId: 'problem-template',
+            data: data.origins,
+            containerId: 'problems'
+        })
+
+        procArray({
+            templateId: 'comment-template',
+            data: data.origins,
+            containerId: 'comments'
         })
     })
 </script>
