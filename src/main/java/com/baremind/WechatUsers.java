@@ -1,17 +1,6 @@
 package com.baremind;
 
-import com.baremind.data.ClickLink;
-import com.baremind.data.LinkMessage;
-import com.baremind.data.LocationInformation;
-import com.baremind.data.ClickEvent;
-import com.baremind.data.LocationSelect;
-import com.baremind.data.PicSysphoto;
-import com.baremind.data.PictureMessage;
-import com.baremind.data.ScancodePush;
-import com.baremind.data.TextMessage;
-import com.baremind.data.VideoMessage;
-import com.baremind.data.VoiceMeessage;
-import com.baremind.data.WechatUser;
+import com.baremind.data.*;
 import com.baremind.utils.CharacterEncodingFilter;
 import com.baremind.utils.IdGenerator;
 import com.baremind.utils.JPAEntry;
@@ -49,6 +38,17 @@ public class WechatUsers {
         public void setIp_list(String[] ip_list) {
             this.ip_list = ip_list;
         }
+    }
+
+    public static class ServerList {
+        public static class Server {
+            private String kf_account;
+            private String kf_nick;
+            private String kf_id;
+            private String kf_headimgurl;
+        }
+
+        private Server[] kf_list;
     }
 
     //自定义菜单查询接口
