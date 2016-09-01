@@ -55,12 +55,6 @@
             <version>2.23.2</version>
             <optional>true</optional>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
@@ -143,6 +137,8 @@
             <artifactId>jersey-jetty-connector</artifactId>
             <version>2.23.2</version>
         </dependency>
+        -->
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-jetty-http</artifactId>
@@ -173,11 +169,13 @@
             <artifactId>jersey-container-netty-http</artifactId>
             <version>2.23.2</version>
         </dependency>
+        -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
             <version>2.23.2</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
