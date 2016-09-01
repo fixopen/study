@@ -40,7 +40,7 @@ public class User {
     private Date birthday;
 
     @Column(name = "sex")
-    private int sex;
+    private Long sex;
 
     @Column(name = "site")
     private int site;
@@ -200,11 +200,11 @@ public class User {
         this.birthday = birthday;
     }
 
-    public int getSex() {
+    public Long getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Long sex) {
         this.sex = sex;
     }
 

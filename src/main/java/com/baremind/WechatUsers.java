@@ -7,6 +7,7 @@ import com.baremind.utils.JPAEntry;
 import com.google.gson.Gson;
 
 import javax.json.Json;
+import javax.persistence.EntityManager;
 import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -24,10 +25,17 @@ public class WechatUsers {
     static String AppID = "wx92dec5e98645bd1d";
     static String AppSecret = "d3b30c3ae79c322bc54c93d0ff75210b";
 
+    public static void setAccessToken(String token) {
+        accesstoken = token;
+    }
+
     public static class AccessToken {
         private String access_token;
         private int expires_in;
     }
+
+    //获取微信服务器ID
+    //public static
 
     //获取接口调用凭证
     public static String getToken() {
@@ -51,6 +59,132 @@ public class WechatUsers {
         return result;
     }
 
+    public static class UserList {
+        public static class UserData {
+            private String[] openid;
+        }
+        private int total;
+        private int count;
+        private UserData data;
+        private String next_openid;
+    }
+
+    //获取接口调用凭证
+    public static String getUserList(String nextOpenid) {
+        // http请求方式: GET（请使用https协议）
+        // https://api.weixin.qq.com/cgi-bin/user/get?access_token=ACCESS_TOKEN&next_openid=NEXT_OPENID
+        String result = null;
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/user/get")
+            .queryParam("access_token", accesstoken)
+            .queryParam("next_openid", nextOpenid)
+            .request().get();
+        //{"total":2,"count":2,"data":{"openid":["","OPENID1","OPENID2"]},"next_openid":"NEXT_OPENID"}
+        String responseBody = response.readEntity(String.class);
+        if (responseBody.contains("data")) {
+            //{"access_token":"ACCESS_TOKEN","expires_in":7200}
+            UserList us = new Gson().fromJson(responseBody, UserList.class);
+            result = us.next_openid;
+            if (us.count < 10000) {
+                result = null;
+            }
+            EntityManager em = JPAEntry.getEntityManager();
+            em.getTransaction().begin();
+            for (String openId : us.data.openid) {
+                WechatUser user = new WechatUser();
+                user.setId(IdGenerator.getNewId());
+                user.setOpenId(openId);
+                em.persist(user);
+            }
+            em.getTransaction().commit();
+        }
+        return result;
+    }
+
+    public static class WechatUserInfo {
+        private int subscribe;
+        private String openid;
+        private String nickname;
+        private Long sex;
+        private String language;
+        private String city;
+        private String province;
+        private String country;
+        private String headimgurl;
+        private int subscribe_time;
+        private String unionid;
+        private String remark;
+        private int groupid;
+    }
+
+    public static void getUserInfo(WechatUser user) {
+        // http请求方式: GET（请使用https协议）
+        //https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
+        String result = null;
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(hostname)
+            .path("/cgi-bin/user/info")
+            .queryParam("access_token", accesstoken)
+            .queryParam("openid", user.getOpenId())
+            .queryParam("lang", "zh_CN")
+            .request().get();
+        /*
+        {
+            "subscribe": 1,
+            "openid": "o6_bmjrPTlm6_2sgVt7hMZOPfL2M",
+            "nickname": "Band",
+            "sex": 1,
+            "language": "zh_CN",
+            "city": "广州",
+            "province": "广东",
+            "country": "中国",
+            "headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/0",
+           "subscribe_time": 1382694957,
+           "unionid": " o6_bmasdasdsad6_2sgVt7hMZOPfL"
+           "remark": "",
+           "groupid": 0
+        }
+        */
+        String responseBody = response.readEntity(String.class);
+        if (responseBody.contains("unionid")) {
+            //{"access_token":"ACCESS_TOKEN","expires_in":7200}
+            WechatUserInfo us = new Gson().fromJson(responseBody, WechatUserInfo.class);
+            user.setCity(us.city);
+            user.setCountry(us.country);
+            //user.setExpiry();
+            user.setHead(us.headimgurl);
+            user.setInfo(responseBody);
+            user.setNickname(us.nickname);
+            //user.setPrivilege();
+            user.setProvince(us.province);
+            //user.setRefId();
+            //user.setRefreshToken();
+            user.setSex(us.sex);
+            user.setSubscribeTime(us.subscribe_time);
+            user.setSubscribe(us.subscribe);
+            user.setLanguage(us.language);
+            user.setRemark(us.remark);
+            user.setHeadimgurl(us.headimgurl);
+            user.setGroupId(us.groupid);
+            //user.setToken();
+            user.setUnionId(us.unionid);
+            //user.setUserId();
+            User u = new User();
+            u.setId(IdGenerator.getNewId());
+            u.setHead(us.headimgurl);
+            u.setName(us.nickname);
+            //u.setLoginName(us.nickname);
+            u.setSex(us.sex);
+
+
+            EntityManager em = JPAEntry.getEntityManager();
+            em.getTransaction().begin();
+            em.merge(user);
+            em.getTransaction().commit();
+        }
+    }
+
     public static class GenericResult {
         public int code;
         public String message;
@@ -60,24 +194,40 @@ public class WechatUsers {
         public String menuid;
     }
 
+    public static class IPList {
+        private String[] ip_list;
+
+        public String[] getIp_list() {
+            return ip_list;
+        }
+
+        public void setIp_list(String[] ip_list) {
+            this.ip_list = ip_list;
+        }
+    }
+
+    public static class ServerList {
+        public static class Server {
+            private String kf_account;
+            private String kf_nick;
+            private String kf_id;
+            private String kf_headimgurl;
+        }
+
+        private Server[] kf_list;
+    }
+
     //自定义菜单查询接口
     private GenericResult getWechatServerIpList() {
-        //https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN	//{"ip_list":["127.0.0.1","127.0.0.1"]}
+        //https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN
+        //{"ip_list":["127.0.0.1","127.0.0.1"]}
         GenericResult result = new GenericResult();
         Client client = ClientBuilder.newClient();
         Response response = client.target(hostname)
             .path("/cgi-bin/get")
             .queryParam("access_token", accesstoken)
             .request().get();
-        String responseBody = response.readEntity(String.class);
-        if (responseBody.contains("\n")) {
-            String[] lines = responseBody.split("\n");
-            if (lines.length == 2) {
-                String[] timeCode = lines[0].split(",");
-                result.code = Integer.parseInt(timeCode[0]);
-                result.message = timeCode[1];
-            }
-        }
+        IPList ipList = response.readEntity(IPList.class);
         return result;
     }
 

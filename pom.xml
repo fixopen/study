@@ -55,10 +55,12 @@
             <version>2.23.2</version>
             <optional>true</optional>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
@@ -68,6 +70,49 @@
             <artifactId>jersey-media-multipart</artifactId>
             <version>2.23.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-jaxb</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson1</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jettison</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-processing</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-kryo</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-sse</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>html-json</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        -->
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.bundles</groupId>
             <artifactId>jaxrs-ri</artifactId>
@@ -148,6 +193,8 @@
             <artifactId>jersey-gf-ejb</artifactId>
             <version>2.23.2</version>
         </dependency>
+        -->
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-bean-validation</artifactId>
@@ -198,13 +245,11 @@
             <artifactId>jersey-servlet-portability</artifactId>
             <version>2.23.2</version>
         </dependency>
-        <!--
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
             <version>2.23.2</version>
         </dependency>
-        -->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-declarative-linking</artifactId>
@@ -270,58 +315,8 @@
             <artifactId>jersey-rx-client-rxjava</artifactId>
             <version>2.23.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-jaxb</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>html-json</artifactId>
-            <version>2.23.2</version>
-        </dependency>
         -->
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson1</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jettison</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-processing</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-kryo</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-moxy</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-multipart</artifactId>
-            <version>2.23.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-sse</artifactId>
-            <version>2.23.2</version>
-        </dependency>
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.security</groupId>
             <artifactId>oauth1-client</artifactId>
@@ -388,6 +383,8 @@
             <artifactId>jersey-test-framework-util</artifactId>
             <version>2.23.2</version>
         </dependency>
+        -->
+        <!--
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
@@ -398,6 +395,7 @@
             <artifactId>jersey-multipart</artifactId>
             <version>1.8</version>
         </dependency>
+        -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>

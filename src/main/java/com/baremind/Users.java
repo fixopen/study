@@ -250,7 +250,7 @@ public class Users {
                 if (school != null) {
                     existuser.setSchool(school);
                 }
-                int sex = user.getSex();
+                Long sex = user.getSex();
                 if (sex != 0) {
                     existuser.setSex(sex);
                 }
