@@ -3,32 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Chinese Knowledge Point</title>
-    <script src="js/jquery.min.js"></script>
+
+    <!-- 引入样式表 -->
+    <!--
+   <link rel="stylesheet" href="bootstrap.min.css">
+   -->
+    <link rel="stylesheet" href="chinese-knowledge-point.css">
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="TouchSlide.1.1.js"></script>
 </head>
+
 <body>
-<section id="title"></section>
-<section>
-    <h2>选文赏析</h2>
-    <ul id="origin"></ul>
-</section>
-<section id="content"></section>
-<section id="video"></section>
-<section>
-    <h2>闯关练习</h2>
-    <dl id="problems"></dl>
-</section>
-<section id="interaction"></section>
-<section>
-    <span>写留言<img src="pen.jpg" alt="写留言"/></span>
-    <section id="comments"></section>
-</section>
+<!-- 弹窗开始 -->
+<div class="tan"></div>
+<div class="window1"><!-- 游客弹窗 -->
+    <a class="windowClose" href="#"></a>
+    <div class="win_neir">
+        <p class="neir_ptxt">成为会员才可继续观看视频哟！成为会员才可继续观看视频哟！</p>
+        <p class="neir_pBtn">
+            <a class="p_btn btn01" href="#">注册会员</a>
+            <a class="p_btn btn02" href="#">再见</a>
+        </p>
+    </div>
+</div>
+<div class="window1" style="display:none;"><!-- 会员弹窗 -->
+    <div class="win_neir">
+        <p class="neir_ptxt">您的卡片已过期，请重新购买！</p>
+        <p class="neir_pBtn">
+            <a class="p_btn btn01" href="#">购买</a>
+            <a class="p_btn btn02" href="#">再见</a>
+        </p>
+    </div>
+</div>
+<div class="window1" style="display:none;"><!-- 会员弹窗 -->
+    <div class="win_neir">
+        <p class="neir_ptxt">您的卡片只可观看***，<br>观看其他内容请购买相应卡片！</p>
+        <p class="neir_pBtn">
+            <a class="p_btn btn01" href="#">购买</a>
+            <a class="p_btn btn02" href="#">再见</a>
+        </p>
+    </div>
+</div>
+<div class="window1" style="display:none;"><!-- 会员弹窗 -->
+    <div class="win_neir">
+        <p class="neir_ptxt">还剩24雨点不够观看啦，请充值！</p>
+        <p class="neir_pBtn">
+            <a class="p_btn btn01" href="#">充值</a>
+            <a class="p_btn btn02" href="#">再见</a>
+        </p>
+    </div>
+</div>
+<div class="window1" style="display:none;"><!-- 游客弹窗 -->
+    <div class="win_neir">
+        <p class="neir_ptxt">雨点所剩不多，请尽快充值哦！</p>
+        <p class="neir_pBtn">
+            <a class="p_btn btn01" href="#">充值</a>
+            <a class="p_btn btn02" href="#">再见</a>
+        </p>
+    </div>
+</div>
+<!-- 弹窗结束 -->
+<!--结构-->
+<div style="background-image: url(zb_bg.jpg); background-size: cover" class="page_content">
+    <section id="title"></section>
+    <section>
+        <h2  class="img-title">选文赏析</h2>
+        <ul id="origin" class="border"></ul>
+    </section>
+    <div class="catalogue">
+        <section id="content"></section>
+        <section id="video"></section>
+    </div>
+    <section class="">
+        <h2 class="breakthrough">闯关练习</h2>
+        <!--标题是图片-->
+        <!--<div>1.-->
+        <!--<img class="mld_liImg" src="danx.png" alt="">-->
+        <!--</div>-->
+        <dl id="problems"  class="catalogue"></dl>
+    </section>
+    <section id="interaction"></section>
+
+
+    <section class="leave-word">
+        <span class="word-button">写留言</span><br><br><br>
+        <section id="comments"></section>
+    </section>
+</div>
+
+
+<!--模板-->
 <template id="title-template">
     <h1>${title}</h1>
 </template>
 <template id="origin-template">
     <article>
         <section>${content}</section>
-        <address>${source}</address>
+        <address class="source">${source}</address>
     </article>
     <!-- ... -->
 </template>
@@ -37,43 +108,77 @@
     <!-- ... -->
 </template>
 <template id="content-image-template">
-    <img src="${href}" alt="${description}"/>
+            <span>
+                <img src="${href}" alt="${description}" class=""/>
+            </span>
     <!-- ... -->
 </template>
 <template id="video-template">
-    <video src="${href}">
-        <img src="${coverHref}" alt="${coverDescription}"/>
-    </video>
-</template>
-<template id="problem-option-template">
-    <li>${option}</li>
+            <span>
+            <video src="${href}">
+                <img src="${coverHref}" alt="${coverDescription}"/>
+            </video>
+            </span>
 </template>
 <template id="problem-template">
     <div>
-        <dt><span>${type}</span>${title}</dt>
+        <dt><span> <img src="${href}" alt="${description}" class="mld_liImg"/></span>${title}</dt>
         <dd>
             <ol type="A" data-ext-point="options"></ol>
         </dd>
     </div>
     <!-- ... -->
 </template>
+<template id="problem-option-template" style="">
+    <li class="answer mld_daanUl">${option}</li>
+</template>
+
 <template id="interaction-template">
-    <div>
-        <span>阅读</span><span>${readCount}</span>
-        <span><img src="like.jpg" alt="like"/></span><span>${likeCount}</span>
-        <a href="${previous}">previous</a><a href="${next}">next</a>
+    <div class="catalogue">
+        <ul class="read-like">
+            <li class="read">阅读<span class="read-count">${readCount}</span></li>  <!--阅读量，点赞量要改变-->
+            <li><img class="like-img" src="zan.png" alt=""><span class="read-count">${likeCount}</span></li>
+        </ul>
+        <ul class="previous-next">
+            <li class="read"><a class="previous" href="${previous}">上一节课</a></li>
+            <li><a class="previous" href="${next}">下一节课</a></li>
+        </ul>
     </div>
 </template>
 <template id="comment-template">
-    <article>
-        <img src="${avatar}" alt=""/>
-        <span>${name}</span>
-        <span><img src="like.jpg" alt="like"/></span><span>${likeCount}</span>
-        <section>${content}</section>
-        <time>${time}</time>
-    </article>
+    <ul class="comment-center">
+        <li class="leave-word-section lion_01">
+            <img src="${avatar}" alt="">
+        </li>
+        <li class="leave-word-section lion_02">
+            <ul class="top-UI">
+                <li class="user-comment">
+                    <div class="user-name">${name}</div>
+                    <div class="user-like"><img class="like-img" src="zan.png" alt=""><span class="read-count">${likeCount}</span></div>
+                </li>
+                <li class="UI-top">
+                    ${content}
+                </li>
+                <li class="UI-bottom UI-top">
+                    <div class="user-name">${time}</div>
+                </li>
+            </ul>
+        </li>
+        <!--<img src="${avatar}" alt=""/>-->
+        <!--<section class="user-comment">-->
+        <!--<span class="user-name leave-word-section top-UI">${name}</span>-->
+        <!--<span><img src="zan.png" alt="like"/></span><span>${likeCount}</span>-->
+        <!--<section>${content}</section>-->
+        <!--<time>${time}</time>-->
+        <!--</section>-->
+
+    </ul>
+
     <!-- ... -->
+
 </template>
+
+<!--script-->
 <script>
     $(function () {
         let data = {
@@ -95,7 +200,7 @@
                 },
                 {
                     type: 'image',
-                    href: '',
+                    href: 'video1.png',
                     description: '竹林七贤魅力担当——嵇康'
                 },
                 {
@@ -124,7 +229,7 @@
                 },
                 {
                     type: 'image',
-                    href: '',
+                    href: 'video2.png',
                     description: '竹林七贤放荡之最——刘伶'
                 },
                 {
@@ -134,7 +239,7 @@
             ],
             video: {
                 href: '',
-                coverHref: '',
+                coverHref: 'video3.png',
                 coverDescription: '塞花飘客泪,边柳挂乡愁'
             },
             problems: [
